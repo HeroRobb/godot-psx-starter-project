@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://cwcdqiyx5wdyq"]
 
-[ext_resource type="Script" path="res://management/sound_manager_example.gd" id="1_v7ron"]
+[ext_resource type="Script" path="res://management/sound_manager.gd" id="1_mwa27"]
 
 [node name="SoundManager" type="Node"]
-script = ExtResource("1_v7ron")
+script = ExtResource("1_mwa27")
 
 [node name="SFXPlayers" type="Node" parent="."]
 

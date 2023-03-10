@@ -25,7 +25,7 @@ var _letters: Dictionary
 
 
 func _ready() -> void:
-	_initialize_sounds()
+	_connect_signals()
 	_debug_setup()
 
 
@@ -242,6 +242,12 @@ func _debug_sounds_setup(category_name: String, sound_type: Global.SOUND_TYPES) 
 func _get_sound_players_group_name(players_group_id: int) -> String:
 	var overloaded_players_group_name: String = Global.SOUND_TYPES.keys()[players_group_id].to_lower()
 	return overloaded_players_group_name
+
+
+func _connect_signals() -> void:
+	SignalManager.music_load_needed.connect(_add_music)
+	SignalManager.ambience_load_needed.connect(_add_ambience)
+	SignalManager.sfx_load_needed.connect(_add_sfx)
 
 
 func _print_unknown_sound_id_error(sound_id: int, players_group_id: int) -> void:

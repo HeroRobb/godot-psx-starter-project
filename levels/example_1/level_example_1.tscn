@@ -94,3 +94,8 @@ grow_vertical = 2
 layout_mode = 2
 text = "Press space to cycle cameras."
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Press escape to exit the game."
+horizontal_alignment = 1

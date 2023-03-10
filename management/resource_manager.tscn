@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b28ro383vl7dk"]
+[gd_scene load_steps=15 format=3 uid="uid://b28ro383vl7dk"]
 
 [ext_resource type="Script" path="res://management/resource_manager.gd" id="1_fu71s"]
 [ext_resource type="Script" path="res://management/ResourceData/music_data.gd" id="2_vkt0b"]
@@ -31,6 +31,11 @@ script = ExtResource("4_3hfc0")
 sfx_id = 0
 data_path = "res://sounds/blip2shortest.wav"
 
+[sub_resource type="Resource" id="Resource_lgmfc"]
+script = ExtResource("4_3hfc0")
+sfx_id = 4
+data_path = "res://sounds/njb_intro.ogg"
+
 [sub_resource type="Resource" id="Resource_xouiv"]
 script = ExtResource("3_h3uyb")
 level_id = 0
@@ -51,5 +56,5 @@ script = ExtResource("1_fu71s")
 use_editor_resources = true
 music_data = Array[ExtResource("2_vkt0b")]([SubResource("Resource_gu04a"), SubResource("Resource_pgk2d")])
 ambience_data = Array[ExtResource("3_1oa81")]([SubResource("Resource_4kccv"), SubResource("Resource_n4adk")])
-sfx_data = Array[ExtResource("4_3hfc0")]([SubResource("Resource_6lyxm")])
+sfx_data = Array[ExtResource("4_3hfc0")]([SubResource("Resource_6lyxm"), SubResource("Resource_lgmfc")])
 level_data = Array[ExtResource("3_h3uyb")]([SubResource("Resource_xouiv"), SubResource("Resource_fj2x7"), SubResource("Resource_514uy")])
