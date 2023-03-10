@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://f7pfxvhux3gh"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1"]
+[ext_resource type="Script" path="res://levels/player_container.gd" id="4"]
+[ext_resource type="Script" path="res://levels/area_container.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://cchk5cc6gsdpr" path="res://management/camera_manager.tscn" id="5_fnww5"]
+[ext_resource type="Script" path="res://levels/npc_container.gd" id="6"]
+[ext_resource type="Script" path="res://management/game_state_saver.gd" id="7"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1")
+location_name = "Testing Area"
+starting_ambience_id = 1
+starting_music_id = 5
+starting_ambience_db = -5.0
+
+[node name="GameStateSaver" type="Node" parent="."]
+script = ExtResource("7")
+
+[node name="PlayerContainer" type="Node3D" parent="."]
+script = ExtResource("4")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerContainer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+current = true
+
+[node name="PlayerSpawnPositionContainer" type="Node3D" parent="PlayerContainer"]
+
+[node name="GeometryContainer" type="Node3D" parent="."]
+
+[node name="CameraContainer" type="Node3D" parent="."]
+
+[node name="AreaContainer" type="Node3D" parent="."]
+script = ExtResource("5")
+
+[node name="SafetyNetContainer" type="Node3D" parent="AreaContainer"]
+
+[node name="ExitContainer" type="Node3D" parent="."]
+
+[node name="NPCContainer" type="Node3D" parent="."]
+script = ExtResource("6")
+
+[node name="Patrols" type="Node3D" parent="NPCContainer"]
+
+[node name="EnemySpawnPortals" type="Node3D" parent="NPCContainer"]
+
+[node name="CameraManager" parent="." instance=ExtResource("5_fnww5")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.793642, 0.28199, -0.539087, 0.073095, 0.835479, 0.544639, 0.603979, -0.471653, 0.642459, 0, 10, 0)
+light_energy = 0.5
+directional_shadow_mode = 0
+
+[node name="InitializeTimer" type="Timer" parent="."]
+one_shot = true

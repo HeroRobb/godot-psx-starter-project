@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://btlaebgb52ikw"]
+
+[ext_resource type="Script" path="res://management/debug_menu.gd" id="1_36c63"]
+
+[node name="DebugMenu" type="CanvasLayer"]
+script = ExtResource("1_36c63")
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Debug"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -175.0
+offset_right = 175.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsContainer" type="GridContainer" parent="Debug/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = -2

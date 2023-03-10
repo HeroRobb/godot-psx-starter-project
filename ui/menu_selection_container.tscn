@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckw4dv0xxi1wh"]
+
+[ext_resource type="Script" path="res://ui/menu_selection_container.gd" id="1_3vmnq"]
+
+[node name="MenuSelectionContainer" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3vmnq")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Menu Title"
+horizontal_alignment = 1

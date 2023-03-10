@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://management/sound_manager_example.gd" id="1_v7ron"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_v7ron")
+
+[node name="SFXPlayers" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="MusicPlayers" type="Node" parent="."]
+
+[node name="AudioStreamPlayer13" type="AudioStreamPlayer" parent="MusicPlayers"]
+
+[node name="AudioStreamPlayer14" type="AudioStreamPlayer" parent="MusicPlayers"]
+
+[node name="AmbiencePlayers" type="Node" parent="."]
+
+[node name="AudioStreamPlayer15" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+
+[node name="AudioStreamPlayer16" type="AudioStreamPlayer" parent="AmbiencePlayers"]

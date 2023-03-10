@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d32vr0askpuce"]
+
+[ext_resource type="Script" path="res://ui/menu_selection.gd" id="1_ps0in"]
+[ext_resource type="Texture2D" uid="uid://ccg7oxvj0iowx" path="res://icon.svg" id="2_ncrnu"]
+
+[node name="MenuSelection" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ps0in")
+
+[node name="SelectedContainer" type="Control" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="SelectedRect" type="TextureRect" parent="SelectedContainer"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ncrnu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SelectionLabel" type="Label" parent="."]
+layout_mode = 2

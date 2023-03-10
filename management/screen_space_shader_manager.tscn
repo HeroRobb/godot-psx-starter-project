@@ -1,0 +1,190 @@
+[gd_scene load_steps=16 format=3 uid="uid://c8mx7gh16hp2h"]
+
+[ext_resource type="Script" path="res://management/screen_space_shader_manager.gd" id="1_lt262"]
+[ext_resource type="Shader" path="res://shaders/ColorPrecission.gdshader" id="2_8drj8"]
+[ext_resource type="Shader" path="res://shaders/TV.gdshader" id="2_gj0qd"]
+[ext_resource type="Shader" path="res://shaders/Blur.gdshader" id="3_45iej"]
+[ext_resource type="Shader" path="res://shaders/Grain.gdshader" id="3_u7bef"]
+[ext_resource type="Shader" path="res://shaders/VHS.gdshader" id="5_j618y"]
+[ext_resource type="Shader" path="res://shaders/Sharpness.gdshader" id="6_rc3om"]
+[ext_resource type="Shader" path="res://shaders/Glitch.gdshader" id="8_kdfo6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_238am"]
+shader = ExtResource("6_rc3om")
+shader_parameter/sharpen_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ardow"]
+shader = ExtResource("2_8drj8")
+shader_parameter/SCREEN_WIDTH = 320.0
+shader_parameter/COLOR_FACTOR = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fou7t"]
+shader = ExtResource("3_u7bef")
+shader_parameter/colored = true
+shader_parameter/color_amount = 0.6
+shader_parameter/grain_amount = 0.025
+shader_parameter/grain_size = 3.0
+shader_parameter/lum_amount = 1.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyrv5"]
+shader = ExtResource("5_j618y")
+shader_parameter/tape_wave_amount = 0.001
+shader_parameter/tape_crease_amount = 0.0
+shader_parameter/color_displacement = 0.1
+shader_parameter/lines_velocity = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4l0t"]
+shader = ExtResource("2_gj0qd")
+shader_parameter/vertJerkOpt = 0.0
+shader_parameter/vertMovementOpt = 0.0
+shader_parameter/bottomStaticOpt = 0.0
+shader_parameter/bottomStaticStrenth = 1.5
+shader_parameter/scalinesOpt = 0.2
+shader_parameter/rgbOffsetOpt = 0.1
+shader_parameter/horzFuzzOpt = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lx0n3"]
+shader = ExtResource("3_45iej")
+shader_parameter/amount = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2sfc"]
+shader = ExtResource("8_kdfo6")
+shader_parameter/_ScanLineJitter = 0.25
+shader_parameter/_VerticalJump = 0.01
+shader_parameter/_HorizontalShake = 0.0
+shader_parameter/_ColorDrift = 0.01
+
+[node name="ScreenSpaceShaderManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lt262")
+
+[node name="SharpnessBuffer" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(6.4, 3.6)
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="SharpnessBuffer"]
+material = SubResource("ShaderMaterial_238am")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorPrecisionBuffer" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(6.4, 3.6)
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorPrecisionBuffer"]
+material = SubResource("ShaderMaterial_ardow")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GrainBuffer" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(6.4, 3.6)
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GrainBuffer"]
+material = SubResource("ShaderMaterial_fou7t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VHSBuffer" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(6.4, 3.6)
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VHSBuffer"]
+material = SubResource("ShaderMaterial_iyrv5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CRTBuffer" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(6.4, 3.6)
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CRTBuffer"]
+material = SubResource("ShaderMaterial_o4l0t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlurBuffer" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(6.4, 3.6)
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="BlurBuffer"]
+material = SubResource("ShaderMaterial_lx0n3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GlitchBuffer" type="BackBufferCopy" parent="."]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(6.4, 3.6)
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GlitchBuffer"]
+material = SubResource("ShaderMaterial_c2sfc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2

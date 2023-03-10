@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvylscedliepc"]
+
+[ext_resource type="Script" path="res://management/game_manager.gd" id="1_wk2hf"]
+[ext_resource type="PackedScene" uid="uid://dm65o6tpnjdek" path="res://levels/launcher.tscn" id="2_pee2q"]
+[ext_resource type="Shader" path="res://shaders/psx_dither.gdshader" id="2_qt5ng"]
+[ext_resource type="PackedScene" uid="uid://1ogrcx2r81q6" path="res://management/fade_rect.tscn" id="4_4jt33"]
+[ext_resource type="PackedScene" uid="uid://c8mx7gh16hp2h" path="res://management/screen_space_shader_manager.tscn" id="5_kwkbv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oesds"]
+shader = ExtResource("2_qt5ng")
+shader_parameter/color_depth = 5
+shader_parameter/dithering = false
+shader_parameter/resolution_scale = 4
+
+[node name="GameManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk2hf")
+default_shaders = Array[int]([14, 3, 4, 7, 0])
+
+[node name="PPDitherContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_oesds")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="PPDitherContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+size_2d_override = Vector2i(320, 180)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="LevelContainer" type="Node" parent="PPDitherContainer/SubViewport"]
+unique_name_in_owner = true
+
+[node name="Launcher" parent="PPDitherContainer/SubViewport/LevelContainer" instance=ExtResource("2_pee2q")]
+
+[node name="FadeRect" parent="PPDitherContainer/SubViewport" instance=ExtResource("4_4jt33")]
+unique_name_in_owner = true
+
+[node name="ScreenSpaceShaderManager" parent="." instance=ExtResource("5_kwkbv")]
+layout_mode = 1

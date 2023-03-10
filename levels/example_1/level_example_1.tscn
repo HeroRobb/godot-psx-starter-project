@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://c52motud66ibf"]
+
+[ext_resource type="PackedScene" uid="uid://f7pfxvhux3gh" path="res://levels/level.tscn" id="1_kcgod"]
+[ext_resource type="PackedScene" uid="uid://crpw0poxlnv6y" path="res://levels/example_1/geometry_example_1.tscn" id="2_iai77"]
+[ext_resource type="Script" path="res://levels/example_1/level_example_1.gd" id="2_nwixq"]
+[ext_resource type="PackedScene" path="res://actors/demon_cute/demon_cute.tscn" id="3_vlim7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hnhfo"]
+
+[sub_resource type="Sky" id="Sky_u36wv"]
+sky_material = SubResource("ProceduralSkyMaterial_hnhfo")
+
+[sub_resource type="Environment" id="Environment_yypne"]
+sky = SubResource("Sky_u36wv")
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.439216, 0.466667, 0.533333, 1)
+fog_density = 0.03
+
+[node name="Level" instance=ExtResource("1_kcgod")]
+script = ExtResource("2_nwixq")
+
+[node name="GeometryExample1" parent="GeometryContainer" index="0" instance=ExtResource("2_iai77")]
+
+[node name="SpinningCameraPivot" type="Node3D" parent="CameraContainer" index="0"]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraContainer/SpinningCameraPivot" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.75, 10)
+
+[node name="CameraSide" type="Camera3D" parent="CameraContainer" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -10, 4, 0)
+
+[node name="CameraTop" type="Camera3D" parent="CameraContainer" index="2"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="DemonBlob" parent="NPCContainer" index="2" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob2" parent="NPCContainer" index="3" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob3" parent="NPCContainer" index="4" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob4" parent="NPCContainer" index="5" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob5" parent="NPCContainer" index="6" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob6" parent="NPCContainer" index="7" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob7" parent="NPCContainer" index="8" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob8" parent="NPCContainer" index="9" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob9" parent="NPCContainer" index="10" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob10" parent="NPCContainer" index="11" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob11" parent="NPCContainer" index="12" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob12" parent="NPCContainer" index="13" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob13" parent="NPCContainer" index="14" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob14" parent="NPCContainer" index="15" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob15" parent="NPCContainer" index="16" instance=ExtResource("3_vlim7")]
+
+[node name="DemonBlob16" parent="NPCContainer" index="17" instance=ExtResource("3_vlim7")]
+
+[node name="DirectionalLight3D" parent="." index="8"]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="10"]
+environment = SubResource("Environment_yypne")
+
+[node name="Control" type="Control" parent="." index="11"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Press space to cycle cameras."
+horizontal_alignment = 1

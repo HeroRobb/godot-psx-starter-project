@@ -1,0 +1,55 @@
+[gd_scene load_steps=14 format=3 uid="uid://b28ro383vl7dk"]
+
+[ext_resource type="Script" path="res://management/resource_manager.gd" id="1_fu71s"]
+[ext_resource type="Script" path="res://management/ResourceData/music_data.gd" id="2_vkt0b"]
+[ext_resource type="Script" path="res://management/ResourceData/ambience_data.gd" id="3_1oa81"]
+[ext_resource type="Script" path="res://management/ResourceData/level_data.gd" id="3_h3uyb"]
+[ext_resource type="Script" path="res://management/ResourceData/sfx_data.gd" id="4_3hfc0"]
+
+[sub_resource type="Resource" id="Resource_gu04a"]
+script = ExtResource("2_vkt0b")
+music_id = 1
+data_path = ""
+
+[sub_resource type="Resource" id="Resource_pgk2d"]
+script = ExtResource("2_vkt0b")
+music_id = 6
+data_path = "res://sounds/struggle toward hope.ogg"
+
+[sub_resource type="Resource" id="Resource_4kccv"]
+script = ExtResource("3_1oa81")
+ambience_id = 1
+data_path = "res://sounds/foghorn_four_times.ogg"
+
+[sub_resource type="Resource" id="Resource_n4adk"]
+script = ExtResource("3_1oa81")
+ambience_id = 2
+data_path = "res://sounds/lost_ambienceLOOPING.ogg"
+
+[sub_resource type="Resource" id="Resource_6lyxm"]
+script = ExtResource("4_3hfc0")
+sfx_id = 0
+data_path = "res://sounds/blip2shortest.wav"
+
+[sub_resource type="Resource" id="Resource_xouiv"]
+script = ExtResource("3_h3uyb")
+level_id = 0
+data_path = "res://ui/main_menu.tscn"
+
+[sub_resource type="Resource" id="Resource_fj2x7"]
+script = ExtResource("3_h3uyb")
+level_id = 1
+data_path = "res://levels/intro.tscn"
+
+[sub_resource type="Resource" id="Resource_514uy"]
+script = ExtResource("3_h3uyb")
+level_id = 2
+data_path = "res://levels/example_1/level_example_1.tscn"
+
+[node name="ResourceManager" type="Node"]
+script = ExtResource("1_fu71s")
+use_editor_resources = true
+music_data = Array[ExtResource("2_vkt0b")]([SubResource("Resource_gu04a"), SubResource("Resource_pgk2d")])
+ambience_data = Array[ExtResource("3_1oa81")]([SubResource("Resource_4kccv"), SubResource("Resource_n4adk")])
+sfx_data = Array[ExtResource("4_3hfc0")]([SubResource("Resource_6lyxm")])
+level_data = Array[ExtResource("3_h3uyb")]([SubResource("Resource_xouiv"), SubResource("Resource_fj2x7"), SubResource("Resource_514uy")])
