@@ -1,6 +1,14 @@
 class_name CameraManager
 extends Node
 
+## A node for easy camera cuts and smooth camera transitions
+##
+## Add cameras in the various places you would need them in a level and use
+## the functions switch_to_camera to do a hard cut and transition_to to do a
+## smooth transition. The signal camera_transition_finished in the SignalManager
+## is emitted when a transition_to tween is finished. Don't forget to
+## switch_to_camera or transition_to back to the original camera if you need to.
+
 
 var _transitioning: bool = false
 var _main_camera: Camera3D

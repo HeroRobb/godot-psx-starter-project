@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm65o6tpnjdek"]
+[gd_scene load_steps=4 format=3 uid="uid://dud7cgk12ctah"]
 
-[ext_resource type="Script" path="res://levels/example_launcher.gd" id="1_68dvr"]
+[ext_resource type="Script" path="res://levels/launcher.gd" id="1_8lxr4"]
 [ext_resource type="PackedScene" uid="uid://ckw4dv0xxi1wh" path="res://ui/menu_selection_container.tscn" id="2_sqnwx"]
 [ext_resource type="PackedScene" uid="uid://d32vr0askpuce" path="res://ui/menu_selection.tscn" id="3_p5070"]
 
@@ -11,9 +11,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_68dvr")
+script = ExtResource("1_8lxr4")
+background_color = Color(0.227451, 0.14902, 0.243137, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,22 +33,21 @@ grow_vertical = 2
 
 [node name="MenuSelectionContainer" parent="CenterContainer" instance=ExtResource("2_sqnwx")]
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = -8
 title = "Game Launcher"
 title_font_size = 32
 
-[node name="MenuSelection" parent="CenterContainer/MenuSelectionContainer" instance=ExtResource("3_p5070")]
+[node name="FirstSelection" parent="CenterContainer/MenuSelectionContainer" instance=ExtResource("3_p5070")]
+unique_name_in_owner = true
 layout_mode = 2
-option_name = "Begin fullscreen"
+selection_name = "Begin fullscreen"
 
-[node name="Label" type="Label" parent="CenterContainer/MenuSelectionContainer/MenuSelection"]
+[node name="SecondSelection" parent="CenterContainer/MenuSelectionContainer" instance=ExtResource("3_p5070")]
+unique_name_in_owner = true
 layout_mode = 2
-text = " (recommended)"
+selection_name = "Begin windowed"
 
-[node name="MenuSelection2" parent="CenterContainer/MenuSelectionContainer" instance=ExtResource("3_p5070")]
+[node name="ExitSelection" parent="CenterContainer/MenuSelectionContainer" instance=ExtResource("3_p5070")]
+unique_name_in_owner = true
 layout_mode = 2
-option_name = "Begin windowed"
-
-[node name="MenuSelection3" parent="CenterContainer/MenuSelectionContainer" instance=ExtResource("3_p5070")]
-layout_mode = 2
-option_name = "Exit"
+selection_name = "Exit"

@@ -46,8 +46,8 @@ func _show_menu() -> void:
 	_switch_menu(MENUS.BASE)
 
 
-func _on_base_option_confirmed(option_name: String) -> void:
-	match option_name:
+func _on_base_option_confirmed(selection_name: String) -> void:
+	match selection_name:
 		BASE_START_SELECTION:
 			SignalManager.change_scene_needed.emit(starting_level_id)
 		BASE_QUIT_SELECTION:

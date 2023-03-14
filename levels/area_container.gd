@@ -1,6 +1,12 @@
 class_name AreaContainer
 extends Node3D
 
+## A container for areas in levels.
+##
+## Put Area3D's as children of SafetyNetContainer and they will call
+## teleport_player_to_safety() in PlayerContainer. I use this for places a
+## player could fall into infinity.
+
 
 @onready var _safety_net_container := $SafetyNetContainer
 

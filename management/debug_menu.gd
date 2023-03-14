@@ -1,5 +1,17 @@
 extends CanvasLayer
 
+## A debug menu able to have functionality to any node in the scene tree
+##
+## This is intended to be used as an autoload singleton. In each node that
+## you want to have debug options, first create functions for those options in
+## that node, then use the function add_category to add a debug category, then
+## use add_option to add debug functions. The debug options are essentially
+## function calls, so they can do pretty much anything you want, change scenes,
+## sound tests, invincibility, give items, whatever.
+## F4 is the default key to open the debug menu. It will only work if the game
+## is run in the editor or if you set "debug" to true in ResourceManager by
+## calling ResourceManager.add_global_data("debug", true).
+
 
 const _MENU_BOOKEND = "========================================"
 const _SUB_MENU_BOOKEND = "--------------------------------------------------------"
@@ -7,6 +19,10 @@ const _INPUT_COOLDOWN_SECONDS = 0.05
 const _TOGGLE_DEBUG_MENU_ACTION = "toggle_debug_menu"
 const _DEBUG_OPTION_ACTION = "debug_option"
 const _DEBUG_OPEN_FOLDER_ACTION = "debug_open_folder"
+
+## This is the amount of lines that can comfortably fit in one page of the
+## debug menu. You may want to change this depending on the font size and
+## resolution you use for your game.
 const DEBUG_LIMIT = 6
 
 var is_open := false

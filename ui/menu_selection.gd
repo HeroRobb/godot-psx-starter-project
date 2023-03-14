@@ -6,7 +6,7 @@ extends HBoxContainer
 signal moused_over(options_index)
 signal slider_value_changed(new_value, id)
 
-@export var option_name: String = "" : set = set_option_name
+@export var selection_name: String = "" : set = set_selection_name
 @export var horizontal_input: bool = false
 @export var slider_sound_id: Global.SFX = Global.SFX.BLIP
 
@@ -21,7 +21,7 @@ var _slider: HSlider
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
-	set_option_name(option_name)
+	set_selection_name(selection_name)
 	
 	for child in get_children():
 		if child.has_method("set_parent"):
@@ -58,10 +58,10 @@ func action_right() -> void:
 	_slider.value += _slider.step
 
 
-func set_option_name(new_name: String) -> void:
-	option_name = new_name
+func set_selection_name(new_name: String) -> void:
+	selection_name = new_name
 	if _label:
-		_label.text = option_name
+		_label.text = selection_name
 
 
 func set_selected(new_selected: bool) -> void:
@@ -79,4 +79,4 @@ func _on_mouse_entered() -> void:
 
 
 func _on_slider_value_changed(new_value: float) -> void:
-	slider_value_changed.emit(new_value, option_name)
+	slider_value_changed.emit(new_value, selection_name)

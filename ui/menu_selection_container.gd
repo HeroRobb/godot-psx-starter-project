@@ -139,7 +139,7 @@ func set_selection_font_size(new_selection_font_size: int) -> void:
 func _confirm_option(option) -> void:
 	menu_available = false
 	SoundManager.play_sfx(ui_confirm_sound_id)
-	option_confirmed.emit(option.option_name)
+	option_confirmed.emit(option.selection_name)
 
 
 func _select(option_index: int, loud: bool = true) -> void:

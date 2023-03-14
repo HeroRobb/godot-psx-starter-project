@@ -1,6 +1,11 @@
 class_name DebugOptionsList
 extends Resource
 
+## Data structure for DebugMenu that contains DebugCategories and DebugOptions
+##
+## DebugMenu should handle all of this so I wouldn't dig too much into it unless
+## you need to do something not available with normal functionality.
+
 
 signal debug_category_selected(category: DebugCategory)
 signal debug_option_selected(option: DebugOption)
