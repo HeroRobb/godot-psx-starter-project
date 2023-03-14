@@ -34,7 +34,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 2
 title = "Game Launcher"
-selection_font_size = 32
+title_font_size = 32
 
 [node name="MenuSelection" parent="CenterContainer/MenuSelectionContainer" instance=ExtResource("3_p5070")]
 layout_mode = 2

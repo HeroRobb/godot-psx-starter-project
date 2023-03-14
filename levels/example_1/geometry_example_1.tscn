@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://crpw0poxlnv6y"]
-
-[ext_resource type="Script" path="res://levels/test_level.gd" id="1_7n308"]
+[gd_scene load_steps=8 format=3 uid="uid://crpw0poxlnv6y"]
 
 [sub_resource type="Shader" id="Shader_fam0t"]
 code = "//*** *** *** *** *** *** *** *** *** *** *** ***//
@@ -135,8 +133,45 @@ size = Vector3(20, 1, 20)
 subdivide_width = 20
 subdivide_depth = 20
 
+[sub_resource type="Animation" id="Animation_nt5qb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Floor:mesh:material:shader_parameter/albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dafco"]
+resource_name = "rainbow"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Floor:mesh:material:shader_parameter/albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.482353, 0.94902, 1), Color(0.439216, 1, 0.85098, 1), Color(0.996078, 1, 0.564706, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54pff"]
+_data = {
+"RESET": SubResource("Animation_nt5qb"),
+"rainbow": SubResource("Animation_dafco")
+}
+
 [node name="GeometryExample1" type="Node3D"]
-script = ExtResource("1_7n308")
 
 [node name="Floor" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501096, 0)
@@ -162,3 +197,9 @@ mesh = SubResource("BoxMesh_1vxcn")
 [node name="Floor5" type="CSGMesh3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, 10.6557, -0.501096, 9.02889e-07)
 mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rainbow"
+libraries = {
+"": SubResource("AnimationLibrary_54pff")
+}

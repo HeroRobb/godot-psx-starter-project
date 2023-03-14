@@ -7,13 +7,13 @@ signal input_held()
 const _HELD_RATE = 12
 
 @export var _skip_action_name: String = "ui_accept"
-@export var _held_time: float = 4
+@export var _held_time: float = 2
 
 @onready var _progress_bar: ProgressBar = $HBoxContainer/VBoxContainer/ProgressBar
 
 
 func _ready():
-	_progress_bar.max_value = _held_time * 10
+	_progress_bar.max_value = _held_time * 20
 	hide()
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_4je0t"]
+[ext_resource type="Script" path="res://levels/main_menu.gd" id="1_4je0t"]
 [ext_resource type="Texture2D" uid="uid://susf0ur67j3h" path="res://materials/textures/warning_background.png" id="2_68rtq"]
 [ext_resource type="PackedScene" uid="uid://ckw4dv0xxi1wh" path="res://ui/menu_selection_container.tscn" id="2_mggqu"]
 [ext_resource type="PackedScene" uid="uid://d32vr0askpuce" path="res://ui/menu_selection.tscn" id="3_kmxv2"]
