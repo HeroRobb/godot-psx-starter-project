@@ -1,6 +1,12 @@
 class_name Level
 extends Node3D
 
+## A Node which can be used to create inherited scenes as levels for your game
+##
+## You definitely need to call super() in the ready function when you extend
+## this script for your inherited scenes. I'll put that in the script template
+## when I start fixing this part up.
+
 
 enum LEVEL_TYPE {
 	ADVENTURE,
@@ -38,8 +44,8 @@ func _ready() -> void:
 	_initialize_timer.wait_time = POST_INITIALIZE_WAIT_TIME
 	_initialize_timer.one_shot = true
 	
-	SoundManager.play_ambience(starting_ambience_id, starting_ambience_db)
-	SoundManager.play_music(starting_music_id, starting_music_db)
+	SoundManager.play_ambience(starting_ambience_id)
+	SoundManager.play_music(starting_music_id)
 	
 	if level_type == LEVEL_TYPE.PEACEFUL:
 		_heal_player()

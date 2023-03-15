@@ -28,8 +28,11 @@ signal pause_changed(paused: bool)
 signal set_delayed(target: Object, property_name: String, property_value, wait_seconds: float)
 signal screeenshake_needed(magnitude, duration: float, limit)
 
-# Cameras
-signal camera_transition_needed(to_camera_or_marker, duration: float)
+# CameraManager
+signal camera_cut_needed(to_camera: Camera3D)
+signal camera_return_cut_needed()
+signal camera_transition_needed(to_camera: Camera3D, duration: float)
+signal camera_return_transition_needed(duration: float)
 signal camera_transition_finished()
 
 # Instances

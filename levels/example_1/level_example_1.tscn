@@ -19,6 +19,7 @@ fog_density = 0.03
 
 [node name="Level" instance=ExtResource("1_kcgod")]
 script = ExtResource("2_nwixq")
+starting_music_id = 1
 
 [node name="GeometryExample1" parent="GeometryContainer" index="0" instance=ExtResource("2_iai77")]
 

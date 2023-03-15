@@ -25,7 +25,8 @@ var _transitioning_camera: bool = false
 
 
 func _ready() -> void:
-	_camera_manager.switch_to_camera(_camera_spinning)
+	super()
+	SignalManager.camera_cut_needed.emit(_camera_spinning)
 
 
 func _input(event: InputEvent) -> void:
@@ -51,7 +52,8 @@ func change_to_camera(camera_id: CAMERA_IDS) -> void:
 	
 	var to_camera = _cameras[active_camera_id]
 	
-	_camera_manager.transition_to(to_camera, CAMERA_TRANSITION_DURATION_SECONDS)
+	SignalManager.camera_transition_needed.emit(to_camera, CAMERA_TRANSITION_DURATION_SECONDS)
+#	_camera_manager.transition_to(to_camera, CAMERA_TRANSITION_DURATION_SECONDS)
 	
 	
 	await SignalManager.camera_transition_finished

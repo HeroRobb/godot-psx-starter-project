@@ -7,8 +7,8 @@ const FADE_IN_SECONDS = 0.5
 const FADE_OUT_SECONDS = 5.0
 const DEFAULT_LANGUAGE = "en"
 
-var current_music_id: int
-var current_ambience_id: int
+var current_music_id: Global.MUSIC = Global.MUSIC.NONE
+var current_ambience_id: Global.AMBIENCES = Global.AMBIENCES.NONE
 var music_queue: Array
 var music_queue_index = 0
 

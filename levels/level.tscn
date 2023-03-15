@@ -10,8 +10,6 @@
 [node name="Level" type="Node3D"]
 script = ExtResource("1")
 location_name = "Testing Area"
-starting_ambience_id = 1
-starting_music_id = 5
 starting_ambience_db = -5.0
 
 [node name="GameStateSaver" type="Node" parent="."]

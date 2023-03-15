@@ -7,8 +7,8 @@ extends Resource
 ## you need to do something not available with normal functionality.
 
 
-signal debug_category_selected(category: DebugCategory)
-signal debug_option_selected(option: DebugOption)
+#signal debug_category_selected(category: DebugCategory)
+#signal debug_option_selected(option: DebugOption)
 
 const _MAIN_CATEGORY_NAME = "Debug Menu"
 const _ACCEPTABLE_CATEGORY_TYPES = [TYPE_STRING, TYPE_INT]

@@ -2,15 +2,18 @@ extends CanvasLayer
 
 ## A debug menu able to have functionality to any node in the scene tree
 ##
-## This is intended to be used as an autoload singleton. In each node that
+## This is intended to be used as an autoload singleton in conjunction with the
+## other autoload singletons in res://management from HR PSX. In each node that
 ## you want to have debug options, first create functions for those options in
 ## that node, then use the function add_category to add a debug category, then
-## use add_option to add debug functions. The debug options are essentially
-## function calls, so they can do pretty much anything you want, change scenes,
-## sound tests, invincibility, give items, whatever.
-## F4 is the default key to open the debug menu. It will only work if the game
-## is run in the editor or if you set "debug" to true in ResourceManager by
-## calling ResourceManager.add_global_data("debug", true).
+## use add_option to add debug options that will call those functions. The
+## debug options are essentially function calls, so they can do pretty much
+## anything you want, change scenes, sound tests, invincibility, give items,
+## whatever. F4 is the default key to open the debug menu, and this node will create the necessary
+## input actions for its usage so you don't have to create them in every project
+## that you use this node. It will only work if the game is run in the editor
+## or if you set "debug" to true in ResourceManager by calling
+## ResourceManager.add_global_data("debug", true).
 
 
 const _MENU_BOOKEND = "========================================"
@@ -21,11 +24,15 @@ const _DEBUG_OPTION_ACTION = "debug_option"
 const _DEBUG_OPEN_FOLDER_ACTION = "debug_open_folder"
 
 ## This is the amount of lines that can comfortably fit in one page of the
-## debug menu. You may want to change this depending on the font size and
-## resolution you use for your game.
+## debug menu. Six is the default value for how much can comfortably fit in
+## using the default font and font size from HR PSX. You may want to change
+## this depending on the font, font size, and resolution you use for your game.
 const DEBUG_LIMIT = 6
 
+## This value is true if the debug menu is open and shown to the player, it is
+## false if it is hidden.
 var is_open := false
+
 var _active_category_index: int = 0
 var _input_on_cooldown := false
 var _options: DebugOptionsList = DebugOptionsList.new()
@@ -40,6 +47,9 @@ func _ready() -> void:
 	_close()
 
 
+## This adds a category in the DebugMenu which will hold several debug options.
+## This is necessary for adding debug options as they need a debug category to
+## contain them.
 func add_category(category_name: String, parent_category_index_or_name = null) -> void:
 	_options.add_category(category_name, parent_category_index_or_name)
 	var index: int = _options.get_index(category_name)
@@ -55,18 +65,28 @@ func add_category(category_name: String, parent_category_index_or_name = null) -
 	_options.add_option(parent_index, category_name, _display_submenu, [index])
 
 
+## This adds a debug option in a debug category. Essentially, this will call
+## the callable named function with the parameters in debug_parameters. You can
+## use this to change scenes, give items, or anything you can do with a function.
 func add_option(category_index_or_name, option_name: String, function: Callable, debug_parameters: Array = []) -> void:
 	_options.add_option(category_index_or_name, option_name, function, debug_parameters)
 
 
+## This clears the category of all debug options. It is good practice to do
+## this *just in case* lol.
 func clear_options(category_index_or_name) -> void:
 	_options._get_category(category_index_or_name).clear_options()
 
 
+## This disables the debug menu so that even if
+## ResourceManager.get_global_data("debug") is true this Node will not respond.
+## Use carefully haha.
 func disable() -> void:
 	set_process_input(false)
 
 
+## This enables the debug menu, but will not make it available if
+## ResourceManager.get_global_data("debug") is false or null.
 func enable() -> void:
 	set_process_input(true)
 
