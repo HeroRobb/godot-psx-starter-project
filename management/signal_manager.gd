@@ -1,4 +1,11 @@
+class_name SignalMngr
 extends Node
+
+## This is intended to be used as an autoload singleton in conjuction with the
+## rest of HR PSX.
+##
+## Use the signals here as an easy way to interact with the various scripts
+## included in HR PSX in the intended way.
 
 
 # Saves
@@ -24,9 +31,10 @@ signal fade_in_finished()
 
 # Gameplay
 signal pause_allowed_changed(pause_allowed: bool)
-signal pause_changed(paused: bool)
+signal paused_changed(paused: bool)
 signal set_delayed(target: Object, property_name: String, property_value, wait_seconds: float)
 signal screeenshake_needed(magnitude, duration: float, limit)
+signal location_entered(location_name: String)
 
 # CameraManager
 signal camera_cut_needed(to_camera: Camera3D)

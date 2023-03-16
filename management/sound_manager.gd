@@ -29,7 +29,7 @@ func _ready() -> void:
 	_debug_setup()
 
 
-func play_music(music_id: int, volume: float = 0.0, fade: bool = true) -> void:
+func play_music(music_id: Global.MUSIC, volume: float = 0.0, fade: bool = true) -> void:
 	if current_music_id == music_id:
 		return
 	
@@ -43,7 +43,7 @@ func play_music(music_id: int, volume: float = 0.0, fade: bool = true) -> void:
 	_play_sound(Global.SOUND_TYPES.MUSIC, music_resource, volume, DEFAULT_PITCH, fade)
 
 
-func play_ambience(ambience_id: int, volume: float = 0.0, fade: bool = true) -> void:
+func play_ambience(ambience_id: Global.AMBIENCES, volume: float = 0.0, fade: bool = true) -> void:
 	if current_ambience_id == ambience_id:
 		return
 	

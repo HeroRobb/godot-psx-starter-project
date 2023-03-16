@@ -1,19 +1,20 @@
 extends CanvasLayer
 
-## A debug menu able to have functionality to any node in the scene tree
+## A debug menu included with HR PSX that is able to add debug functionality to
+## any node in the scene tree
 ##
 ## This is intended to be used as an autoload singleton in conjunction with the
 ## other autoload singletons in res://management from HR PSX. In each node that
 ## you want to have debug options, first create functions for those options in
-## that node, then use the function add_category to add a debug category, then
-## use add_option to add debug options that will call those functions. The
-## debug options are essentially function calls, so they can do pretty much
+## that node, then use the function [method add_category] to add a debug category, then
+## use [method add_option] to add debug options that will call those functions.
+## The debug options are essentially function calls, so they can do pretty much
 ## anything you want, change scenes, sound tests, invincibility, give items,
-## whatever. F4 is the default key to open the debug menu, and this node will create the necessary
-## input actions for its usage so you don't have to create them in every project
-## that you use this node. It will only work if the game is run in the editor
-## or if you set "debug" to true in ResourceManager by calling
-## ResourceManager.add_global_data("debug", true).
+## whatever. F4 is the default key to open the debug menu, and this node will
+## create the necessary input actions for its usage so you don't have to create
+## them in every project that you use this node. It will only work if the game
+## is run in the editor or if you set "debug" to true in ResourceManager by
+## calling [code]ResourceManager.add_global_data("debug", true)[/code].
 
 
 const _MENU_BOOKEND = "========================================"

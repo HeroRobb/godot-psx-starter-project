@@ -1,7 +1,14 @@
-## A Resource containing all of the data that needs to persist between
-## scene changes.
 class_name GameData
 extends Resource
+
+## A Resource containing all of the data that needs to persist between scene
+## changes.
+##
+## This resource is primarily used in HR PSX in conjunction with the
+## [GameStateSaver] node. [ResourceMngr] should handle everything this needs
+## to do so I wouldn't mess with it too much unless you need it to do something
+## beyond its normal functionality.
+
 
 @export var _meta_data: Dictionary
 @export var _global_data: Dictionary

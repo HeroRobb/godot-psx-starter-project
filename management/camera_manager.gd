@@ -1,10 +1,10 @@
 class_name CameraManager
 extends Node
 
-## A node for easy camera cuts and smooth camera transitions
+## A node included in HR PSX for easy camera cuts and smooth camera transitions
 ##
 ## This node is intended to be used in conjunction with the autoload singleton
-## in res://management/signal_manager.gd from HR PSX. Use the signals
+## [SignalMngr] in res://management from HR PSX. Use the signals
 ## camera_cut_needed, camera_transition_needed, camera_transition_needed,
 ## camera_return_cut_needed, and camera_return_transition_needed to use this
 ## node wherever it is. For base functionality, add cameras in the various

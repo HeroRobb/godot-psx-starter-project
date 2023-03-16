@@ -52,13 +52,14 @@ func _ready() -> void:
 	
 	_set_fall_damage()
 	
-	SignalManager.emit_signal("health_ui_visibility_changed", true)
+#	SignalManager.emit_signal("health_ui_visibility_changed", true)
 	_show_location_name()
 	var previous_scene_id = ResourceManager.get_global_data("previous_scene_id")
-	initialize_level(previous_scene_id)
+	if previous_scene_id:
+		initialize_level(previous_scene_id)
 
 
-func initialize_level(previous_scene_id: int) -> void:
+func initialize_level(previous_scene_id: Global.LEVELS) -> void:
 	_player_container.move_player_to_spawn_position(previous_scene_id)
 
 
@@ -78,7 +79,7 @@ func _heal_player() -> void:
 
 
 func _show_location_name() -> void:
-	SignalManager.emit_signal("location_entered", location_name)
+	SignalManager.location_entered.emit(location_name)
 
 
 func _connect_signals() -> void:

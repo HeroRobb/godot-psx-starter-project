@@ -1,10 +1,32 @@
+class_name GameManager
 extends Control
 
+## This node is intended to be set as the main scene for your project when
+## using HR PSX.
+##
+## This can handle scene changes and has [ScreenSpaceShaderManager] as a child,
+## so it handles screen space shaders as well. It is intended to be interacted
+## with through signals from the autoload singleton [SignalMngr].
 
+
+## This is what the max frames per second of the game will be set to. The
+## default of 24 is reccomended for the retro PSX vibe, but do whatever you
+## want. I'm not your dad lol
 @export_range(24, 60) var fps: int = 24
+## This is all of the screen space shaders which will be activated in the scene
+## after the [Launcher]. It is also the screen space shaders that will be
+## toggled when using [signal SignalMngr.pp_default_shaders_enabled_changed].
+## It can be changed in game by using
+## [signal SignalMngr.pp_default_shaders_changed].
 @export var default_shaders: Array[Global.SHADERS]
 
+## This determines if the game will pause. If this value is set to false, 
+## [member paused] cannot be set to true. This should be interacted with
+## through [signal SignalMngr.pause_allowed_changed].
 var pause_allowed: bool = true : set = set_pause_allowed
+## This determines if the game is paused. This value cannot be set to true if
+## [member pause_allowed] is set to false. This should be interacted with
+## through [signal SignalMngr.paused_changed].
 var paused: bool = false : set = set_paused
 
 var _current_scene_id: Global.LEVELS
@@ -48,6 +70,8 @@ func set_delayed(target: Object, property_name: String, property_value, wait_sec
 	get_tree().create_timer(wait_seconds, false).timeout.connect(Callable(target,"set").bind(property_name, property_value))
 
 
+## This function takes care of changing scenes. It should be interacted with
+## through [signal SignalMngr.change_scene_needed].
 func change_scene(new_scene_id: Global.LEVELS, silent: bool = false, fade_out_seconds: float = 0.5, fade_in_seconds: float = 1.0) -> void:
 	if silent:
 		SoundManager.stop_sfx()
@@ -111,7 +135,7 @@ func _load_game_state_saver_data() -> void:
 func _connect_signals() -> void:
 	SignalManager.change_scene_needed.connect(change_scene)
 	SignalManager.pause_allowed_changed.connect(set_pause_allowed)
-	SignalManager.pause_changed.connect(set_paused)
+	SignalManager.paused_changed.connect(set_paused)
 	SignalManager.set_delayed.connect(set_delayed)
 	SignalManager.pp_enabled_changed.connect(_on_pp_enabled_changed)
 	SignalManager.pp_default_shaders_enabled_changed.connect(_on_pp_default_shaders_enabled_changed)

@@ -10,6 +10,7 @@ You can attribute me for using this by keeping the default attribution in the in
 ## how to use this project
 
 # Quickstart
+- A lot of the scripts have formatted documentation so you can see the autodocs by going to the script tab in Godot, clicking "search help" in the upper right corner and typing the class name from the top of the script or the name of the .gd file (eg: debug_menu). There is a problem with Godot where sometimes the custom classes get removed from the "search help" menu, which is annoying. To fix this bug, simply erase a bit of the documentation comments, save the script, undo the erase, save the script again, and it will show up. *shrugs*
 - Edit management/global.gd to add to the enums for your game.
 - Open management/resource_manager.tscn and edit the exported arrays for various data for your game.
 - Make sure management/game_manager.tscn is the main scene in your project and open it to edit the exported variables for the GameManager and Launcher.

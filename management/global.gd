@@ -1,5 +1,11 @@
 extends Node
 
+## This node is mostly used to contain enums used in conjunction with the rest
+## of the autoload singletons from HR PSX.
+##
+## You should edit this script in your game to have the appropriate ACTORS,
+## MUSIC, AMBIENCES, SFX, and LEVELS.
+
 
 enum ACTORS {
 	

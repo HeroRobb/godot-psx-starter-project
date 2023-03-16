@@ -21,5 +21,7 @@ func _ready() -> void:
 			_safety_nets.append( safety_net_children[n] )
 
 
+## This is called by [Level] when it is connecting signals from the areas in
+## the SafetyNetContainer.
 func get_safety_nets() -> Array:
 	return _safety_nets

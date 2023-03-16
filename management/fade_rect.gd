@@ -1,9 +1,18 @@
 class_name FadeRect
 extends ColorRect
 
+## A [ColorRect] that is used to fade the screen to whatever color you want.
+##
+## This node is predominatly used in HR PSX to fade the screen to black between
+## scene changes.
 
+
+## This signal is emited when the animation from [method fade_in] or
+## [method fade_out] is finished.
 signal fade_finished()
 
+## The color that will be faded to in [method fade_out] or faded from in
+## [method fade_in].
 @export var default_fade_color: Color = Color.BLACK
 
 @onready var _animation_player: AnimationPlayer = $TransAnimationPlayer
