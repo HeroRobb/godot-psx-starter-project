@@ -49,7 +49,7 @@ data_path = "res://sounds/njb_intro.ogg"
 [sub_resource type="Resource" id="Resource_xouiv"]
 script = ExtResource("3_h3uyb")
 level_id = 0
-data_path = "res://levels/example_1/main_menu_example.tscn"
+data_path = "res://levels/example/main_menu_example.tscn"
 
 [sub_resource type="Resource" id="Resource_fj2x7"]
 script = ExtResource("3_h3uyb")
@@ -59,7 +59,7 @@ data_path = "res://levels/intro.tscn"
 [sub_resource type="Resource" id="Resource_514uy"]
 script = ExtResource("3_h3uyb")
 level_id = 2
-data_path = "res://levels/example_1/level_example_1.tscn"
+data_path = "res://levels/example/level_example_1.tscn"
 
 [node name="ResourceManager" type="Node"]
 script = ExtResource("1_fu71s")

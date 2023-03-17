@@ -1,10 +1,15 @@
+class_name Glbl
 extends Node
 
-## This node is mostly used to contain enums used in conjunction with the rest
-## of the autoload singletons from HR PSX.
+## This node, along with [SignalMngr], is intended to be used as an autoload
+## singleton to facilitate communication between the rest of the nodes in HR
+## PSX, it does this by containing enums.
 ##
 ## You should edit this script in your game to have the appropriate ACTORS,
-## MUSIC, AMBIENCES, SFX, and LEVELS.
+## MUSIC, AMBIENCES, SFX, and LEVELS. Don't extend this into another script,
+## because you cannot change the enums once they've been declared. I had to use
+## a shortened class name because the class name cannot be the same as it's
+## autoload name.
 
 
 enum ACTORS {

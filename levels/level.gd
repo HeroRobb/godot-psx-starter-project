@@ -3,28 +3,31 @@ extends Node3D
 
 ## A Node which can be used to create inherited scenes as levels for your game
 ##
-## You definitely need to call super() in the ready function when you extend
-## this script for your inherited scenes. I'll put that in the script template
-## when I start fixing this part up.
+## You should be able to make most of the generic functionality you need by
+## using the editor for every level/scene that involves gameplay. You should
+## extend this script for each level/scene to have the logic of your
+## level/scene.
 
-
-enum LEVEL_TYPE {
-	ADVENTURE,
-	PEACEFUL,
-}
-
-const SHOW_LOCATION_WAIT_TIME = 1.5
-const POST_INITIALIZE_WAIT_TIME = 0.5
 
 @export_category("Level info")
+## This value is the id of the level/scene from [member Glbl.LEVELS]. It can be
+## used for other Nodes to know what level/scene this is. I may take this out.
+## Doesn't seem that useful.
 @export var level_id: Global.LEVELS = Global.LEVELS.TEST
-@export var location_name: String
-@export var level_type: LEVEL_TYPE = LEVEL_TYPE.ADVENTURE
+
 
 @export_category("Sound")
+## This is the starting ambience that will be played on load. The ID's are from
+## [member Glbl.Ambiences] so you will need to have edited that script first.
 @export var starting_ambience_id: Global.AMBIENCES = Global.AMBIENCES.NONE
+## This is the id of the music that will be played on load. The ID's are from
+## [member Glbl.MUSIC] so you will need to have edited that script first.
 @export var starting_music_id: Global.MUSIC = Global.MUSIC.NONE
+## How loud the starting ambience will be. This is helpful if you have sound
+## files that have irritatingly large differences in volume.
 @export_range(-40, 40, 0.5) var starting_ambience_db = 0.0
+## How loud the starting music will be. This is helpful if you have sound
+## files that have irritatingly large differences in volume.
 @export_range(-40, 40, 0.5) var starting_music_db = 0.0
 
 var _current_music_id: int
@@ -34,52 +37,14 @@ var _current_ambience_id: int
 @onready var _geometry_container: Node3D = $GeometryContainer
 @onready var _area_container: AreaContainer = $AreaContainer
 @onready var _camera_manager: CameraManager = $CameraManager
-@onready var _initialize_timer: Timer = $InitializeTimer
 
 
 func _ready() -> void:
 	_connect_signals()
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
-	_initialize_timer.wait_time = POST_INITIALIZE_WAIT_TIME
-	_initialize_timer.one_shot = true
-	
 	SoundManager.play_ambience(starting_ambience_id)
 	SoundManager.play_music(starting_music_id)
-	
-	if level_type == LEVEL_TYPE.PEACEFUL:
-		_heal_player()
-	
-	_set_fall_damage()
-	
-#	SignalManager.emit_signal("health_ui_visibility_changed", true)
-	_show_location_name()
-	var previous_scene_id = ResourceManager.get_global_data("previous_scene_id")
-	if previous_scene_id:
-		initialize_level(previous_scene_id)
-
-
-func initialize_level(previous_scene_id: Global.LEVELS) -> void:
-	_player_container.move_player_to_spawn_position(previous_scene_id)
-
-
-func _set_fall_damage() -> void:
-	var fall_damage: int
-	
-	if level_type == LEVEL_TYPE.ADVENTURE:
-		fall_damage = 1
-	elif level_type == LEVEL_TYPE.PEACEFUL:
-		fall_damage = 0
-	
-	_player_container.set_fall_damage(fall_damage)
-
-
-func _heal_player() -> void:
-	SignalManager.emit_signal("player_healed")
-
-
-func _show_location_name() -> void:
-	SignalManager.location_entered.emit(location_name)
 
 
 func _connect_signals() -> void:

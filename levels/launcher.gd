@@ -10,11 +10,24 @@ extends Control
 ## options is selected.
 
 
+## This value changes the color of BackgroundColorRect. Don't set the color of
+## the rect manually, use this instead because the color will be reset when the
+## game starts.
 @export var background_color: Color = Color.BLACK : set = set_background_color
+## This is the text that will show at the top of the launcher. Generally,
+## you'll probably want this to be your game's title.
 @export var menu_title = "Game Launcher" : set = set_menu_title
+## This is the text of the top selection. When this selection is chosen,
+## [method handle_first_selection] will be called.
 @export var first_selection_name = "Begin fullscreen" : set = set_first_selection_name
+## This is the text of the middle selection. When this selection is chosen,
+## [method handle_second_selection] will be called.
 @export var second_selection_name = "Begin windowed" : set = set_second_selection_name
+## This is the text of the bottom selection. When this selection is chosen, the
+## game terminates.
 @export var exit_selection_name = "Exit" : set = set_exit_selection_name
+## This is the ID of the scene that will be switched to when one of the top two
+## selections are chosen. The ID's are from [member Glbl.LEVELS].
 @export var next_level_id: Global.LEVELS = Global.LEVELS.INTRO
 
 @onready var _selection_container: SelectionContainer = $CenterContainer/MenuSelectionContainer
@@ -23,6 +36,7 @@ extends Control
 @onready var _second_selection: MenuSelection = %SecondSelection
 @onready var _exit_selection: MenuSelection = %ExitSelection
 
+
 func _ready() -> void:
 	SignalManager.pp_all_disabled.emit()
 	_selection_container.option_confirmed.connect(_on_selection_container_selection_confirmed)
@@ -30,10 +44,12 @@ func _ready() -> void:
 	_selection_container.menu_available = true
 
 
+## This is the function that will be called if the top selection is chosen.
 func handle_first_selection() -> void:
 	pass
 
 
+## This is the function that will be called if the middle selection is chosen.
 func handle_second_selection() -> void:
 	pass
 

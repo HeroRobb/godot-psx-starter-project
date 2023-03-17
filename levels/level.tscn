@@ -9,7 +9,6 @@
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1")
-location_name = "Testing Area"
 starting_ambience_db = -5.0
 
 [node name="GameStateSaver" type="Node" parent="."]
@@ -48,6 +47,3 @@ script = ExtResource("6")
 transform = Transform3D(0.793642, 0.28199, -0.539087, 0.073095, 0.835479, 0.544639, 0.603979, -0.471653, 0.642459, 0, 10, 0)
 light_energy = 0.5
 directional_shadow_mode = 0
-
-[node name="InitializeTimer" type="Timer" parent="."]
-one_shot = true

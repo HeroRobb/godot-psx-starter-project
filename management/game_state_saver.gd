@@ -10,7 +10,10 @@ extends Node
 ## be a member of this node's parent. When this node's parent is freed, all the
 ## members in save_properties will be saved to [GameData] through [ResourceMngr]
 ## and when this node's parent enters into the scene tree again, all of it's
-## members data contained in save_properties will be restored.
+## members data contained in save_properties will be restored. This script is
+## heavily based on a similar node by Jason Lothamer.
+##
+## @tutorial(Jason's tutorial): https://www.youtube.com/watch?v=_gBpk5nKyXU
 
 
 const _GAME_STATE_KEY_NODE_PATH = "game_state_saver_node_path"

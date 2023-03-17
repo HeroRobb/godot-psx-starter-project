@@ -2,10 +2,7 @@ class_name PlayerContainer
 extends Node3D
 
 
-var fall_damage: int = 1
-
-@onready var _player #: PlayerTopDown = $PlayerTopDown
-#@onready var _player_camera: Camera3D = $Camera3D
+@onready var _player
 @onready var _player_spawn_position_container := $PlayerSpawnPositionContainer
 
 var _player_spawn_positions: Dictionary
@@ -22,14 +19,6 @@ func get_player() -> Node:
 	return _player
 
 
-#func get_player_camera() -> Camera3D:
-#	return _player_camera
-
-
-func set_fall_damage(new_fall_damage: int) -> void:
-	fall_damage = new_fall_damage
-
-
 func move_player_to_spawn_position(level_id: int) -> void:
 	if not _player:
 		return
@@ -40,12 +29,10 @@ func move_player_to_spawn_position(level_id: int) -> void:
 		spawn_position = _player_spawn_position_container.get_child(0)
 	
 	_player.global_transform.origin = spawn_position.global_transform.origin
-#	_player.set_mesh_rotation(spawn_position.rotation)
-#	_player.set_camera_position(spawn_position.spawn_camera_position)
 
 
 func teleport_player_to_safety() -> void:
-	_player.return_to_last_known_ground_position(fall_damage)
+	pass
 
 
 func _add_player_spawn_positions() -> void:

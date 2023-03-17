@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://7335usmfdl0j"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://dud7cgk12ctah" path="res://levels/launcher.tscn" id="1_dfn2o"]
-[ext_resource type="Script" path="res://levels/example_1/launcher_example.gd" id="2_eefnp"]
-[ext_resource type="Script" path="res://levels/example_1/tool_color_rect.gd" id="3_4axhb"]
+[ext_resource type="Script" path="res://levels/example/launcher_example.gd" id="2_eefnp"]
+[ext_resource type="Script" path="res://levels/tool_color_rect.gd" id="3_gv68d"]
 
 [node name="LauncherExample" instance=ExtResource("1_dfn2o")]
 script = ExtResource("2_eefnp")
@@ -10,7 +10,7 @@ background_color = Color(0.239216, 0.101961, 0.219608, 1)
 
 [node name="BackgroundColorRect" parent="." index="0"]
 color = Color(0.239216, 0.101961, 0.219608, 1)
-script = ExtResource("3_4axhb")
+script = ExtResource("3_gv68d")
 
 [node name="MenuSelectionContainer" parent="CenterContainer" index="0"]
 title = "Example Game"

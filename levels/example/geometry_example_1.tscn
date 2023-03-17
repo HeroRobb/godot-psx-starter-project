@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://crpw0poxlnv6y"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://levels/example_1/geometry_example_1.gd" id="1_oepw3"]
+[ext_resource type="Script" path="res://levels/example/geometry_example_1.gd" id="1_oepw3"]
 
 [sub_resource type="Shader" id="Shader_fam0t"]
 code = "//*** *** *** *** *** *** *** *** *** *** *** ***//

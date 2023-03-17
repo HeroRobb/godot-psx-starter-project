@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfme0wlcpxfa1"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://levels/example_1/main_menu_example.gd" id="1_ms4k7"]
+[ext_resource type="Script" path="res://levels/example/main_menu_example.gd" id="1_ms4k7"]
 [ext_resource type="Texture2D" uid="uid://susf0ur67j3h" path="res://materials/textures/warning_background.png" id="2_wujuc"]
 [ext_resource type="PackedScene" uid="uid://ckw4dv0xxi1wh" path="res://ui/menu_selection_container.tscn" id="3_do6o3"]
 [ext_resource type="PackedScene" uid="uid://d32vr0askpuce" path="res://ui/menu_selection.tscn" id="4_axy38"]

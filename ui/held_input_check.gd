@@ -12,7 +12,12 @@ signal input_held()
 
 const _HELD_RATE = 12
 
+## This is the action name that this node will listen for. The action must
+## already be set by code or from the top left of the editor: 
+## Project -> Project Settings -> InputMap.
 @export var skip_action_name: String = "ui_accept"
+## This is how many seconds the above action must be held before this node
+## emits the signal [signal input_held].
 @export var held_seconds: float = 2
 
 @onready var _progress_bar: ProgressBar = $HBoxContainer/VBoxContainer/ProgressBar

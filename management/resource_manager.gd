@@ -16,7 +16,9 @@ extends Node
 ## function to call the various add functions. There is a template for this so
 ## you know which functions are available. Make sure to remove
 ## ResourceManager.tscn from autoloads and replace it with your
-## resource_manager_your_game.gd script.
+## resource_manager_your_game.gd script. DO NOT FORGET THAT IF YOU CHANGE THE
+## FILE NAMES OR THEIR PATHS IN ANY WAY, YOU HAVE TO UPDATE THE RESOURCE IN
+## NODE'S DATA ARRAY IN THE EDITOR.
 ## I had to use a shortened name because this class cannot have the same name
 ## as the autoload name.
 
