@@ -8,9 +8,9 @@ I also used/changed/stole/learned from tons of things from tons of different pro
 You can attribute me for using this by keeping the default attribution in the intro if you want.
 
 ## Screenshots
-[screenshot1](readme_screenshots/screenshot1)
-[screenshot2](readme_screenshots/screenshot2)
-[screenshot3](readme_screenshots/screenshot3)
+[screenshot1](readme_screenshots/Screenshot1.png?raw=true)
+[screenshot2](readme_screenshots/Screenshot2.png?raw=true)
+[screenshot3](readme_screenshots/Screenshot3.png?raw=true)
 
 ## how to use this project
 
