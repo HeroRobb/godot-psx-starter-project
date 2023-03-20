@@ -10,11 +10,16 @@ You can attribute me for using this by keeping the default attribution in the in
 ## how to use this project
 
 ### Quickstart
-- A lot of the scripts have formatted documentation so you can see the autodocs by going to the script tab in Godot, clicking "search help" in the upper right corner and typing the class name from the top of the script or the name of the .gd file (eg: debug_menu). There is a problem with Godot where sometimes the custom classes get removed from the "search help" menu, which is annoying. To fix this bug, simply erase a bit of the documentation comments, save the script, undo the erase, save the script again, and it will show up. *shrugs*
-- Edit management/global.gd to add to the enums for your game.
-- Open management/resource_manager.tscn and edit the exported arrays for various data for your game.
-- Make sure management/game_manager.tscn is the main scene in your project and open it to edit the exported variables for the GameManager and Launcher.
-- Make use of the signals in the SignalManager singleton to use the features of this project throughout your code.
+1. Download all the code in the latest [release](https://github.com/HeroRobb/godot-psx-starter-project/releases) and unzip it where you want your new project to be.
+2. Open Godot and click import, find the godot-psx-starter-project folder you got from unzipping and select the project.godot file inside it. You should be able to run the game using F5 to see a very short example/demo that will give you an idea of what can be done.
+3. Edit management/global.gd to add to the enums for your game (eg fill LEVELS with your level names, MUSIC with the names of the music you're using). Then you should probably save and click project -> reload current project because sometimes this can cause problems with exported members that rely on these enums, so it's best to be safe.
+4. Open management/resource_manager.tscn and edit the exported arrays (level_data, music_data, sfx_data, and ambience_data) for various data for your game, you should only have to add an
+entry to the array by creating a new resource_data type (eg level_data, music_data) and giving it an ID you set in step 3 and a path to the actual file (eg the .tscn file for level_data or the .ogg file for music_data).
+5. Make sure management/game_manager.tscn is the main scene in your project and open it to edit the exported variables for the GameManager and Launcher. Keep in mind GameManager has the array for default shaders and Launcher has a member for what scene it should transition to afterwards.
+6. Most of how you should interact with the various scripts and nodes here in your game should be through the use of the signals in the SignalManager singleton (eg SignalManager.change_scene_needed.emit(Global.LEVELS.THE_SCENE_YOU_ADDED_IN_STEP_3).
+
+
+A lot of the scripts have formatted documentation so you can see the autodocs by going to the script tab in Godot, clicking "search help" in the upper right corner and typing the class name from the top of the script or the name of the .gd file (eg: debug_menu). There is a problem with Godot where sometimes the custom classes get removed from the "search help" menu, which is annoying. To fix this bug, simply erase a bit of the documentation comments, save the script, undo the erase, save the script again, and it will show up. *shrugs*
 
 
 ### GameManager
