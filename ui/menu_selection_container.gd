@@ -2,6 +2,11 @@
 class_name SelectionContainer
 extends VBoxContainer
 
+## This node is intended to be used in conjunction with [MenuSelection] to
+## create in game menus.
+##
+## This is intended to have multiple children of the [MenuSelection] class.
+
 
 signal option_confirmed(option)
 signal slider_value_changed(value, id)

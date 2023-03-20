@@ -1,7 +1,7 @@
 class_name AmbienceData
 extends ResourceData
 
-## A custom class intended to be used by [ResourceMngr] in the editor.
+## A resource that intended to be used in [member ResourceMngr.ambience_data].
 
 
 @export_category("ID")

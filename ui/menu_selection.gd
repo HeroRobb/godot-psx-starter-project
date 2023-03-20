@@ -2,14 +2,27 @@
 class_name MenuSelection
 extends HBoxContainer
 
+## This Node is intended to be used in conjunction with
+## [SelectionContainer] to create in game menus.
+##
+## This is intended to be a child of [SelectionContainer] with have siblings
+## of it's own class and to have it's variables changed in the editor.
+
 
 signal moused_over(options_index)
 signal slider_value_changed(new_value, id)
 
+## This is what the player will see in game. If you want more text that is
+## smaller or larger that this text, this node can have another label as a
+## child.
 @export var selection_name: String = "" : set = set_selection_name
+## This is whether this option will have a horizontal slider to manipulate,
+## like a volume bar.
 @export var horizontal_input: bool = false
+## This is the sound the horizontal slider will make when manipulated.
 @export var slider_sound_id: Global.SFX = Global.SFX.BLIP
 
+## This value is if this node is currently selected by the player.
 var selected: bool = false : set = set_selected
 var option_index: int
 

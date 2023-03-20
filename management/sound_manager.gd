@@ -29,6 +29,8 @@ func _ready() -> void:
 	_debug_setup()
 
 
+## You can cause weird things to happen if you call this function several times
+## rapidly with different music_id's. So try not to do that.
 func play_music(music_id: Global.MUSIC, volume: float = 0.0, fade: bool = true) -> void:
 	if current_music_id == music_id:
 		return
@@ -149,7 +151,6 @@ func _stop_sounds_type(sound_players_group_id: int, fade: bool = false) -> void:
 		var fade_out_tween = create_tween()
 		fade_out_tween.tween_property(audio_player, "volume_db", MIN_VOLUME_DB, FADE_OUT_SECONDS)
 		fade_out_tween.tween_callback(_stop_player.bind(audio_player))
-#		fade_out_tween.tween_callback(self, "_on_fade_out_tween_completed", [audio_player])
 
 
 func _get_available_audio_player(sound_player_group_id: int) -> AudioStreamPlayer:
@@ -240,8 +241,8 @@ func _debug_sounds_setup(category_name: String, sound_type: Global.SOUND_TYPES) 
 
 
 func _get_sound_players_group_name(players_group_id: int) -> String:
-	var overloaded_players_group_name: String = Global.SOUND_TYPES.keys()[players_group_id].to_lower()
-	return overloaded_players_group_name
+	var sound_players_group_name: String = Global.SOUND_TYPES.keys()[players_group_id].to_lower()
+	return sound_players_group_name
 
 
 func _connect_signals() -> void:

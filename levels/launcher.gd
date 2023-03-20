@@ -5,9 +5,12 @@ extends Control
 ## Pseudo launcher for setting options that you want to set before the game properly starts.
 ##
 ## You should extend this script and override the handle_first_selection and
-## handle_second_selection functions. The launcher disables post processing
-## shaders from ScreenSpaceShaderManager and GameManager until one of the
-## options is selected.
+## handle_second_selection functions. There is a script template for extending
+## the launcher. It should come up when you click the "attach script" button
+## under the drop down menu for "template". The launcher disables post
+## processing shaders from ScreenSpaceShaderManager and GameManager until one
+## of the options is selected, so the next scene will have the default
+## post processing effects from [member GameManager.default_shaders].
 
 
 ## This value changes the color of BackgroundColorRect. Don't set the color of

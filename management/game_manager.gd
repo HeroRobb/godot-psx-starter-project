@@ -70,8 +70,8 @@ func set_delayed(target: Object, property_name: String, property_value, wait_sec
 	get_tree().create_timer(wait_seconds, false).timeout.connect(Callable(target,"set").bind(property_name, property_value))
 
 
-## This function takes care of changing scenes. It should be interacted with
-## through [signal SignalMngr.change_scene_needed].
+## This function takes care of changing scenes. It is intended to be interacted
+## with through [signal SignalMngr.change_scene_needed].
 func change_scene(new_scene_id: Global.LEVELS, silent: bool = false, fade_out_seconds: float = 0.5, fade_in_seconds: float = 1.0) -> void:
 	if silent:
 		SoundManager.stop_sfx()
