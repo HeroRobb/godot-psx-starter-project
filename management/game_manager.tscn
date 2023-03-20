@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://management/game_manager.gd" id="1_wk2hf"]
 [ext_resource type="Shader" path="res://shaders/psx_dither.gdshader" id="2_qt5ng"]
-[ext_resource type="PackedScene" path="res://levels/example/launcher_example.tscn" id="3_qtdgq"]
+[ext_resource type="PackedScene" uid="uid://difhaik1vv3o" path="res://levels/example/launcher_example.tscn" id="3_qtdgq"]
 [ext_resource type="PackedScene" uid="uid://1ogrcx2r81q6" path="res://management/fade_rect.tscn" id="4_4jt33"]
 [ext_resource type="PackedScene" uid="uid://c8mx7gh16hp2h" path="res://management/screen_space_shader_manager.tscn" id="5_kwkbv"]
 
