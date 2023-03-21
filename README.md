@@ -10,7 +10,7 @@ You can attribute me for using this by keeping the default attribution in the in
 ## Screenshots
 ![screenshot1](readme_screenshots/Screenshot1.png?raw=true)
 ![screenshot2](readme_screenshots/Screenshot2.png?raw=true)
-![screenshot3](readme_screenshots/Screenshot3.png?raw=true)
+![screenshot3 lol this one has a screen capture notification](readme_screenshots/Screenshot3.png?raw=true)
 
 ## how to use this project
 
@@ -20,7 +20,7 @@ You can attribute me for using this by keeping the default attribution in the in
 3. Edit management/global.gd to add to the enums for your game (eg fill LEVELS with your level names, MUSIC with the names of the music you're using). Then you should probably save and click project -> reload current project because sometimes this can cause problems with exported members that rely on these enums, so it's best to be safe.
 4. Open management/resource_manager.tscn and edit the exported arrays (level_data, music_data, sfx_data, and ambience_data) for various data for your game, you should only have to add an
 entry to the array by creating a new resource_data type (eg level_data, music_data) and giving it an ID you set in step 3 and a path to the actual file (eg the .tscn file for level_data or the .ogg file for music_data).
-5. Make sure management/game_manager.tscn is the main scene in your project and open it to edit the exported variables for the GameManager and Launcher. Keep in mind GameManager has the array for default shaders and Launcher has a member for what scene it should transition to afterwards.
+5. Make sure management/game_manager.tscn is the main scene in your project and open it to edit the exported variables for the GameManager and Launcher. Keep in mind GameManager has the array for default shaders and Launcher has a member for what scene it should transition to afterwards. If you're messing with stuff or trying to add this to an existing project, make sure the autoload singletons in Project->project settings->autoload for SoundManager and ResourceManager are the .tscn files and not just the .gd files.
 6. Most of how you should interact with the various scripts and nodes here in your game should be through the use of the signals in the SignalManager singleton (eg SignalManager.change_scene_needed.emit(Global.LEVELS.THE_SCENE_YOU_ADDED_IN_STEP_3).
 
 

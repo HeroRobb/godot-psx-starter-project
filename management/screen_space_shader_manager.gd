@@ -1,6 +1,10 @@
 class_name ScreenSpaceShaderManager
 extends Control
 
+## This node controls the post processing shaders. It is controlled by
+## signals from [SignalMngr] through [GameManager] so it isn't
+## intended to be interacted with directly.
+
 
 var _default_shaders_enabled: bool = false
 var _default_shaders: Array[Global.SHADERS] = [] : set = set_default_shaders

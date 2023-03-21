@@ -5,7 +5,7 @@ extends Control
 ## using HR PSX.
 ##
 ## This can handle scene changes and has [ScreenSpaceShaderManager] as a child,
-## so it handles screen space shaders as well. It is intended to be interacted
+## so it handles post processing as well. It is intended to be interacted
 ## with through signals from the autoload singleton [SignalMngr].
 
 
