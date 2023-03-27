@@ -25,13 +25,13 @@ extends Node
 
 signal level_loaded()
 
+@export_category("Resource Data")
 ## Set this to true to use the editor resource arrays below.
 @export var use_editor_resources: bool = false
 @export var music_data: Array[MusicData]
 @export var ambience_data: Array[AmbienceData]
 @export var sfx_data: Array[SFXData]
 @export var level_data: Array[LevelData]
-
 
 const _FULLSCREEN_WINDOW_SIZE = Vector2(1280, 720)
 const _MED_WINDOW_SIZE = Vector2(1280, 720)
@@ -42,8 +42,8 @@ var version_number = 0.1
 
 var loading_level: bool = false : set = set_loading_level
 
-var _starting_scene: Global.LEVELS
 var _data: GameData = preload("res://management/game_data.gd").new()
+var _save_game_manager: SaveGameManager
 var _actors: Dictionary
 var _level_paths: Dictionary
 var _particles: Dictionary
@@ -52,6 +52,7 @@ var _loading_level_path: String
 
 
 func _ready() -> void:
+	_save_game_manager = get_node_or_null("SaveGameManager")
 	_connect_signals()
 	_initialize_data()
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -164,6 +165,33 @@ func set_window_mode(new_window_mode: int) -> void:
 #			OS.center_window()
 
 
+func get_screenshot() -> void:
+	var image = get_viewport().get_texture().get_data()
+	image.flip_y()
+	var new_size = image.get_size() * .3
+	image.resize(new_size.x, new_size.y, Image.INTERPOLATE_NEAREST)
+	add_global_data("screenshot", image)
+
+
+func save_game(save_slot: int) -> void:
+	if _save_game_manager:
+		_save_game_manager.save_game(_data, save_slot)
+
+
+func load_game(save_slot: int) -> void:
+	if not _save_game_manager:
+		return
+	
+	var loaded_data = _save_game_manager.get_data(save_slot)
+	
+	if not loaded_data:
+		printerr("SaveGameManager returned null loaded data.")
+		return
+	
+	_data = loaded_data
+	SignalManager.emit_signal("game_save_loaded")
+
+
 func add_global_data(data_id: String, data_value) -> void:
 	_data.add_global_data(data_id, data_value)
 
@@ -197,15 +225,15 @@ func add_shader(shader_id: int, path_to_resource: String) -> void:
 
 
 func add_music(music_id: Global.MUSIC, path_to_resource: String) -> void:
-	SignalManager.music_load_needed.emit(music_id, path_to_resource)
+	SignalManager.music_load_requested.emit(music_id, path_to_resource)
 
 
 func add_ambience(ambience_id: Global.AMBIENCES, path_to_resource: String) -> void:
-	SignalManager.ambience_load_needed.emit(ambience_id, path_to_resource)
+	SignalManager.ambience_load_requested.emit(ambience_id, path_to_resource)
 
 
 func add_sfx(sfx_id: Global.SFX, path_to_resource: String) -> void:
-	SignalManager.sfx_load_needed.emit(sfx_id, path_to_resource)
+	SignalManager.sfx_load_requested.emit(sfx_id, path_to_resource)
 
 
 func _initialize_data() -> void:
@@ -240,10 +268,9 @@ func _initialize_data() -> void:
 func _connect_signals() -> void:
 	SignalManager.state_saver_freed.connect(_on_state_saver_freed)
 	SignalManager.set_window_mode.connect(set_window_mode)
-	
-#	SignalManager.pp_default_shaders_changed
-#	SignalManager.pp_default_shaders_enabled_changed
-#	SignalManager.pp_enabled_changed
+	SignalManager.screenshot_requested.connect(get_screenshot)
+	SignalManager.game_save_requested.connect(save_game)
+	SignalManager.game_save_load_requested.connect(load_game)
 
 
 func _on_state_saver_freed(global: bool, key: String, save_data: Dictionary) -> void:

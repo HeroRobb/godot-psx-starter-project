@@ -66,7 +66,7 @@ func _skip_intro() -> void:
 	_animation_player.stop()
 	_animation_player.animation_finished.emit()
 	SoundManager.stop_sfx()
-	SignalManager.change_scene_needed.emit(next_level_id)
+	SignalManager.change_scene_requested.emit(next_level_id)
 
 
 func _show_intro() -> void:
@@ -97,4 +97,4 @@ func _show_intro() -> void:
 			_skip_intro()
 			return
 	
-	SignalManager.change_scene_needed.emit(next_level_id)
+	SignalManager.change_scene_requested.emit(next_level_id)

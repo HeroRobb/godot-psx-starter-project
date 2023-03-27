@@ -49,6 +49,6 @@ func _show_menu() -> void:
 func _on_base_option_confirmed(selection_name: String) -> void:
 	match selection_name:
 		BASE_START_SELECTION:
-			SignalManager.change_scene_needed.emit(starting_level_id)
+			SignalManager.change_scene_requested.emit(starting_level_id)
 		BASE_QUIT_SELECTION:
 			get_tree().quit()

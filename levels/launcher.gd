@@ -103,5 +103,5 @@ func _on_selection_container_selection_confirmed(selection_name: String) -> void
 		exit_selection_name:
 			get_tree().quit()
 	
-	SignalManager.change_scene_needed.emit(next_level_id, false, 0.05)
+	SignalManager.change_scene_requested.emit(next_level_id, false, 0.05)
 	SignalManager.pp_default_shaders_enabled_changed.emit(true)

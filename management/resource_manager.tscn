@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://b28ro383vl7dk"]
+[gd_scene load_steps=19 format=3 uid="uid://b28ro383vl7dk"]
 
 [ext_resource type="Script" path="res://management/resource_manager.gd" id="1_fu71s"]
 [ext_resource type="Script" path="res://management/ResourceData/music_data.gd" id="2_vkt0b"]
 [ext_resource type="Script" path="res://management/ResourceData/ambience_data.gd" id="3_1oa81"]
 [ext_resource type="Script" path="res://management/ResourceData/level_data.gd" id="3_h3uyb"]
 [ext_resource type="Script" path="res://management/ResourceData/sfx_data.gd" id="4_3hfc0"]
+[ext_resource type="PackedScene" uid="uid://n8jvj3d5d0eh" path="res://management/save_game_manager.tscn" id="6_uuldi"]
+[ext_resource type="Script" path="res://management/save_game_manager.gd" id="7_iy50j"]
 
 [sub_resource type="Resource" id="Resource_gu04a"]
 script = ExtResource("2_vkt0b")
@@ -68,3 +70,6 @@ music_data = Array[ExtResource("2_vkt0b")]([SubResource("Resource_gu04a"), SubRe
 ambience_data = Array[ExtResource("3_1oa81")]([SubResource("Resource_4kccv"), SubResource("Resource_n4adk")])
 sfx_data = Array[ExtResource("4_3hfc0")]([SubResource("Resource_6lyxm"), SubResource("Resource_lgmfc")])
 level_data = Array[ExtResource("3_h3uyb")]([SubResource("Resource_xouiv"), SubResource("Resource_fj2x7"), SubResource("Resource_514uy")])
+
+[node name="SaveGameManager" parent="." instance=ExtResource("6_uuldi")]
+script = ExtResource("7_iy50j")

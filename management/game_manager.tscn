@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wk2hf")
-default_shaders = Array[int]([14, 3, 4, 7, 0])
+default_shaders = Array[int]([4, 1, 2, 3, 0])
 
 [node name="PPDitherContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_oesds")
