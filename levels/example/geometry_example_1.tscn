@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://rahgbg8l258d"]
 
 [ext_resource type="Script" path="res://levels/example/geometry_example_1.gd" id="1_oepw3"]
+[ext_resource type="Texture2D" uid="uid://bufvgxxobu8o6" path="res://materials/textures/Tiles012_1K_Color.jpg" id="2_u83gl"]
 
 [sub_resource type="Shader" id="Shader_fam0t"]
 code = "//*** *** *** *** *** *** *** *** *** *** *** ***//
@@ -113,9 +114,6 @@ void fragment() {
 }
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qp4is"]
-load_path = "res://.godot/imported/Tiles012_1K_Color.jpg-531498e2490be0f3d1ac6345a844c23c.s3tc.ctex"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cuwit"]
 render_priority = 0
 shader = SubResource("Shader_fam0t")
@@ -126,8 +124,8 @@ shader_parameter/affine_texture_mapping = true
 shader_parameter/alpha_scissor = 1.0
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_color = Color(1, 1, 1, 1)
-shader_parameter/texture_size = Vector2(0.05, 0.05)
-shader_parameter/albedo = SubResource("CompressedTexture2D_qp4is")
+shader_parameter/texture_size = Vector2(0.063, 0.063)
+shader_parameter/albedo = ExtResource("2_u83gl")
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxcn"]
 material = SubResource("ShaderMaterial_cuwit")

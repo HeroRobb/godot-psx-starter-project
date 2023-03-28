@@ -1,0 +1,160 @@
+[gd_scene load_steps=5 format=3 uid="uid://dahn3ote0sbol"]
+
+[ext_resource type="Shader" path="res://shaders/psx_unlit.gdshader" id="1_ey043"]
+[ext_resource type="Texture2D" uid="uid://ixemw6m2rw56" path="res://materials/textures/tile.png" id="2_6lxnt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lpmdv"]
+size = Vector3(4, 4, 4)
+subdivide_width = 8
+subdivide_height = 8
+subdivide_depth = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csdgi"]
+render_priority = 0
+shader = ExtResource("1_ey043")
+shader_parameter/jitter = 0.5
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/albedo_color = Color(0.764706, 0.764706, 0.764706, 1)
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/texture_size = Vector2(0.25, 0.25)
+shader_parameter/albedo = ExtResource("2_6lxnt")
+
+[node name="geometry_example_2" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 0)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -4)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -8)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -8)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -8)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -12)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -12)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -12)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D19" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -12)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D20" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -16)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D21" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -16)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D22" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -16)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D23" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -16)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D24" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D25" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -20)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D26" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -20)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D27" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -20)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -4)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -4)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, 0)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, 0)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, 4)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 4)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")

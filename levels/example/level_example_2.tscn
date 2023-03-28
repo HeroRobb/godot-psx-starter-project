@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://gslx068l0xmj"]
+
+[ext_resource type="PackedScene" uid="uid://f7pfxvhux3gh" path="res://levels/level.tscn" id="1_p6i4b"]
+[ext_resource type="Script" path="res://levels/example/level_example_2.gd" id="2_7xdr3"]
+[ext_resource type="PackedScene" uid="uid://dahn3ote0sbol" path="res://levels/example/geometry_example_2.tscn" id="3_qax4d"]
+
+[node name="LevelExample2" instance=ExtResource("1_p6i4b")]
+script = ExtResource("2_7xdr3")
+starting_music_id = 2
+
+[node name="Camera3D" parent="PlayerContainer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 1)
+
+[node name="Camera3D2" type="Camera3D" parent="PlayerContainer" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0.5, -20)
+
+[node name="Camera3D3" type="Camera3D" parent="PlayerContainer" index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 1, -20)
+
+[node name="Camera3D4" type="Camera3D" parent="PlayerContainer" index="4"]
+transform = Transform3D(2.98023e-07, 0, -1, 0, 1, 0, 1, 0, 2.98023e-07, -9, 1, 1)
+
+[node name="geometry_example_2" parent="GeometryContainer" index="0" instance=ExtResource("3_qax4d")]

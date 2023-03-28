@@ -8,10 +8,19 @@ enum CAMERA_IDS {
 }
 
 const CAMERA_TRANSITION_DURATION_SECONDS = 2.0
+const NEXT_SCENE = Global.LEVELS.TEST2
 
 var active_camera_id: CAMERA_IDS = CAMERA_IDS.SPINNING
+var finished: bool = false
 
 var _transitioning_camera: bool = false
+var _new_default_shaders: Array[int] = [
+	Global.SHADERS.PSX_DITHER,
+	Global.SHADERS.COLOR_PRECISION,
+	Global.SHADERS.CRT,
+	Global.SHADERS.GRAIN,
+	Global.SHADERS.BLUR,
+]
 
 @onready var _camera_pivot: Node3D = %SpinningCameraPivot
 @onready var _camera_spinning: Camera3D = _camera_pivot.get_child(0)
@@ -27,15 +36,21 @@ var _transitioning_camera: bool = false
 func _ready() -> void:
 	super()
 	SignalManager.camera_cut_requested.emit(_camera_spinning)
+	SignalManager.pp_default_shaders_changed.emit(_new_default_shaders)
+	SignalManager.pp_default_shaders_enabled_changed.emit(true)
 
 
 func _input(event: InputEvent) -> void:
-	if _transitioning_camera:
+	if _transitioning_camera or finished:
 		return
 	
 	if event.is_action_pressed("ui_accept"):
 		cycle_cameras()
+	elif event.is_action_pressed("change_scenes"):
+		finished = true
+		SignalManager.change_scene_requested.emit(NEXT_SCENE)
 	elif event.is_action_pressed("ui_cancel"):
+		finished = true
 		get_tree().quit()
 
 
@@ -49,14 +64,11 @@ func change_to_camera(camera_id: CAMERA_IDS) -> void:
 		set_process(false)
 	
 	active_camera_id = camera_id
-	
 	var to_camera = _cameras[active_camera_id]
 	
 	SignalManager.camera_transition_requested.emit(to_camera, CAMERA_TRANSITION_DURATION_SECONDS)
-#	_camera_manager.transition_to(to_camera, CAMERA_TRANSITION_DURATION_SECONDS)
-	
-	
 	await SignalManager.camera_transition_finished
+	
 	_transitioning_camera = false
 	set_process(to_camera == _camera_spinning)
 

@@ -20,6 +20,7 @@ enum  LEVELS {
 	MAIN_MENU,
 	INTRO,
 	TEST,
+	TEST2,
 }
 
 enum SOUND_TYPES {

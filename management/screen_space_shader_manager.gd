@@ -47,6 +47,8 @@ func set_default_shaders(new_default_shaders: Array) -> void:
 
 
 func set_default_shaders_enabled(new_enabled: bool) -> void:
+	disable_all()
+	
 	for shader in _default_shaders:
 		set_pp_enabled(shader, new_enabled)
 

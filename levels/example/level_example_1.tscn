@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://f7pfxvhux3gh" path="res://levels/level.tscn" id="1_vbg5g"]
 [ext_resource type="Script" path="res://levels/example/level_example_1.gd" id="2_8upm7"]
-[ext_resource type="PackedScene" path="res://levels/example/geometry_example_1.tscn" id="3_p47r1"]
+[ext_resource type="PackedScene" uid="uid://rahgbg8l258d" path="res://levels/example/geometry_example_1.tscn" id="3_p47r1"]
 [ext_resource type="PackedScene" path="res://actors/demon_cute/demon_cute.tscn" id="4_6o4n2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hnhfo"]
@@ -90,13 +90,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -6
 
 [node name="Label" type="Label" parent="Control/VBoxContainer" index="0"]
 layout_mode = 2
 text = "Press space to cycle cameras."
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer" index="1"]
+[node name="Label3" type="Label" parent="Control/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Press arrow keys to change scenes."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer" index="2"]
 layout_mode = 2
 text = "Press escape to exit the game."
 horizontal_alignment = 1
