@@ -20,10 +20,10 @@ var _previous_camera: Camera3D
 
 
 func _ready() -> void:
-	SignalManager.camera_cut_needed.connect(cut_to_camera)
-	SignalManager.camera_return_cut_needed.connect(return_cut)
-	SignalManager.camera_transition_needed.connect(transition_to_camera)
-	SignalManager.camera_return_transition_needed.connect(return_transition)
+	SignalManager.camera_cut_requested.connect(cut_to_camera)
+	SignalManager.camera_return_cut_requested.connect(return_cut)
+	SignalManager.camera_transition_requested.connect(transition_to_camera)
+	SignalManager.camera_return_transition_requested.connect(return_transition)
 
 
 ## This function does a hard cut to the to_camera, essentially making the

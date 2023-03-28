@@ -62,6 +62,7 @@ enum SHADERS {
 	PSX_DITHER,
 	SHARPNESS,
 	VHS,
+	GLITCH,
 }
 
 const GAME_STATE_SAVER_GROUP = "game_state_saver"

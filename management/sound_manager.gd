@@ -246,9 +246,9 @@ func _get_sound_players_group_name(players_group_id: int) -> String:
 
 
 func _connect_signals() -> void:
-	SignalManager.music_load_needed.connect(_add_music)
-	SignalManager.ambience_load_needed.connect(_add_ambience)
-	SignalManager.sfx_load_needed.connect(_add_sfx)
+	SignalManager.music_load_requested.connect(_add_music)
+	SignalManager.ambience_load_requested.connect(_add_ambience)
+	SignalManager.sfx_load_requested.connect(_add_sfx)
 
 
 func _print_unknown_sound_id_error(sound_id: int, players_group_id: int) -> void:

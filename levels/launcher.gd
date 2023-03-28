@@ -42,7 +42,7 @@ extends Control
 
 func _ready() -> void:
 	SignalManager.pp_all_disabled.emit()
-	_selection_container.option_confirmed.connect(_on_selection_container_selection_confirmed)
+	_selection_container.selection_confirmed.connect(_on_selection_container_selection_confirmed)
 	SignalManager.set_window_mode.emit(Global.WINDOW_MODES.WINDOWED_MED)
 	_selection_container.menu_available = true
 
@@ -93,6 +93,9 @@ func set_background_color(new_color: Color) -> void:
 
 
 func _on_selection_container_selection_confirmed(selection_name: String) -> void:
+	_selection_container.menu_available = false
+	await _selection_container.transition_finished
+	
 	match selection_name:
 		first_selection_name:
 			handle_first_selection()
@@ -103,5 +106,5 @@ func _on_selection_container_selection_confirmed(selection_name: String) -> void
 		exit_selection_name:
 			get_tree().quit()
 	
-	SignalManager.change_scene_requested.emit(next_level_id, false, 0.05)
 	SignalManager.pp_default_shaders_enabled_changed.emit(true)
+	SignalManager.change_scene_requested.emit(next_level_id, false, 0.05)

@@ -9,7 +9,7 @@ extends HBoxContainer
 ## of it's own class and to have it's variables changed in the editor.
 
 
-signal moused_over(options_index)
+signal moused_over(selection_index)
 signal slider_value_changed(new_value, id)
 
 ## This is what the player will see in game. If you want more text that is
@@ -24,7 +24,7 @@ signal slider_value_changed(new_value, id)
 
 ## This value is if this node is currently selected by the player.
 var selected: bool = false : set = set_selected
-var option_index: int
+var selection_index: int
 
 var _slider: HSlider
 
@@ -88,7 +88,7 @@ func set_font_size(new_font_size: int) -> void:
 
 
 func _on_mouse_entered() -> void:
-	moused_over.emit(option_index)
+	moused_over.emit(selection_index)
 
 
 func _on_slider_value_changed(new_value: float) -> void:

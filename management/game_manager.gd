@@ -133,7 +133,7 @@ func _load_game_state_saver_data() -> void:
 
 
 func _connect_signals() -> void:
-	SignalManager.change_scene_needed.connect(change_scene)
+	SignalManager.change_scene_requested.connect(change_scene)
 	SignalManager.pause_allowed_changed.connect(set_pause_allowed)
 	SignalManager.paused_changed.connect(set_paused)
 	SignalManager.set_delayed.connect(set_delayed)

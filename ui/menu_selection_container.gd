@@ -8,7 +8,8 @@ extends VBoxContainer
 ## This is intended to have multiple children of the [MenuSelection] class.
 
 
-signal option_confirmed(option)
+signal selection_confirmed(option)
+signal transition_finished()
 signal slider_value_changed(value, id)
 
 const TRANS_DURATION = 0.9
@@ -25,7 +26,7 @@ const _CANCEL_OPTIONS = ["Exit", "Back"]
 @export var ui_cancel_sound_id: Global.SFX = Global.SFX.BLIP
 
 var options: Array
-var currently_selected_option: MenuSelection
+var current_selection: MenuSelection
 
 var _selected_option_index: int
 var _readied: bool = false
@@ -41,7 +42,7 @@ func _ready() -> void:
 		var menu_selection: MenuSelection = child
 		
 		menu_selection.set_font_size(selection_font_size)
-		menu_selection.option_index = options.size()
+		menu_selection.selection_index = options.size()
 		options.append(menu_selection)
 		menu_selection.moused_over.connect(_on_option_moused_over)
 		menu_selection.gui_input.connect(_on_option_gui_input)
@@ -66,7 +67,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_left"):
 		action_left()
 	elif event.is_action_pressed("ui_accept"):
-		confirm_currently_selected_option()
+		confirm_current_selection()
 
 
 func set_title(new_title: String) -> void:
@@ -77,9 +78,15 @@ func set_title(new_title: String) -> void:
 
 
 func set_menu_available(new_menu_available: bool) -> void:
-	if Engine.is_editor_hint() or menu_available == new_menu_available:
+	if menu_available == new_menu_available:
 		return
+	
 	menu_available = new_menu_available
+	
+	if Engine.is_editor_hint() or not is_inside_tree():
+		visible = menu_available
+		return
+	
 	var end_modulate: Color
 	if menu_available:
 		modulate = _CLEAR_COLOR
@@ -91,8 +98,7 @@ func set_menu_available(new_menu_available: bool) -> void:
 	
 	var trans_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	trans_tween.tween_property(self, "modulate", end_modulate, TRANS_DURATION)
-	if not menu_available:
-		trans_tween.tween_callback(hide)
+	trans_tween.tween_callback(_on_tween_finished)
 
 
 func select_next() -> void:
@@ -103,8 +109,8 @@ func select_previous() -> void:
 	_select(_selected_option_index - 1)
 
 
-func confirm_currently_selected_option() -> void:
-	_confirm_option(currently_selected_option)
+func confirm_current_selection() -> void:
+	_confirm_selection(current_selection)
 
 
 func action_left() -> void:
@@ -141,10 +147,9 @@ func set_selection_font_size(new_selection_font_size: int) -> void:
 		menu_selection.set_font_size(selection_font_size)
 
 
-func _confirm_option(option) -> void:
-	menu_available = false
+func _confirm_selection(option) -> void:
 	SoundManager.play_sfx(ui_confirm_sound_id)
-	option_confirmed.emit(option.selection_name)
+	selection_confirmed.emit(option.selection_name)
 
 
 func _select(option_index: int, loud: bool = true) -> void:
@@ -155,12 +160,12 @@ func _select(option_index: int, loud: bool = true) -> void:
 	else:
 		_selected_option_index = option_index
 	
-	if currently_selected_option:
-		currently_selected_option.deselect()
-	currently_selected_option = options[_selected_option_index]
+	if current_selection:
+		current_selection.deselect()
+	current_selection = options[_selected_option_index]
 	if loud:
 		SoundManager.play_sfx(ui_change_sound_id)
-	currently_selected_option.select()
+	current_selection.select()
 
 
 func _deselect_all() -> void:
@@ -178,8 +183,14 @@ func _on_option_gui_input(event: InputEvent) -> void:
 	if not menu_available:
 		return
 	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		confirm_currently_selected_option()
+		confirm_current_selection()
 
 
 func _on_slider_value_changed(new_value: float, id: String) -> void:
 	slider_value_changed.emit(new_value, id)
+
+
+func _on_tween_finished() -> void:
+	transition_finished.emit()
+	if not menu_available:
+		hide
