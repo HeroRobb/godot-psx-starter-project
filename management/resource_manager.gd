@@ -166,16 +166,16 @@ func set_window_mode(new_window_mode: int) -> void:
 
 
 func get_screenshot() -> void:
-	var image = get_viewport().get_texture().get_data()
+	var image = get_viewport().get_texture().get_image()
 	image.flip_y()
-	var new_size = image.get_size() * .3
+	var new_size = image.get_size() * .5
 	image.resize(new_size.x, new_size.y, Image.INTERPOLATE_NEAREST)
 	add_global_data("screenshot", image)
 
 
 func save_game(save_slot: int) -> void:
 	if _save_game_manager:
-		_save_game_manager.save_game(_data, save_slot)
+		_save_game_manager.save_data(_data, save_slot)
 
 
 func load_game(save_slot: int) -> void:

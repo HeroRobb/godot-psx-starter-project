@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwf27kjache61"]
+
+[ext_resource type="Script" path="res://management/game_manager.gd" id="1_wk2hf"]
+[ext_resource type="PackedScene" uid="uid://difhaik1vv3o" path="res://levels/example/launcher_example.tscn" id="3_qtdgq"]
+[ext_resource type="PackedScene" uid="uid://1ogrcx2r81q6" path="res://management/fade_rect.tscn" id="4_4jt33"]
+[ext_resource type="PackedScene" uid="uid://c8mx7gh16hp2h" path="res://management/screen_space_shader_manager.tscn" id="5_kwkbv"]
+
+[node name="GameManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk2hf")
+default_shaders = Array[int]([1, 2])
+
+[node name="FadeRect" parent="." instance=ExtResource("4_4jt33")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="LevelContainer" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="LauncherExample" parent="LevelContainer" instance=ExtResource("3_qtdgq")]
+background_color = Color(0, 0, 0, 1)
+
+[node name="ScreenSpaceShaderManager" parent="LevelContainer" instance=ExtResource("5_kwkbv")]

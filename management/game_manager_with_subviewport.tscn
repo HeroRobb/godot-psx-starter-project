@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwf27kjache61"]
+[gd_scene load_steps=7 format=3 uid="uid://ch2o46s520ygi"]
 
-[ext_resource type="Script" path="res://management/game_manager.gd" id="1_wk2hf"]
-[ext_resource type="Shader" path="res://shaders/psx_dither.gdshader" id="2_qt5ng"]
-[ext_resource type="PackedScene" uid="uid://difhaik1vv3o" path="res://levels/example/launcher_example.tscn" id="3_qtdgq"]
-[ext_resource type="PackedScene" uid="uid://1ogrcx2r81q6" path="res://management/fade_rect.tscn" id="4_4jt33"]
-[ext_resource type="PackedScene" uid="uid://c8mx7gh16hp2h" path="res://management/screen_space_shader_manager.tscn" id="5_kwkbv"]
+[ext_resource type="Script" path="res://management/game_manager.gd" id="1_m3ejh"]
+[ext_resource type="Shader" path="res://shaders/psx_dither.gdshader" id="2_66ot5"]
+[ext_resource type="PackedScene" uid="uid://difhaik1vv3o" path="res://levels/example/launcher_example.tscn" id="3_mfsm3"]
+[ext_resource type="PackedScene" uid="uid://1ogrcx2r81q6" path="res://management/fade_rect.tscn" id="4_8yejn"]
+[ext_resource type="PackedScene" uid="uid://c8mx7gh16hp2h" path="res://management/screen_space_shader_manager.tscn" id="5_rq5lt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oesds"]
-shader = ExtResource("2_qt5ng")
+shader = ExtResource("2_66ot5")
 shader_parameter/color_depth = 5
 shader_parameter/dithering = false
 shader_parameter/resolution_scale = 4
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wk2hf")
+script = ExtResource("1_m3ejh")
 default_shaders = Array[int]([4, 1, 2, 3, 0])
 
 [node name="PPDitherContainer" type="SubViewportContainer" parent="."]
@@ -41,11 +41,11 @@ render_target_update_mode = 4
 [node name="LevelContainer" type="Node" parent="PPDitherContainer/SubViewport"]
 unique_name_in_owner = true
 
-[node name="LauncherExample" parent="PPDitherContainer/SubViewport/LevelContainer" instance=ExtResource("3_qtdgq")]
+[node name="LauncherExample" parent="PPDitherContainer/SubViewport/LevelContainer" instance=ExtResource("3_mfsm3")]
 background_color = Color(0, 0, 0, 1)
 
-[node name="FadeRect" parent="PPDitherContainer/SubViewport" instance=ExtResource("4_4jt33")]
+[node name="FadeRect" parent="PPDitherContainer/SubViewport" instance=ExtResource("4_8yejn")]
 unique_name_in_owner = true
 
-[node name="ScreenSpaceShaderManager" parent="." instance=ExtResource("5_kwkbv")]
+[node name="ScreenSpaceShaderManager" parent="." instance=ExtResource("5_rq5lt")]
 layout_mode = 1

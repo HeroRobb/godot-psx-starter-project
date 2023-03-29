@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5tujj4dd4y7x"]
+[gd_scene load_steps=9 format=3 uid="uid://b5tujj4dd4y7x"]
 
 [ext_resource type="PackedScene" uid="uid://f7pfxvhux3gh" path="res://levels/level.tscn" id="1_vbg5g"]
 [ext_resource type="Script" path="res://levels/example/level_example_1.gd" id="2_8upm7"]
 [ext_resource type="PackedScene" uid="uid://rahgbg8l258d" path="res://levels/example/geometry_example_1.tscn" id="3_p47r1"]
-[ext_resource type="PackedScene" path="res://actors/demon_cute/demon_cute.tscn" id="4_6o4n2"]
+[ext_resource type="PackedScene" uid="uid://dbc5os0fkgtc7" path="res://actors/demon_cute/demon_cute.tscn" id="4_6o4n2"]
+[ext_resource type="PackedScene" uid="uid://ebtmki4hbuka" path="res://ui/ui_level_controls.tscn" id="5_88bop"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hnhfo"]
 
@@ -17,7 +18,7 @@ fog_enabled = true
 fog_light_color = Color(0.439216, 0.466667, 0.533333, 1)
 fog_density = 0.03
 
-[node name="Level" instance=ExtResource("1_vbg5g")]
+[node name="LevelExample1" instance=ExtResource("1_vbg5g")]
 script = ExtResource("2_8upm7")
 starting_music_id = 1
 
@@ -75,70 +76,4 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="9"]
 environment = SubResource("Environment_yypne")
 
-[node name="UIControls" type="Control" parent="." index="10"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ControlsLabelContainer" type="VBoxContainer" parent="UIControls" index="0"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = -6
-
-[node name="Label" type="Label" parent="UIControls/ControlsLabelContainer" index="0"]
-layout_mode = 2
-text = "Press space to cycle cameras."
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="UIControls/ControlsLabelContainer" index="1"]
-layout_mode = 2
-text = "Press arrow keys to change scenes."
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="UIControls/ControlsLabelContainer" index="2"]
-layout_mode = 2
-text = "Press S to save the game and L to load"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="UIControls/ControlsLabelContainer" index="3"]
-layout_mode = 2
-text = "Press escape to exit the game."
-horizontal_alignment = 1
-
-[node name="UISave" type="CenterContainer" parent="UIControls" index="1"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="UIControls/UISave" index="0"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-text = "Press 1, 2, or 3 for which save slot or esc to cancel"
-autowrap_mode = 3
-
-[node name="UILabel" type="Label" parent="UIControls" index="2"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -19.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(1, 0, 0.0862745, 1)
-text = "Controls"
-horizontal_alignment = 1
-clip_text = true
+[node name="UILevelControls" parent="." index="10" instance=ExtResource("5_88bop")]

@@ -19,6 +19,7 @@ const LOAD_BACK_SELECTION = "Back"
 @export var starting_level_id: Global.LEVELS = Global.LEVELS.TEST
 
 var _current_menu_id: int = MENUS.BASE
+var _finished_selection: bool = false
 
 @onready var _menu_timer: Timer = $MenuTimer
 @onready var _selection_containers: Dictionary = {
@@ -34,6 +35,7 @@ func _ready() -> void:
 
 
 func _switch_menu(new_menu_id: int) -> void:
+	_finished_selection = false
 	if _current_menu_id == new_menu_id:
 		return
 	
@@ -58,6 +60,10 @@ func _on_base_option_confirmed(selection_name: String) -> void:
 			_switch_menu(MENUS.LOAD)
 		BASE_QUIT_SELECTION:
 			get_tree().quit()
+		_:
+			return
+	
+	_finished_selection = true
 
 
 func _on_load_selection_confirmed(selection_name: String) -> void:
@@ -66,6 +72,9 @@ func _on_load_selection_confirmed(selection_name: String) -> void:
 		LOAD_SLOT_2_SELECTION: SignalManager.game_save_load_requested.emit(2)
 		LOAD_SLOT_3_SELECTION: SignalManager.game_save_load_requested.emit(3)
 		LOAD_BACK_SELECTION: _switch_menu(MENUS.BASE)
+		_: return
+	
+	_finished_selection = true
 
 
 func _connect_signals() -> void:

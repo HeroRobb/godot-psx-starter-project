@@ -67,7 +67,7 @@ func get_save_data() -> Dictionary:
 
 
 func load_data(loaded_data: Dictionary) -> void:
-	if loaded_data.freed:
+	if loaded_data.has("freed") and loaded_data.freed:
 		_parent.queue_free()
 		return
 	for prop_name in loaded_data:

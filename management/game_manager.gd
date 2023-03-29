@@ -6,7 +6,19 @@ extends Control
 ##
 ## This can handle scene changes and has [ScreenSpaceShaderManager] as a child,
 ## so it handles post processing as well. It is intended to be interacted
-## with through signals from the autoload singleton [SignalMngr].
+## with through signals from the autoload singleton [SignalMngr].There are two
+## tscn files that use this script. The game_manager_with_subviwport.tscn file
+## is intended for the project to be run at a resolution of 1280x720, while
+## game_manager_no_subviewport.tscn is intended to be run at a resolution of
+## 320x180 (in the top left of the editor project -> project settings ->
+## display -> window -> viewport width/height), but either *should* work in any
+## resolution you want. One of the benefits of using the subviewport version is
+## that the postprocessing effects, like CRT, can be run outside the viewport
+## at a higher resolution so they can look better. One of the benefits of using
+## the no viewport version is that is is much chunkier and more grungy. They
+## can both be used to pretty good effect. It depends on what style you are
+## looking for. Keep in mind that the PSX_DITHER shader does nothing in the no
+## viewport version, as it is a viewport material shader.
 
 
 ## This is what the max frames per second of the game will be set to. The
@@ -28,6 +40,7 @@ var pause_allowed: bool = true : set = set_pause_allowed
 ## [member pause_allowed] is set to false. This should be interacted with
 ## through [signal SignalMngr.paused_changed].
 var paused: bool = false : set = set_paused
+var use_psx_dither_viewport: bool = true
 
 var _current_scene_id: Global.LEVELS
 var _previous_scene_id: Global.LEVELS
@@ -42,6 +55,10 @@ var _psx_dither_enabled: bool = true : set = _set_psx_dither_enabled
 func _ready():
 	_connect_signals()
 	_debug_setup()
+	
+	if not _dither_viewport_container:
+		use_psx_dither_viewport = false
+	
 	SignalManager.pp_default_shaders_changed.emit(default_shaders)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Engine.max_fps = fps
@@ -61,6 +78,9 @@ func set_paused(new_paused: bool) -> void:
 
 
 func _set_psx_dither_enabled(new_psx_dither_enabled: bool) -> void:
+	if not use_psx_dither_viewport:
+		return
+	
 	_psx_dither_enabled = new_psx_dither_enabled
 	
 	_dither_viewport_container.material.set_shader_parameter("dithering", _psx_dither_enabled)
@@ -92,6 +112,7 @@ func change_scene(new_scene_id: Global.LEVELS, silent: bool = false, fade_out_se
 
 	var new_scene: Node = ResourceManager.get_loaded_level().instantiate()
 	_level_container.add_child(new_scene)
+	_level_container.move_child(new_scene, 0)
 	_main_scene = new_scene
 	_load_game_state_saver_data()
 	if _main_scene.has_method("initialize_level"):

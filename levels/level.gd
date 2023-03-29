@@ -14,6 +14,10 @@ extends Node3D
 ## used for other Nodes to know what level/scene this is. I may take this out.
 ## Doesn't seem that useful.
 @export var level_id: Global.LEVELS = Global.LEVELS.TEST
+## If this value is set to true, the scene will begin with the default shaders
+## set in [GameMngr] active. If it is set to false, no shaders will be shown
+## and you'll have to set them up yourself in the ready function.
+@export var use_default_shaders: bool = true
 
 
 @export_category("Sound")
@@ -45,6 +49,11 @@ func _ready() -> void:
 	
 	SoundManager.play_ambience(starting_ambience_id)
 	SoundManager.play_music(starting_music_id)
+	
+	if use_default_shaders:
+		SignalManager.pp_default_shaders_enabled_changed.emit(true)
+	else:
+		SignalManager.pp_all_disabled.emit()
 
 
 func _connect_signals() -> void:

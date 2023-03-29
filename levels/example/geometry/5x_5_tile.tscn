@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://4aht5rhrpxho"]
+
+[ext_resource type="Shader" path="res://shaders/psx_unlit.gdshader" id="1_gb1bw"]
+[ext_resource type="Texture2D" uid="uid://bufvgxxobu8o6" path="res://materials/textures/Tiles012_1K_Color.jpg" id="2_of6tf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cuwit"]
+render_priority = 0
+shader = ExtResource("1_gb1bw")
+shader_parameter/jitter = 0.5
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/texture_size = Vector2(1, 1)
+shader_parameter/albedo = ExtResource("2_of6tf")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1vxcn"]
+material = SubResource("ShaderMaterial_cuwit")
+size = Vector3(4, 1, 4)
+subdivide_width = 2
+subdivide_depth = 2
+
+[node name="5x5Tile" type="Node3D"]
+
+[node name="Floor" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 0)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, -4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor3" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, -8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor4" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor5" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501, 4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor6" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.501, 0)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor7" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.501, -4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor8" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.501, -8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor9" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.501, 8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor10" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.501, 4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor11" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.501, 0)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor12" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.501, -4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor13" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.501, -8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor14" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.501, 8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor15" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.501, 4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor16" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.501, 0)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor17" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.501, -4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor18" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.501, -8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor19" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.501, 8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor20" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.501, 4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor21" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.501, 0)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor22" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.501, -4)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor23" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.501, -8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor24" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.501, 8)
+mesh = SubResource("BoxMesh_1vxcn")
+
+[node name="Floor25" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.501, 4)
+mesh = SubResource("BoxMesh_1vxcn")

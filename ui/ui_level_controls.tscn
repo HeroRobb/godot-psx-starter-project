@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://ebtmki4hbuka"]
+
+[ext_resource type="Script" path="res://ui/ui_level_controls.gd" id="1_ntonf"]
+
+[node name="UILevelControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ntonf")
+
+[node name="ControlsLabelContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -6
+
+[node name="Label" type="Label" parent="ControlsLabelContainer"]
+layout_mode = 2
+text = "Press space to cycle cameras."
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="ControlsLabelContainer"]
+layout_mode = 2
+text = "Press tab to auto cycle cameras."
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ControlsLabelContainer"]
+layout_mode = 2
+text = "Press arrow keys to change scenes."
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="ControlsLabelContainer"]
+layout_mode = 2
+text = "Press F to favorite this level."
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ControlsLabelContainer"]
+layout_mode = 2
+text = "Press S to save the game and L to load"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ControlsLabelContainer"]
+layout_mode = 2
+text = "Press escape to exit the game."
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="ControlsLabelContainer"]
+layout_mode = 2
+text = "Press H to show/hide this text."
+horizontal_alignment = 1
+
+[node name="UISave" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UISave"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Press 1, 2, or 3 for which save slot or esc to cancel
+Loaded games will change to your favorited scene."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="UILabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.0862745, 1)
+text = "Controls"
+horizontal_alignment = 1
+clip_text = true

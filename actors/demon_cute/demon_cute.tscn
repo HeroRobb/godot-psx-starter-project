@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=18 format=3 uid="uid://dbc5os0fkgtc7"]
 
 [ext_resource type="Texture2D" uid="uid://ci1c01c7aq526" path="res://materials/textures/demon_blob.png" id="1_ghr2m"]
 [ext_resource type="Shader" path="res://shaders/psx_unlit.gdshader" id="1_lvmyw"]
