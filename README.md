@@ -3,7 +3,7 @@
 A base project for creating retro psx style games in the godot engine.
 
 ## Attribution
-Many of the shaders used are from [MenacingMecha's godot psx style demo](https://github.com/MenacingMecha/godot-psx-style-demo/tree/master/shaders), [AesthicalZ's Godot PSX](https://github.com/AestheticalZ/godot-psx), and [Ahopness' GodotRetro](https://github.com/Ahopness/GodotRetro) so thank them if you use this because it would have never been possible without them.
+Many of the shaders used are from [MenacingMecha's godot psx style demo](https://github.com/MenacingMecha/godot-psx-style-demo/tree/master/shaders), [AesthicalZ's Godot PSX](https://github.com/AestheticalZ/godot-psx), [Ahopness' GodotRetro](https://github.com/Ahopness/GodotRetro), and [GithubPrankster's GPSX](https://github.com/GithubPrankster/gpsx) so thank them if you use this because it would have never been possible without them.
 I also used/changed/stole/learned from tons of things from tons of different programmers and developers. I couldn't possibly list them all.
 You can attribute me for using this by keeping the default attribution in the intro if you want.
 
@@ -28,6 +28,6 @@ A lot of the scripts have formatted documentation so you can see the autodocs by
 
 
 ### GameManager
-Make sure GameManager.tscn is the main scene in your project. Open GameManager.tscn in the editor and select the Launcher, the path to it should be GameManager/PPDitherContainer/SubViewport/LevelContainer/Launcher. There are some values you can change in the editor.
+First you have to decide if you want to render your game in a subviewport or not. You can try both options by running management/game_manager_with_subviewports.tscn and management/game_manager_no_subviewports.tscn with F6 in the editor. I reccomend making the resolution 1280x720 with subviewports or 320x180 for no subviewports in the top left of the editor under project -> project settings -> display -> window -> viewport width/height. Make sure one of the GameManager scenes is the main scene in your project. In the GameManager scene, select the Launcher (the path to it should be GameManager/PPDitherContainer/SubViewport/LevelContainer/LauncherExample or GameManager/LevelContainer/LauncherExample). There are some values you can change in the editor for the GameManager involving which post-processing effects you want as a default, the framerate, etc. Many things can be changed in the editor for the Launcher as well.
 
 # TODO: the rest of the readme lol
