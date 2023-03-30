@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvyagwmgkm00v"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dxmai"]
+load_path = "res://.godot/imported/decorative.png-58f07883c9c2143dae59c57ab5b0405c.s3tc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gnug"]
+atlas = SubResource("CompressedTexture2D_dxmai")
+region = Rect2(144, 172, 16, 20)
+
+[node name="Sprite3DBarrel" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.1
+billboard = 2
+texture_filter = 0
+texture = SubResource("AtlasTexture_4gnug")

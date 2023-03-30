@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Shader" path="res://shaders/gpsx/3d/gpsx_3d_qadd.gdshader" id="2_mm8me"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uw8la"]
+size = Vector3(8, 4, 4)
+subdivide_width = 1
+subdivide_height = 1
+subdivide_depth = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8yd5"]
+render_priority = 0
+shader = ExtResource("2_mm8me")
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dithering = true
+shader_parameter/banding = true
+shader_parameter/fog = true
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/dist_fade_min = 10.0
+shader_parameter/dist_fade_max = 20.0
+shader_parameter/alpha_cutoff = 0.1
+
+[node name="WaterBox" type="Node3D"]
+
+[node name="CSGMesh" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+instance_shader_parameters/mixer = Color(0.14902, 0.619608, 0.662745, 1)
+mesh = SubResource("BoxMesh_uw8la")
+material = SubResource("ShaderMaterial_s8yd5")

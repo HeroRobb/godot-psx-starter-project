@@ -1,21 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbc5os0fkgtc7"]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Texture2D" uid="uid://ci1c01c7aq526" path="res://materials/textures/demon_blob.png" id="1_ghr2m"]
-[ext_resource type="Shader" path="res://shaders/psx_unlit.gdshader" id="1_lvmyw"]
 [ext_resource type="Script" path="res://actors/demon_cute/demon_cute.gd" id="1_ml64h"]
+[ext_resource type="Shader" path="res://shaders/gpsx/3d/gpsx_3d.gdshader" id="2_40ey2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rc2oh"]
 render_priority = 0
-shader = ExtResource("1_lvmyw")
-shader_parameter/jitter = 0.5
-shader_parameter/jitter_z_coordinate = true
-shader_parameter/jitter_depth_independent = true
-shader_parameter/affine_texture_mapping = true
-shader_parameter/alpha_scissor = 1.0
-shader_parameter/albedo_color = Color(0.592157, 0.592157, 0.592157, 1)
-shader_parameter/emission_color = Color(1, 1, 1, 1)
-shader_parameter/texture_size = Vector2(1, 1)
-shader_parameter/albedo = ExtResource("1_ghr2m")
+shader = ExtResource("2_40ey2")
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dithering = true
+shader_parameter/banding = true
+shader_parameter/fog = true
+shader_parameter/fog_color = Color(0.694118, 0.788235, 1, 1)
+shader_parameter/dist_fade_min = 10.0
+shader_parameter/dist_fade_max = 30.0
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/tex = ExtResource("1_ghr2m")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wpj5e"]
 resource_name = "DemonCute_Cube001"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbychmkacijcm"]
+
+[ext_resource type="Texture2D" uid="uid://sk2w5b38nhgt" path="res://materials/textures/decorative.png" id="1_shg8f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bpij"]
+atlas = ExtResource("1_shg8f")
+region = Rect2(17, 16, 13, 48)
+
+[node name="Sprite3DPillar" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44301, 0)
+pixel_size = 0.1
+billboard = 2
+texture_filter = 0
+texture = SubResource("AtlasTexture_7bpij")

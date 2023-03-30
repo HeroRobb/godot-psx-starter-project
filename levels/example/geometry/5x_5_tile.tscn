@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://4aht5rhrpxho"]
+[gd_scene load_steps=5 format=3 uid="uid://djbdcyxoi76xn"]
 
-[ext_resource type="Shader" path="res://shaders/psx_unlit.gdshader" id="1_gb1bw"]
+[ext_resource type="Shader" path="res://shaders/gpsx/3d/gpsx_3d.gdshader" id="1_r4pcc"]
 [ext_resource type="Texture2D" uid="uid://bufvgxxobu8o6" path="res://materials/textures/Tiles012_1K_Color.jpg" id="2_of6tf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cuwit"]
 render_priority = 0
-shader = ExtResource("1_gb1bw")
-shader_parameter/jitter = 0.5
-shader_parameter/jitter_z_coordinate = true
-shader_parameter/jitter_depth_independent = true
-shader_parameter/affine_texture_mapping = true
-shader_parameter/alpha_scissor = 1.0
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_color = Color(1, 1, 1, 1)
-shader_parameter/texture_size = Vector2(1, 1)
-shader_parameter/albedo = ExtResource("2_of6tf")
+shader = ExtResource("1_r4pcc")
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dithering = true
+shader_parameter/banding = true
+shader_parameter/fog = true
+shader_parameter/fog_color = Color(0.694118, 0.788235, 1, 1)
+shader_parameter/dist_fade_min = 10.0
+shader_parameter/dist_fade_max = 30.0
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/tex = ExtResource("2_of6tf")
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxcn"]
 material = SubResource("ShaderMaterial_cuwit")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Shader" path="res://shaders/gpsx/3d/gpsx_3d.gdshader" id="1_nq11h"]
+[ext_resource type="Texture2D" uid="uid://ixemw6m2rw56" path="res://materials/textures/tile.png" id="2_03cgs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lpmdv"]
+size = Vector3(2, 2, 2)
+subdivide_width = 1
+subdivide_height = 1
+subdivide_depth = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csdgi"]
+render_priority = 0
+shader = ExtResource("1_nq11h")
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dithering = true
+shader_parameter/banding = true
+shader_parameter/fog = true
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/dist_fade_min = 15.0
+shader_parameter/dist_fade_max = 20.0
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/tex = ExtResource("2_03cgs")
+
+[node name="WallDungeon1x2" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+mesh = SubResource("BoxMesh_lpmdv")
+material = SubResource("ShaderMaterial_csdgi")

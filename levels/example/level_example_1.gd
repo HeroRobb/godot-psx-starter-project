@@ -4,6 +4,7 @@ extends Level
 enum CAMERA_IDS {
 	SPINNING,
 	SIDE,
+	UP,
 	TOP,
 }
 
@@ -20,10 +21,12 @@ var _transitioning_camera: bool = false
 @onready var _camera_pivot: Node3D = %SpinningCameraPivot
 @onready var _camera_spinning: Camera3D = _camera_pivot.get_child(0)
 @onready var _camera_side: Camera3D = %CameraSide
+@onready var _camera_up: Camera3D = %CameraUp
 @onready var _camera_top: Camera3D = %CameraTop
 @onready var _cameras: Dictionary = {
 	CAMERA_IDS.SPINNING: _camera_spinning,
 	CAMERA_IDS.SIDE: _camera_side,
+	CAMERA_IDS.UP: _camera_up,
 	CAMERA_IDS.TOP: _camera_top,
 }
 @onready var _ui_level_controls: UILevelControls = $UILevelControls

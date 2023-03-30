@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxx63vu3xoado"]
+
+[ext_resource type="Script" path="res://levels/example/geometry/geometry_example_1.gd" id="1_h7aop"]
+[ext_resource type="PackedScene" uid="uid://djbdcyxoi76xn" path="res://levels/example/geometry/5x_5_tile.tscn" id="2_jagab"]
+
+[node name="GeometryExample1" type="Node3D"]
+script = ExtResource("1_h7aop")
+
+[node name="5x5Tile" parent="." instance=ExtResource("2_jagab")]
+
+[node name="Ceiling" parent="." instance=ExtResource("2_jagab")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 20, 0)
+visible = false
+
+[node name="5x5Tile2" parent="." instance=ExtResource("2_jagab")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 10, 0)
+
+[node name="5x5Tile3" parent="." instance=ExtResource("2_jagab")]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, -10, 10, 0)
+
+[node name="5x5Tile4" parent="." instance=ExtResource("2_jagab")]
+transform = Transform3D(1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1.31134e-07, 1, -4.37114e-08, -1, 1.31134e-07, 0, 10, 10)
+
+[node name="5x5Tile5" parent="." instance=ExtResource("2_jagab")]
+transform = Transform3D(-1, 1.31134e-07, -4.37114e-08, -4.37114e-08, 1.31134e-07, 1, 1.31134e-07, 1, -1.31134e-07, 0, 10, -10)
+
+[node name="5x5Tile6" parent="." instance=ExtResource("2_jagab")]
+transform = Transform3D(-1, 1.31134e-07, -4.37114e-08, -4.37114e-08, 1.31134e-07, 1, 1.31134e-07, 1, -1.31134e-07, 0, 10, -10)
