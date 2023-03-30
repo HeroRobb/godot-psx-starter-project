@@ -21,37 +21,52 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -6
 
-[node name="Label" type="Label" parent="ControlsLabelContainer"]
+[node name="CycleCamerasLabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Press space to cycle cameras."
 horizontal_alignment = 1
 
-[node name="Label7" type="Label" parent="ControlsLabelContainer"]
+[node name="AutoCycleCamerasLabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Press tab to auto cycle cameras."
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="ControlsLabelContainer"]
+[node name="ShowOutsideUILabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Press U to show outside UI"
+horizontal_alignment = 1
+
+[node name="ChangeSceneLabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Press arrow keys to change scenes."
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="ControlsLabelContainer"]
+[node name="FavoriteLevelLabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Press F to favorite this level."
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="ControlsLabelContainer"]
+[node name="SaveLoadLabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Press S to save the game and L to load"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="ControlsLabelContainer"]
+[node name="ExitGameLabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Press escape to exit the game."
 horizontal_alignment = 1
 
-[node name="Label6" type="Label" parent="ControlsLabelContainer"]
+[node name="HideUILabel" type="Label" parent="ControlsLabelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Press H to show/hide this text."
 horizontal_alignment = 1
