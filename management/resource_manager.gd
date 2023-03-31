@@ -189,7 +189,7 @@ func load_game(save_slot: int) -> void:
 		return
 	
 	_data = loaded_data
-	SignalManager.emit_signal("game_save_loaded")
+	SignalManager.game_save_load_finished.emit()
 
 
 func add_global_data(data_id: String, data_value) -> void:

@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://f7pfxvhux3gh" path="res://levels/level.tscn" id="1_p6i4b"]
 [ext_resource type="Script" path="res://levels/example/level_example_2.gd" id="2_7xdr3"]
-[ext_resource type="PackedScene" uid="uid://cj3e8vmdbr5rn" path="res://levels/example/geometry/geometry_example_2.tscn" id="3_rxxrd"]
+[ext_resource type="PackedScene" path="res://levels/example/geometry/geometry_example_2.tscn" id="3_rxxrd"]
 [ext_resource type="PackedScene" uid="uid://ebtmki4hbuka" path="res://ui/ui_level_controls.tscn" id="4_2pg6w"]
 
 [node name="LevelExample2" instance=ExtResource("1_p6i4b")]
 script = ExtResource("2_7xdr3")
+level_id = 3
 use_default_shaders = false
 starting_music_id = 2
 

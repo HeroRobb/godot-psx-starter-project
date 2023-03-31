@@ -60,11 +60,20 @@ func _activate_shaders() -> void:
 		SignalManager.pp_enabled_changed.emit(shader, true)
 
 
-func _on_camera_transition_finished() -> void:
-	_transition_to_next_camera()
-
-
 func _connect_signals() -> void:
 	super()
 	_ui_level_controls.next_scene_requested.connect(change_to_next_scene)
 	_ui_level_controls.favorite_scene_requested.connect(favorite_scene)
+	SignalManager.game_save_load_finished.connect(_on_game_save_loaded)
+
+
+func _on_camera_transition_finished() -> void:
+	_transition_to_next_camera()
+
+
+func _on_game_save_loaded() -> void:
+	var favorite_scene_id: Global.LEVELS = ResourceManager.get_global_data("favorite_scene")
+	if not favorite_scene_id:
+		favorite_scene_id = Global.LEVELS.TEST
+	
+	SignalManager.change_scene_requested.emit(favorite_scene_id)

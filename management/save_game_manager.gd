@@ -73,7 +73,7 @@ func _create_new_metadata() -> void:
 
 func _get_metadata() -> Resource:
 	var metadata_path: String = _get_metadata_path()
-	if not ResourceLoader.exists(metadata_path, METADATA_EXTENSION):
+	if not ResourceLoader.exists(metadata_path):
 		_create_new_metadata()
 	
 	return ResourceLoader.load(metadata_path)
