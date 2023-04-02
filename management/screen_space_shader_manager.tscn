@@ -61,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_lt262")
 
 [node name="GrainBuffer" type="BackBufferCopy" parent="."]
@@ -80,6 +81,7 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="SharpnessBuffer" type="BackBufferCopy" parent="."]
 visible = false
@@ -98,6 +100,7 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorPrecisionBuffer" type="BackBufferCopy" parent="."]
 visible = false
@@ -116,6 +119,7 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="BlurBuffer" type="BackBufferCopy" parent="."]
 visible = false
@@ -134,6 +138,7 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="GlitchBuffer" type="BackBufferCopy" parent="."]
 visible = false
@@ -152,6 +157,7 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VHSBuffer" type="BackBufferCopy" parent="."]
 visible = false
@@ -170,6 +176,7 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CRTBuffer" type="BackBufferCopy" parent="."]
 visible = false
@@ -188,3 +195,4 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
