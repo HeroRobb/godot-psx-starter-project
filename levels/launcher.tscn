@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dud7cgk12ctah"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://levels/launcher.gd" id="1_8lxr4"]
-[ext_resource type="Script" path="res://levels/tool_color_rect.gd" id="2_2nvc5"]
+[ext_resource type="Script" path="res://tools/tool_color_rect.gd" id="2_2nvc5"]
 [ext_resource type="PackedScene" uid="uid://ckw4dv0xxi1wh" path="res://ui/menu_selection_container.tscn" id="2_sqnwx"]
 [ext_resource type="PackedScene" uid="uid://d32vr0askpuce" path="res://ui/menu_selection.tscn" id="3_p5070"]
 

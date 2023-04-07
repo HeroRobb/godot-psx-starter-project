@@ -3,7 +3,7 @@
 A base project for creating retro psx style games in the godot engine.
 
 ## Attribution
-Many of the shaders used are from [MenacingMecha's godot psx style demo](https://github.com/MenacingMecha/godot-psx-style-demo/tree/master/shaders), [AesthicalZ's Godot PSX](https://github.com/AestheticalZ/godot-psx), [Ahopness' GodotRetro](https://github.com/Ahopness/GodotRetro), and [GithubPrankster's GPSX](https://github.com/GithubPrankster/gpsx) so thank them if you use this because it would have never been possible without them.
+Many of the shaders used are from [MenacingMecha's godot psx style demo](https://github.com/MenacingMecha/godot-psx-style-demo/tree/master/shaders), [AesthicalZ's Godot PSX](https://github.com/AestheticalZ/godot-psx), [Ahopness' GodotRetro](https://github.com/Ahopness/GodotRetro), and [GithubPrankster's GPSX](https://github.com/GithubPrankster/gpsx) so thank them if you use this because it would have never been possible without them. In addition, player_trigger.gd is heavily based on [GameDev Compass](https://github.com/Reun-Media/gamedev-compass).
 I also used/changed/stole/learned from tons of things from tons of different programmers and developers. I couldn't possibly list them all.
 You can attribute me for using this by keeping the default attribution in the intro if you want.
 
@@ -11,6 +11,8 @@ You can attribute me for using this by keeping the default attribution in the in
 ![screenshot1](readme_screenshots/Screenshot1.png?raw=true)
 ![screenshot2](readme_screenshots/Screenshot2.png?raw=true)
 ![screenshot3 lol this one has a screen capture notification](readme_screenshots/Screenshot3.png?raw=true)
+![screenshot4](readme_screenshots/Screenshot4.png?raw=true)
+
 
 ## how to use this project
 
