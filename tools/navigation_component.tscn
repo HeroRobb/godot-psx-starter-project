@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7kod5n02sgti"]
+
+[ext_resource type="Script" path="res://tools/navigation_component.gd" id="1_lickq"]
+
+[node name="NavigationComponent" type="Node3D"]
+script = ExtResource("1_lickq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
