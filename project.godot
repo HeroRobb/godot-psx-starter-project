@@ -33,8 +33,8 @@ ResourceManager="*res://management/resource_manager.tscn"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/resizable=false
-window/vsync/vsync_mode=0
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -147,7 +147,7 @@ locale/translations_pot_files=PackedStringArray("res://dialogues/main.dialogue",
 
 [rendering]
 
-textures/decals/filter=0
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
+textures/decals/filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
