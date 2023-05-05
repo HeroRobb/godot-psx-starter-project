@@ -1,5 +1,5 @@
-class_name HurtboxComponent3D
-extends Area3D
+class_name HurtboxComponent2D
+extends Area2D
 
 
 signal hit_taken
@@ -27,7 +27,9 @@ func _ready() -> void:
 
 
 func take_hit(damage_source: DamageSource) -> void:
-	_health_component.take_damage(damage_source)
+	if damage_source:
+		_health_component.take_damage(damage_source)
+	
 	hit_taken.emit()
 
 
@@ -36,9 +38,9 @@ func check_for_damage() -> void:
 	var damage_done := false
 	
 	for area in possible_damage_areas:
-		if not area is HitboxComponent3D:
+		if not area is HitboxComponent2D:
 			continue
-		var hitbox: HitboxComponent3D = area
+		var hitbox: HitboxComponent2D = area
 		hitbox.give_hit()
 		take_hit(hitbox.damage_source)
 		
@@ -65,10 +67,10 @@ func _initialize_collision() -> void:
 			collision_mask = 24
 
 
-func _on_area_entered(area: Area3D) -> void:
-	if not area is HitboxComponent3D:
+func _on_area_entered(area: Area2D) -> void:
+	if not area is HitboxComponent2D:
 		return
 	
-	var hitbox: HitboxComponent3D = area
+	var hitbox: HitboxComponent2D = area
 	hitbox.give_hit()
 	take_hit(hitbox.damage_source)

@@ -1,26 +1,26 @@
-class_name MovementComponent3D
+class_name MovementComponent2D
 extends Node
 
 enum MOVEMENT_TYPES {
-	SLIDE,
-	COLLIDE,
+	SIDE_SCROLLING,
+	TOP_DOWN,
 }
 
 @export var body_path: NodePath
-@export var mesh_component_path: NodePath
-@export_range(0.5, 50.0, 0.5) var max_speed: float = 2.0
-@export_range(0.1, 20.0, 0.1) var acceleration: float = 1.0
-@export_range(0.5, 20.0, 0.5) var friction: float = 10.0
+@export var sprite_component_path: NodePath
+@export_range(0.5, 100.0, 0.5) var max_speed: float = 100.0
+@export_range(0.1, 20.0, 0.1) var acceleration: float = 10.0
+@export_range(0.5, 20.0, 0.5) var friction: float = 15.0
 @export var ground_gravity: float = -0.1
 @export var air_gravity := -9.8
-@export var movement_type: MOVEMENT_TYPES = MOVEMENT_TYPES.SLIDE
+@export var movement_type: MOVEMENT_TYPES = MOVEMENT_TYPES.SIDE_SCROLLING
 
-var velocity: Vector3 = Vector3.ZERO
+var velocity: Vector2 = Vector2.ZERO
 var speed_multiplier: float = 1.0
 
 var _stopped: bool = false
-var _body: CharacterBody3D
-var _mesh_component: MeshComponent
+var _body: CharacterBody2D
+var _sprite_component: SpriteComponent
 
 @onready var _stopped_timer: Timer = $StoppedTimer
 
@@ -29,27 +29,28 @@ func _ready() -> void:
 	assert(body_path)
 	_body = get_node(body_path)
 	
-	if mesh_component_path:
-		_mesh_component = get_node(mesh_component_path)
+	if sprite_component_path:
+		_sprite_component = get_node(sprite_component_path)
 
 
 func _physics_process(delta: float) -> void:
-	_apply_gravity(delta)
+	if movement_type == MOVEMENT_TYPES.SIDE_SCROLLING:
+		_apply_gravity(delta)
 
 
-func move(direction: Vector3, delta: float):
-	var max_velocity: Vector3 = max_speed * direction
-	velocity = _body.velocity.lerp(max_speed * direction * delta, acceleration * delta)
+func move(direction: Vector2, delta: float):
+	var max_velocity: Vector2 = max_speed * direction
+	velocity = _body.velocity.lerp(max_speed * direction, acceleration * delta)
 	_body.velocity = velocity
 	return _apply_velocity()
 
 
-func move_to(target_location: Vector3, delta: float):
+func move_to(target_location: Vector2, delta: float):
 	if not _body:
 		return
 	
 	if _stopped:
-		velocity = Vector3.ZERO
+		velocity = Vector2.ZERO
 	else:
 		velocity = _body.velocity
 	
@@ -57,14 +58,18 @@ func move_to(target_location: Vector3, delta: float):
 	var weight: float
 	
 	if _body.global_position.distance_squared_to(target_location) < 0.01:
+		_sprite_component.moving = false
 		weight = friction
 	else:
+		_sprite_component.moving = true
 		weight = acceleration
 	
 	_body.velocity = lerp(_body.velocity, max_speed * direction * speed_multiplier, weight * delta)
 	
-	if _mesh_component:
-		_mesh_component.turn(velocity, delta)
+	if _sprite_component:
+#		_sprite_component.turn(velocity, delta)
+		
+		_sprite_component.face(velocity.normalized())
 	
 	return _apply_velocity()
 
@@ -85,10 +90,11 @@ func stop(length_seconds: float = 1.0) -> void:
 
 
 func _apply_velocity():
-	if movement_type == MOVEMENT_TYPES.SLIDE:
-		_body.move_and_slide()
-	elif movement_type == MOVEMENT_TYPES.COLLIDE:
-		return _body.move_and_collide(_body.velocity)
+	_body.move_and_slide()
+#	if movement_type == MOVEMENT_TYPES.SIDE_SCROLLING:
+#		_body.move_and_slide()
+#	elif movement_type == MOVEMENT_TYPES.COLLIDE:
+#		return _body.move_and_collide(_body.velocity)
 
 
 func _apply_gravity(delta: float) -> void:

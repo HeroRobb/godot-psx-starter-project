@@ -1,5 +1,5 @@
-class_name HitboxComponent3D
-extends Area3D
+class_name HitboxComponent2D
+extends Area2D
 
 
 signal hit_limit_reached()
@@ -7,10 +7,11 @@ signal hit_limit_reached()
 enum HURTBOX_TYPES {
 	FRIENDLY,
 	ENEMY,
-	BOTH
+	BOTH,
+	NEITHER,
 }
 
-@export var can_damage: HURTBOX_TYPES = HURTBOX_TYPES.FRIENDLY
+@export var can_damage: HURTBOX_TYPES = HURTBOX_TYPES.NEITHER : set = set_can_damage
 @export var max_hits: int = 1
 @export var damage_source: DamageSource
 
@@ -42,6 +43,11 @@ func set_enabled(new_enabled: bool) -> void:
 		collision_layer = 0
 
 
+func set_can_damage(new_can_damage: HURTBOX_TYPES) -> void:
+	can_damage = new_can_damage
+	_initialize_collision()
+
+
 func set_hits_given(new_hits_given: int) -> void:
 	hits_given = new_hits_given
 	
@@ -52,6 +58,7 @@ func set_hits_given(new_hits_given: int) -> void:
 
 func _initialize_collision() -> void:
 	collision_mask = 0
+	collision_layer = 0
 	
 	match can_damage:
 		HURTBOX_TYPES.FRIENDLY:

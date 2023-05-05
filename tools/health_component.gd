@@ -9,6 +9,7 @@ signal health_reached_zero()
 
 var current_health: int : set = set_current_health
 var invincible: bool = false
+
 var _previous_health: int
 
 
@@ -23,7 +24,8 @@ func heal(heal_amount: int) -> void:
 func take_damage(damage_source: DamageSource) -> void:
 	if invincible:
 		return
-	set_current_health(current_health - damage_source.damage)
+	var damage_amount: int = current_health - damage_source.damage
+	set_current_health(damage_amount)
 
 
 func set_current_health(new_current_health: int) -> void:
@@ -41,6 +43,10 @@ func set_max_health(new_max_health: int) -> void:
 	
 	if current_health > max_health:
 		current_health = max_health
+
+
+func update_health() -> void:
+	set_current_health(current_health)
 
 
 func _initialize_health() -> void:

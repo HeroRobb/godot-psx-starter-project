@@ -4,7 +4,7 @@ extends Node3D
 
 signal flashing_finished()
 
-const FLASH_LENGTH: float = 0.1
+const FLASH_LENGTH: float = 0.05
 
 @export_range(2.0, 10.0, 0.25) var angular_acceleration: float = 4.0
 
@@ -12,15 +12,11 @@ const FLASH_LENGTH: float = 0.1
 
 
 func turn(velocity: Vector3, delta: float) -> void:
-	if get_horizontal_speed(velocity) > 0.1:
+	if _get_horizontal_speed(velocity) > 0.1:
 		rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * angular_acceleration)
 
 
-func get_horizontal_speed(velocity: Vector3) -> float:
-	return Vector2(velocity.x, velocity.z).length()
-
-
-func flash(flash_time: float) -> void:
+func flash(flash_time: float, bright_flash: bool = true) -> void:
 	while flash_time > FLASH_LENGTH * 2:
 		visible = not visible
 		_flash_timer.start(FLASH_LENGTH)
@@ -32,3 +28,11 @@ func flash(flash_time: float) -> void:
 	await(_flash_timer.timeout)
 	visible = true
 	flashing_finished.emit()
+
+
+func rotate_degrees(rotation_degree_vector: Vector3, delta: float) -> void:
+	rotation += rotation_degree_vector * delta
+
+
+func _get_horizontal_speed(velocity: Vector3) -> float:
+	return Vector2(velocity.x, velocity.z).length()
