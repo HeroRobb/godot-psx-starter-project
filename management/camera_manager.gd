@@ -5,18 +5,19 @@ extends Node
 ##
 ## This node is intended to be used in conjunction with the autoload singleton
 ## [SignalMngr] in res://management from HR PSX. Use the signals
-## camera_cut_needed, camera_transition_needed, camera_transition_needed,
-## camera_return_cut_needed, and camera_return_transition_needed to use this
+## camera_cut_requested, camera_transition_requested, camera_transition_requested,
+## camera_return_cut_requested, and camera_return_transition_requested to use this
 ## node wherever it is. For base functionality, add cameras in the various
 ## places you would need them in a level and use those signals in your level
 ## logic.
 
 
 var _transitioning: bool = false
-var _main_camera: Camera3D
+var _main_camera: Camera3D: set = _set_main_camera
 var _previous_camera: Camera3D
 
-@onready var trans_camera: Camera3D = $TransCamera
+@onready var _trans_camera: Camera3D = $TransCamera
+@onready var _screenshake: Screenshake = $Screenshake
 
 
 func _ready() -> void:
@@ -27,7 +28,7 @@ func _ready() -> void:
 
 
 ## This function does a hard cut to the to_camera, essentially making the
-## to_camera current. It is intended to be used with the camera_cut_needed
+## to_camera current. It is intended to be used with the camera_cut_requested
 ## signal from res://management/SignalManager.gd when SignalManager is an
 ## autoload singleton.
 func cut_to_camera(to_camera: Camera3D) -> void:
@@ -43,28 +44,30 @@ func cut_to_camera(to_camera: Camera3D) -> void:
 ## duration_seconds to finish. After the camera has fully transitioned,
 ## SignalManager will emit the camera_transition_finished signal.
 func transition_to_camera(to_camera: Camera3D, duration_seconds: float = 1.0) -> void:
-	if _transitioning: return
+	if _transitioning or to_camera == _main_camera: return
 	
-	trans_camera.fov = _main_camera.fov
-	trans_camera.cull_mask = _main_camera.cull_mask
+	_trans_camera.fov = _main_camera.fov
+	_trans_camera.cull_mask = _main_camera.cull_mask
 	
-	trans_camera.global_transform = _main_camera.global_transform
+	_trans_camera.global_transform = _main_camera.global_transform
 	
 	_main_camera.current = false
-	trans_camera.current = true
+	_trans_camera.current = true
+	_screenshake.camera = _trans_camera
 	
 	_transitioning = true
 	
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_parallel()
-	tween.tween_property(trans_camera, "global_transform", to_camera.global_transform, duration_seconds)
-	tween.tween_property(trans_camera, "fov", to_camera.fov, duration_seconds)
+	tween.tween_property(_trans_camera, "global_transform", to_camera.global_transform, duration_seconds)
+	tween.tween_property(_trans_camera, "fov", to_camera.fov, duration_seconds)
 	
 	await tween.finished
 	
-	to_camera.current = true
 	_main_camera = to_camera
+	await get_tree().process_frame
+	to_camera.current = true
 	_transitioning = false
 	SignalManager.camera_transition_finished.emit()
 
@@ -88,3 +91,8 @@ func return_transition(duration_seconds: float = 1.0) -> void:
 		return
 	
 	transition_to_camera(_previous_camera, duration_seconds)
+
+
+func _set_main_camera(new_main_camera) -> void:
+	_main_camera = new_main_camera
+	_screenshake.camera = _main_camera

@@ -36,7 +36,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 4
 
 [node name="CameraUp" type="Camera3D" parent="CameraContainer" index="2"]
 unique_name_in_owner = true
-transform = Transform3D(-0.707107, 0.241845, 0.664463, 0, 0.939693, -0.34202, -0.707107, -0.241845, -0.664463, 9, 2, -9)
+transform = Transform3D(-0.707107, 0.241845, 0.664463, 0, 0.939693, -0.34202, -0.707107, -0.241845, -0.664463, 8.19663, 2, -8.5392)
 
 [node name="CameraTop" type="Camera3D" parent="CameraContainer" index="3"]
 unique_name_in_owner = true
