@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://f7pfxvhux3gh"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1"]
 [ext_resource type="Script" path="res://levels/player_container.gd" id="4"]
 [ext_resource type="Script" path="res://levels/area_container.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://cchk5cc6gsdpr" path="res://management/camera_manager.tscn" id="5_fnww5"]
+[ext_resource type="PackedScene" path="res://management/camera_manager_3d.tscn" id="5_fnww5"]
 [ext_resource type="Script" path="res://levels/npc_container.gd" id="6"]
 [ext_resource type="Script" path="res://management/game_state_saver.gd" id="7"]
 

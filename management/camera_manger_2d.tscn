@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbe1g43ijie0r"]
+
+[ext_resource type="Script" path="res://management/camera_manger_2d.gd" id="1_sx88o"]
+[ext_resource type="Script" path="res://tools/screenshake.gd" id="2_mya10"]
+
+[node name="CameraManger2D" type="Node"]
+script = ExtResource("1_sx88o")
+
+[node name="TransCamera" type="Camera2D" parent="."]
+
+[node name="Screenshake" type="Node" parent="."]
+script = ExtResource("2_mya10")

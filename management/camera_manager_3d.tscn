@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://npfmcnm5aag"]
+
+[ext_resource type="Script" path="res://management/camera_manager_3d.gd" id="1_3adj6"]
+[ext_resource type="Script" path="res://tools/screenshake.gd" id="2_mqwed"]
+
+[node name="CameraManager3D" type="Node"]
+script = ExtResource("1_3adj6")
+
+[node name="TransCamera" type="Camera3D" parent="."]
+
+[node name="Screenshake" type="Node" parent="."]
+script = ExtResource("2_mqwed")

@@ -1,4 +1,4 @@
-class_name CameraManager
+class_name CameraManager2D
 extends Node
 
 ## A node included in HR PSX for easy camera cuts and smooth camera transitions
@@ -13,10 +13,10 @@ extends Node
 
 
 var _transitioning: bool = false
-var _main_camera: Camera3D: set = _set_main_camera
-var _previous_camera: Camera3D
+var _main_camera: Camera2D: set = _set_main_camera
+var _previous_camera: Camera2D
 
-@onready var _trans_camera: Camera3D = $TransCamera
+@onready var _trans_camera: Camera2D = $TransCamera
 @onready var _screenshake: Screenshake = $Screenshake
 
 
@@ -31,7 +31,7 @@ func _ready() -> void:
 ## to_camera current. It is intended to be used with the camera_cut_requested
 ## signal from res://management/SignalManager.gd when SignalManager is an
 ## autoload singleton.
-func cut_to_camera(to_camera: Camera3D) -> void:
+func cut_to_camera(to_camera: Camera2D) -> void:
 	_previous_camera = _main_camera
 	_main_camera = to_camera
 	
@@ -43,7 +43,7 @@ func cut_to_camera(to_camera: Camera3D) -> void:
 ## This function does a smooth transition to the to_camera taking
 ## duration_seconds to finish. After the camera has fully transitioned,
 ## SignalManager will emit the camera_transition_finished signal.
-func transition_to_camera(to_camera: Camera3D, duration_seconds: float = 1.0) -> void:
+func transition_to_camera(to_camera: Camera2D, duration_seconds: float = 1.0) -> void:
 	if _transitioning or to_camera == _main_camera: return
 	
 	_trans_camera.fov = _main_camera.fov
