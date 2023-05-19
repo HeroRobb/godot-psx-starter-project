@@ -1,5 +1,5 @@
-class_name PlayerDetector
-extends Area3D
+class_name PlayerDetector2D
+extends Area2D
 
 
 signal player_entered()

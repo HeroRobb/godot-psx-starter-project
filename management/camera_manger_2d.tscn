@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbe1g43ijie0r"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://management/camera_manger_2d.gd" id="1_sx88o"]
-[ext_resource type="Script" path="res://tools/screenshake.gd" id="2_mya10"]
+[ext_resource type="Script" path="res://tools/entity_components/general/screenshake.gd" id="2_mya10"]
 
 [node name="CameraManger2D" type="Node"]
 script = ExtResource("1_sx88o")
