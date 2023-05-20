@@ -10,42 +10,39 @@ enum HITBOX_SOURCES {
 	BOTH,
 }
 
-@export var health_component_path: NodePath
+@export var _health_component: HealthComponent
 @export var can_take_hits_from: HITBOX_SOURCES = HITBOX_SOURCES.FRIENDLY
+@export var _debug: bool = false
 
 var enabled: bool = true : set = set_enabled
-
-var _health_component: HealthComponent
+var _overlapping_hitbox_components: Array[HitboxComponent2D]
 
 
 func _ready() -> void:
-	if health_component_path:
-		_health_component = get_node(health_component_path)
-	
 	_initialize_collision()
 	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
 
 
 func take_hit(damage_source: DamageSource) -> void:
-	if damage_source:
-		_health_component.take_damage(damage_source)
-	
 	hit_taken.emit()
+	
+	if not damage_source: return
+	if not _health_component: return
+	
+	_health_component.take_damage(damage_source)
 
 
 func check_for_damage() -> void:
-	var possible_damage_areas = get_overlapping_areas()
+	if _debug: breakpoint
+	
 	var damage_done := false
 	
-	for area in possible_damage_areas:
-		if not area is HitboxComponent2D:
-			continue
-		var hitbox: HitboxComponent2D = area
+	for hitbox in _overlapping_hitbox_components:
 		hitbox.give_hit()
 		take_hit(hitbox.damage_source)
 		
-		if damage_done:
-			break
+		if damage_done: break
 
 
 func set_enabled(new_enabled: bool) -> void:
@@ -68,9 +65,22 @@ func _initialize_collision() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if not area is HitboxComponent2D:
-		return
+	if _debug: breakpoint
+	
+	if not area is HitboxComponent2D: return
 	
 	var hitbox: HitboxComponent2D = area
+	
+	_overlapping_hitbox_components.append(hitbox)
 	hitbox.give_hit()
 	take_hit(hitbox.damage_source)
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if _debug: breakpoint
+	
+	if not area is HitboxComponent2D: return
+	if not _overlapping_hitbox_components.has(area): return
+	
+	var hitbox: HitboxComponent2D = area
+	_overlapping_hitbox_components.erase(hitbox)
