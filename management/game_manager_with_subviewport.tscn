@@ -13,6 +13,7 @@ shader_parameter/dithering = false
 shader_parameter/resolution_scale = 4
 
 [node name="GameManager" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,6 +41,7 @@ render_target_update_mode = 4
 
 [node name="LevelContainer" type="Node" parent="PPDitherContainer/SubViewport"]
 unique_name_in_owner = true
+process_mode = 1
 
 [node name="LauncherExample" parent="PPDitherContainer/SubViewport/LevelContainer" instance=ExtResource("3_mfsm3")]
 background_color = Color(0, 0, 0, 1)
