@@ -6,8 +6,8 @@ enum MOVEMENT_TYPES {
 	COLLIDE,
 }
 
-@export var body_path: NodePath
-@export var mesh_component_path: NodePath
+@export var _body: CharacterBody3D
+@export var _mesh_component: MeshComponent
 @export_range(0.5, 50.0, 0.5) var max_speed: float = 2.0
 @export_range(0.1, 20.0, 0.1) var acceleration: float = 1.0
 @export_range(0.5, 20.0, 0.5) var friction: float = 10.0
@@ -19,18 +19,12 @@ var velocity: Vector3 = Vector3.ZERO
 var speed_multiplier: float = 1.0
 
 var _stopped: bool = false
-var _body: CharacterBody3D
-var _mesh_component: MeshComponent
 
 @onready var _stopped_timer: Timer = $StoppedTimer
 
 
 func _ready() -> void:
-	assert(body_path)
-	_body = get_node(body_path)
-	
-	if mesh_component_path:
-		_mesh_component = get_node(mesh_component_path)
+	assert(_body, "MovementComponent3D has no physics body set.")
 
 
 func _physics_process(delta: float) -> void:
