@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://01gg1ueq130l"]
+
+[ext_resource type="Script" path="res://levels/objects/pickup_experience/pickup_experience.gd" id="1_6kj5l"]
+[ext_resource type="Texture2D" uid="uid://cq0t5dlkty4n8" path="res://levels/objects/pickup_experience/ArtifactOutline 2.png" id="1_dcwpd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bv8f0"]
+radius = 4.0
+
+[node name="ExperiencePickup" type="Node2D"]
+script = ExtResource("1_6kj5l")
+
+[node name="AreaScanner" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaScanner"]
+shape = SubResource("CircleShape2D_bv8f0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_dcwpd")

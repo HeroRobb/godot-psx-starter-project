@@ -40,7 +40,7 @@ var _current_ambience_id: int
 @onready var _player_container: PlayerContainer = $PlayerContainer
 @onready var _geometry_container: Node3D = $GeometryContainer
 @onready var _area_container: AreaContainer = $AreaContainer
-@onready var _camera_manager: CameraManager = $CameraManager
+@onready var _camera_manager: CameraManager3D = $CameraManager
 
 
 func _ready() -> void:
@@ -54,6 +54,10 @@ func _ready() -> void:
 		SignalManager.pp_default_shaders_enabled_changed.emit(true)
 	else:
 		SignalManager.pp_all_disabled.emit()
+
+
+func reload_level() -> void:
+	SignalManager.change_scene_requested.emit(level_id)
 
 
 func _connect_signals() -> void:

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tools/entity_components/3d/mesh_component.gd" id="1_lc1pa"]
+
+
+[node name="MeshComponent" type="Node3D"]
+script = ExtResource("1_lc1pa")
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

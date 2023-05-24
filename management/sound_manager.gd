@@ -73,10 +73,12 @@ func play_letter(letter: String, volume: float = 0.0, pitch: float = 1.0) -> voi
 
 
 func stop_music(fade: bool = true) -> void:
+	current_music_id = Global.MUSIC.NONE
 	_stop_sounds_type(Global.SOUND_TYPES.MUSIC, fade)
 
 
 func stop_ambience(fade: bool = true) -> void:
+	current_ambience_id = Global.AMBIENCES.NONE
 	_stop_sounds_type(Global.SOUND_TYPES.AMBIENCE, fade)
 
 
@@ -153,9 +155,9 @@ func _stop_sounds_type(sound_players_group_id: int, fade: bool = false) -> void:
 		fade_out_tween.tween_callback(_stop_player.bind(audio_player))
 
 
-func _get_available_audio_player(sound_player_group_id: int) -> AudioStreamPlayer:
+func _get_available_audio_player(sound_player_group_id: Global.SOUND_TYPES) -> AudioStreamPlayer:
 	var possible_sound_players: Array = _sound_player_groups[sound_player_group_id]
-
+	
 	for sound_player in possible_sound_players:
 		if not sound_player.playing:
 			return sound_player
@@ -173,6 +175,20 @@ func _get_audio_players_in_use(sound_player_group_id: int) -> Array:
 			active_sound_players.append(sound_player)
 	
 	return active_sound_players
+
+
+func _change_pitch_on_all_players(time_scale: float) -> void:
+	for sound_player in _sound_player_groups[Global.SOUND_TYPES.SFX]:
+		var sfx_player: AudioStreamPlayer = sound_player
+		sfx_player.pitch_scale = time_scale
+	
+	for sound_player in _sound_player_groups[Global.SOUND_TYPES.MUSIC]:
+		var music_player: AudioStreamPlayer = sound_player
+		music_player.pitch_scale = time_scale
+	
+	for sound_player in _sound_player_groups[Global.SOUND_TYPES.AMBIENCE]:
+		var ambience_player: AudioStreamPlayer = sound_player
+		ambience_player.pitch_scale = time_scale
 
 
 func _initialize_sounds() -> void:
@@ -249,6 +265,7 @@ func _connect_signals() -> void:
 	SignalManager.music_load_requested.connect(_add_music)
 	SignalManager.ambience_load_requested.connect(_add_ambience)
 	SignalManager.sfx_load_requested.connect(_add_sfx)
+	SignalManager.time_scale_change_requested.connect(_on_time_scale_changed)
 
 
 func _print_unknown_sound_id_error(sound_id: int, players_group_id: int) -> void:
@@ -263,3 +280,13 @@ func _print_overloaded_players_error(players_group_id: int) -> void:
 		return
 	
 	printerr("ERROR\n%s players overloaded" % _get_sound_players_group_name(players_group_id))
+
+
+func _on_time_scale_changed(time_scale: float, duration: float) -> void:
+	var clamped_time_scale: float = clampf(time_scale, 0.25, 2.0)
+	_change_pitch_on_all_players(clamped_time_scale)
+	
+	if duration <= 0: return
+	
+	await get_tree().create_timer(duration * time_scale).timeout
+	_change_pitch_on_all_players(1.0)

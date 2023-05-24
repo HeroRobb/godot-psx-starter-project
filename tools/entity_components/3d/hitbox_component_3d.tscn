@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc12cqsdtqbc6"]
+
+[ext_resource type="Script" path="res://tools/entity_components/3d/hitbox_component_3d.gd" id="1_lf82x"]
+
+[node name="HitboxComponent" type="Area3D"]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_lf82x")

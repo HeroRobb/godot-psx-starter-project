@@ -1,0 +1,106 @@
+[gd_scene load_steps=16 format=3 uid="uid://bw3f85cpb3gaa"]
+
+[ext_resource type="Script" path="res://levels/green_portal_effect.gd" id="1_hdrvy"]
+[ext_resource type="Shader" path="res://shaders/gpsx/3d/gpsx_3d_add.gdshader" id="2_yxxsu"]
+
+[sub_resource type="Gradient" id="Gradient_jab53"]
+offsets = PackedFloat32Array(0, 0.479675, 0.878049)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_djjdn"]
+gradient = SubResource("Gradient_jab53")
+
+[sub_resource type="Curve" id="Curve_1e0ko"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506452, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.81532, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ojg7x"]
+curve = SubResource("Curve_1e0ko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_koiej"]
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+radial_accel_min = -4.0
+radial_accel_max = -2.0
+tangential_accel_min = 2.0
+tangential_accel_max = 4.0
+damping_min = 1.0
+damping_max = 2.0
+scale_curve = SubResource("CurveTexture_ojg7x")
+color_ramp = SubResource("GradientTexture1D_djjdn")
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 0.5
+turbulence_noise_speed = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_jfr8g"]
+offsets = PackedFloat32Array(0, 0.495652, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.486957, 0.436865, 0.214607, 1, 0.365234, 0.02177, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xvxm7"]
+gradient = SubResource("Gradient_jfr8g")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcxy5"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_xvxm7")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_tgkj0"]
+material = SubResource("StandardMaterial3D_rcxy5")
+size = 0.5
+sections = 4
+section_length = 0.1
+section_segments = 2
+
+[sub_resource type="Gradient" id="Gradient_qd2mh"]
+offsets = PackedFloat32Array(0, 0.346457, 0.625984, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0629921, 0.0629921, 0.0629921, 1, 0.898397, 0.898397, 0.898397, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mem5w"]
+gradient = SubResource("Gradient_qd2mh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_guepo"]
+render_priority = 0
+shader = ExtResource("2_yxxsu")
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dithering = true
+shader_parameter/banding = true
+shader_parameter/fog = false
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/dist_fade_min = 0.0
+shader_parameter/dist_fade_max = 10.0
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/tex = SubResource("GradientTexture2D_mem5w")
+
+[sub_resource type="SphereMesh" id="SphereMesh_oojjo"]
+material = SubResource("ShaderMaterial_guepo")
+radial_segments = 6
+rings = 3
+
+[node name="GreenPortalEffect" type="Node3D"]
+script = ExtResource("1_hdrvy")
+
+[node name="OrbitParticles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 32
+lifetime = 2.0
+one_shot = true
+fixed_fps = 24
+trail_enabled = true
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_koiej")
+draw_pass_1 = SubResource("RibbonTrailMesh_tgkj0")
+
+[node name="Core" type="MeshInstance3D" parent="."]
+instance_shader_parameters/mixer = Color(1, 1, 1, 1)
+mesh = SubResource("SphereMesh_oojjo")

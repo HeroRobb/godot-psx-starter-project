@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://d303ywfmqtibl"]
+
+[ext_resource type="Script" path="res://cards/card_data.gd" id="1_3tu4c"]
+
+[resource]
+script = ExtResource("1_3tu4c")
+card_name = "Fireball"
+card_type = 0
+card_rarity = 0
+image_region = Rect2i(1, 81, 14, 14)
+description = "When something is troubling you, one of the great solutions is to set it on fire. A greater solution is to do that from afar."
+player_max_speed_modifier = 0.0
+player_acceleration_modifier = 0.0
+player_friction_modifier = 0.0
+player_max_health_modifier = 0.0
+projectile_type = 1
+projectile_max_speed_modifier = 0.0
+projectile_acceleration_modifier = 0.0
+projectile_friction_modifier = 0.0
+projectile_damage_amount_modifier = 0
+projectile_max_hits_modifier = 0
+projectile_added_damage_types = Array[int]([])
+projectile_removed_damage_types = Array[int]([])

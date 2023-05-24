@@ -55,6 +55,7 @@ shader_parameter/rgbOffsetOpt = 0.15
 shader_parameter/horzFuzzOpt = 0.1
 
 [node name="ScreenSpaceShaderManager" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

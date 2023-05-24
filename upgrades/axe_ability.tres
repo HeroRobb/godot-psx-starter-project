@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cr3ht0uq3dv7b"]
+
+[ext_resource type="PackedScene" uid="uid://cvmvihnpmjrtd" path="res://abilities/axe/axe_launcher.tscn" id="1_m4m1v"]
+[ext_resource type="Script" path="res://upgrades/ability.gd" id="1_ovexu"]
+
+[resource]
+script = ExtResource("1_ovexu")
+ability_launcher_scene = ExtResource("1_m4m1v")
+id = "axe_ability"
+name = "Axe"
+description = "Throw an axe that spirals around you."

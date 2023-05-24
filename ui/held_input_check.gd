@@ -6,11 +6,11 @@ extends Control
 ## Set [member skip_action_name] and [member held_seconds] in the editor. This
 ## Node will show a progress bar while the action is held. After held_seconds,
 ## the progress bar will be filled and this node will emit [signal input_held].
+## Note that this uses [method physics_process] and not [method process] for
+## a consistent delta value.
 
 
 signal input_held()
-
-const _HELD_RATE = 12
 
 ## This is the action name that this node will listen for. The action must
 ## already be set by code or from the top left of the editor: 
@@ -24,16 +24,16 @@ const _HELD_RATE = 12
 
 
 func _ready():
-	_progress_bar.max_value = held_seconds * 20
 	hide()
+	_progress_bar.max_value = held_seconds
 
 
-func _process(delta):
+func _physics_process(delta):
 	if Input.is_action_just_pressed(skip_action_name):
 		show()
 	
 	if Input.is_action_pressed(skip_action_name):
-		_progress_bar.value += _HELD_RATE * delta
+		_progress_bar.value += delta
 	
 	elif Input.is_action_just_released(skip_action_name):
 		hide()

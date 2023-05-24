@@ -61,7 +61,17 @@ func _ready():
 	
 	SignalManager.pp_default_shaders_changed.emit(default_shaders)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	Engine.max_fps = fps
+#	Engine.max_fps = fps
+
+
+func hitstop(time_scale: float, duration: float) -> void:
+	Engine.time_scale = time_scale
+	
+	if duration <= 0:
+		return
+	
+	await get_tree().create_timer(duration * time_scale).timeout
+	Engine.time_scale = 1.0
 
 
 func set_pause_allowed(new_pause_allowed: bool) -> void:
@@ -106,7 +116,8 @@ func change_scene(new_scene_id: Global.LEVELS, silent: bool = false, fade_out_se
 	ResourceManager.add_global_data("previous_scene_id", _previous_scene_id)
 	_main_scene.queue_free()
 	await _main_scene.tree_exited
-
+	
+	SignalManager.time_scale_change_requested.emit(1, 0)
 	ResourceManager.load_level_from_id(_current_scene_id)
 	await ResourceManager.level_loaded
 
@@ -160,6 +171,7 @@ func _connect_signals() -> void:
 	SignalManager.set_delayed.connect(set_delayed)
 	SignalManager.pp_enabled_changed.connect(_on_pp_enabled_changed)
 	SignalManager.pp_default_shaders_enabled_changed.connect(_on_pp_default_shaders_enabled_changed)
+	SignalManager.time_scale_change_requested.connect(hitstop)
 
 
 func _on_pp_enabled_changed(shader: Global.SHADERS, enabled: bool) -> void:

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx048bbs6gasn"]
+
+[ext_resource type="Script" path="res://projectiles/projectile_2d.gd" id="1_2mi8g"]
+[ext_resource type="PackedScene" uid="uid://dlwo41i4h04d6" path="res://tools/entity_components/2d/movement_component_2D.tscn" id="2_4p2fq"]
+[ext_resource type="PackedScene" uid="uid://jmuqqfhupx52" path="res://tools/entity_components/2d/hitbox_component_2d.tscn" id="3_cssus"]
+
+[node name="Projectile2D" type="CharacterBody2D"]
+script = ExtResource("1_2mi8g")
+
+[node name="MovementComponent2D" parent="." node_paths=PackedStringArray("_body") instance=ExtResource("2_4p2fq")]
+_body = NodePath("..")
+
+[node name="HitboxComponent2D" parent="." instance=ExtResource("3_cssus")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="OffScreenTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RemoveTimer" type="Timer" parent="."]
+one_shot = true

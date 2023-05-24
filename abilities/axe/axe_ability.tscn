@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cj5yqabwbmghh"]
+
+[ext_resource type="Script" path="res://abilities/axe/axe_ability.gd" id="1_1okxy"]
+[ext_resource type="Texture2D" uid="uid://b8jr1lv2lkb25" path="res://abilities/axe/AxeOutline 5.png" id="2_2c6tl"]
+[ext_resource type="PackedScene" uid="uid://jmuqqfhupx52" path="res://tools/entity_components/2d/hitbox_component_2d.tscn" id="3_urr62"]
+[ext_resource type="Script" path="res://tools/damage_source.gd" id="4_p5bgc"]
+
+[sub_resource type="Resource" id="Resource_if31k"]
+script = ExtResource("4_p5bgc")
+damage = 2
+damage_types = Array[int]([1])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xq4wc"]
+
+[sub_resource type="Animation" id="Animation_wio0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.784737]
+}
+
+[sub_resource type="Animation" id="Animation_xcld0"]
+resource_name = "spin"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.784737, 5.58505]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7q4ib"]
+_data = {
+"RESET": SubResource("Animation_wio0i"),
+"spin": SubResource("Animation_xcld0")
+}
+
+[node name="AxeAbility" type="Node2D"]
+script = ExtResource("1_1okxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.784737
+texture = ExtResource("2_2c6tl")
+
+[node name="HitboxComponent2D" parent="." instance=ExtResource("3_urr62")]
+can_damage = 1
+max_hits = 5
+damage_source = SubResource("Resource_if31k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent2D"]
+shape = SubResource("CircleShape2D_xq4wc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_7q4ib")
+}

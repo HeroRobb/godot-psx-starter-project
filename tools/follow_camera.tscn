@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbohku5ac83fk"]
+
+[ext_resource type="Script" path="res://tools/follow_camera.gd" id="1_20fox"]
+
+[node name="FollowCamera" type="Camera2D"]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 0.2
+drag_vertical_offset = 0.1
+script = ExtResource("1_20fox")

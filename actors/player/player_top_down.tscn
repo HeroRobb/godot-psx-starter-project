@@ -1,0 +1,160 @@
+[gd_scene load_steps=22 format=3 uid="uid://dgrq8a0rl60tm"]
+
+[ext_resource type="Script" path="res://actors/player/player_top_down.gd" id="1"]
+[ext_resource type="Script" path="res://particles/uberparticle.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://ddeyqwp4qsh1b" path="res://tools/mesh_component.tscn" id="3_b5xuw"]
+[ext_resource type="PackedScene" uid="uid://cwe5htk75coiv" path="res://tools/health_component.tscn" id="3_hnlhs"]
+[ext_resource type="PackedScene" uid="uid://e8lubrc78ny4" path="res://tools/hurtbox_component.tscn" id="4_650al"]
+[ext_resource type="Shader" path="res://shaders/gpsx/3d/gpsx_3d.gdshader" id="4_ejjv2"]
+[ext_resource type="Texture2D" uid="uid://bufvgxxobu8o6" path="res://materials/textures/Tiles012_1K_Color.jpg" id="5_uugop"]
+[ext_resource type="Script" path="res://management3/game_state_saver.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://svns56n4iclo" path="res://projectiles/projectile_launcher.tscn" id="6_451d0"]
+[ext_resource type="PackedScene" uid="uid://cmhyd6j4nietg" path="res://tools/movement_component.tscn" id="7_eghw0"]
+[ext_resource type="Script" path="res://actors/player/orbit_point.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://cd8iwwtua3b56" path="res://levels/spawn_manager.tscn" id="10_b8vsy"]
+[ext_resource type="PackedScene" uid="uid://b3cifx72otgmo" path="res://actors/enemies/enemy.tscn" id="11_4ptm4"]
+[ext_resource type="PackedScene" uid="uid://d13bl4goa3ixs" path="res://ui/ui_health_bar.tscn" id="12_vdv5o"]
+
+[sub_resource type="CapsuleShape3D" id="14"]
+radius = 0.26
+height = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_peuga"]
+render_priority = 0
+shader = ExtResource("4_ejjv2")
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dithering = true
+shader_parameter/banding = true
+shader_parameter/fog = false
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/dist_fade_min = 0.0
+shader_parameter/dist_fade_max = 10.0
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/tex = ExtResource("5_uugop")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2xx76"]
+material = SubResource("ShaderMaterial_peuga")
+radius = 0.25
+height = 1.0
+radial_segments = 6
+rings = 1
+
+[sub_resource type="Gradient" id="Gradient_sch23"]
+colors = PackedColorArray(0, 0.114001, 1, 1, 1, 0, 0.0137591, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e5kri"]
+gradient = SubResource("Gradient_sch23")
+fill_from = Vector2(0.0157895, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxibd"]
+render_priority = 0
+shader = ExtResource("4_ejjv2")
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dithering = true
+shader_parameter/banding = true
+shader_parameter/fog = false
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/dist_fade_min = 0.0
+shader_parameter/dist_fade_max = 10.0
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/tex = SubResource("GradientTexture2D_e5kri")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y1kca"]
+material = SubResource("ShaderMaterial_cxibd")
+radius = 0.05
+height = 0.2
+radial_segments = 4
+rings = 1
+
+[node name="PlayerTopDown" type="CharacterBody3D" groups=["player"]]
+process_mode = 3
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1")
+max_speed = 7.5
+
+[node name="GameStateSaver" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("14")
+
+[node name="MeshComponent" parent="." instance=ExtResource("3_b5xuw")]
+process_mode = 1
+angular_acceleration = 8.0
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="MeshComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+instance_shader_parameters/mixer = Color(1, 0.890196, 1, 1)
+mesh = SubResource("CapsuleMesh_2xx76")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="MeshComponent/CSGMesh3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.377472, -0.17885)
+mesh = SubResource("CapsuleMesh_y1kca")
+
+[node name="ProjectileLauncher" parent="MeshComponent" instance=ExtResource("6_451d0")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.554365, -0.2)
+projectile_scene_path = "res://projectiles/projectile_fireball.tscn"
+physics_parent_path = NodePath("../..")
+cooldown_seconds = 1.5
+
+[node name="MovementComponent" parent="." instance=ExtResource("7_eghw0")]
+process_mode = 1
+body_path = NodePath("..")
+mesh_component_path = NodePath("../MeshComponent")
+max_speed = 4.0
+acceleration = 1.5
+friction = 6.5
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_hnlhs")]
+process_mode = 1
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("4_650al")]
+process_mode = 1
+health_component_path = NodePath("../HealthComponent")
+can_take_hits_from = 1
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="HurtboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("14")
+
+[node name="CameraPositions" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="BottomPosition" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 1.5)
+
+[node name="TopPosition" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(-1, -8.44439e-08, 2.26267e-08, 0, 0.258819, 0.965926, -8.74228e-08, 0.965926, -0.258819, 0, 0, -1.5)
+
+[node name="RightPosition" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(-4.37114e-08, -0.965926, 0.258819, 0, 0.258819, 0.965926, -1, 4.2222e-08, -1.13133e-08, 1.5, 0, 0)
+
+[node name="LeftPosition" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(-4.37114e-08, 0.965926, -0.258819, 0, 0.258819, 0.965926, 1, 4.2222e-08, -1.13133e-08, -1.5, 0, 0)
+
+[node name="SpawnManager" parent="." instance=ExtResource("10_b8vsy")]
+spawn_scenes = Array[PackedScene]([ExtResource("11_4ptm4")])
+spawn_position_parent_paths = Array[NodePath]([NodePath("../OrbitPoint/Marker3D")])
+
+[node name="OrbitPoint" type="Marker3D" parent="."]
+process_mode = 2
+script = ExtResource("8")
+
+[node name="Marker3D" type="Marker3D" parent="OrbitPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="DebugTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Uberparticle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
+script = ExtResource("3")
+
+[node name="LastGroundPositionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="HealthBarUI" parent="." instance=ExtResource("12_vdv5o")]
+custom_minimum_size = Vector2(60, 20)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://de8tj27whq7ri"]
+
+[ext_resource type="Script" path="res://tools/entity_components/2d/damage_number_component_2d.gd" id="1_4vs8a"]
+[ext_resource type="PackedScene" uid="uid://cic8rkr6d658s" path="res://tools/entity_components/2d/damage_number_display_2d.tscn" id="2_lt300"]
+
+[node name="DamageNumberComponent2D" type="Node2D"]
+script = ExtResource("1_4vs8a")
+_damage_number_display_scene = ExtResource("2_lt300")

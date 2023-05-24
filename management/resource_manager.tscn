@@ -61,7 +61,7 @@ data_path = "res://levels/intro.tscn"
 [sub_resource type="Resource" id="Resource_514uy"]
 script = ExtResource("3_h3uyb")
 level_id = 2
-data_path = "res://levels/example/level_example_1.tscn"
+data_path = "res://levels/dungeon_hardmore.tscn"
 
 [sub_resource type="Resource" id="Resource_mhid8"]
 script = ExtResource("3_h3uyb")
@@ -69,6 +69,7 @@ level_id = 3
 data_path = "res://levels/example/level_example_2.tscn"
 
 [node name="ResourceManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_fu71s")
 use_editor_resources = true
 music_data = Array[ExtResource("2_vkt0b")]([SubResource("Resource_gu04a"), SubResource("Resource_pgk2d"), SubResource("Resource_cabyp"), SubResource("Resource_pdg6w")])

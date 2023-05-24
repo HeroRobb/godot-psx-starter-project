@@ -1,3 +1,4 @@
 [gd_scene format=3 uid="uid://n8jvj3d5d0eh"]
 
 [node name="SaveGameManager" type="Node"]
+process_mode = 3

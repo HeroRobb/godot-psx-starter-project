@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3 uid="uid://b642iccni1e45"]
+
+[ext_resource type="Script" path="res://actors/top_down_2d/player_top_down_2d.gd" id="1_aeywe"]
+[ext_resource type="PackedScene" uid="uid://daw71mdwu0amw" path="res://tools/entity_components/2d/sprite_component.tscn" id="2_6ncwy"]
+[ext_resource type="PackedScene" uid="uid://drphl5von85kh" path="res://tools/entity_components/general/health_component.tscn" id="4_0y6n1"]
+[ext_resource type="PackedScene" uid="uid://43el6e2p3y7n" path="res://tools/entity_components/2d/hurtbox_component_2d.tscn" id="4_reogf"]
+[ext_resource type="PackedScene" uid="uid://dlwo41i4h04d6" path="res://tools/entity_components/2d/movement_component_2D.tscn" id="5_32nfo"]
+[ext_resource type="PackedScene" uid="uid://k1crm3672acg" path="res://projectiles/projectile_launcher_2d.tscn" id="7_fgryh"]
+[ext_resource type="PackedScene" uid="uid://ce74jh3fs655l" path="res://abilities/sword/sword_launcher.tscn" id="9_j01q3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ch6"]
+size = Vector2(5, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d4hgj"]
+load_path = "res://.godot/imported/sprite_sheet_pikeman_0_16x16.png-5d6739388d5ac66f4dccdc023571654a.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knynf"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4im0"]
+bg_color = Color(0.435294, 0.686275, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0kv"]
+size = Vector2(4.5, 7.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4h8j"]
+radius = 8.0
+
+[node name="PlayerTopDown2D" type="CharacterBody2D" groups=["player"]]
+y_sort_enabled = true
+texture_filter = 1
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_aeywe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_a1ch6")
+
+[node name="SpriteComponent" parent="." instance=ExtResource("2_6ncwy")]
+body_texture = SubResource("CompressedTexture2D_d4hgj")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_0y6n1")]
+
+[node name="MovementComponent2D" parent="." node_paths=PackedStringArray("_body", "_sprite_component") instance=ExtResource("5_32nfo")]
+_body = NodePath("..")
+_sprite_component = NodePath("../SpriteComponent")
+max_speed = 35.0
+acceleration = 3.0
+friction = 10.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 4)
+offset_left = -16.0
+offset_top = -18.0
+offset_right = 16.0
+offset_bottom = -14.0
+pivot_offset = Vector2(16, 2)
+theme_override_styles/background = SubResource("StyleBoxFlat_knynf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l4im0")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="CameraPositions" type="Node2D" parent="."]
+
+[node name="TopPosition" type="Marker2D" parent="CameraPositions"]
+position = Vector2(0, -25)
+
+[node name="RightPosition" type="Marker2D" parent="CameraPositions"]
+position = Vector2(25, 0)
+
+[node name="BottomPosition" type="Marker2D" parent="CameraPositions"]
+position = Vector2(0, 25)
+
+[node name="LeftPosition" type="Marker2D" parent="CameraPositions"]
+position = Vector2(-25, 0)
+
+[node name="HurtboxComponent2D" parent="." node_paths=PackedStringArray("_health_component") instance=ExtResource("4_reogf")]
+position = Vector2(0, -20)
+collision_layer = 0
+collision_mask = 0
+_health_component = NodePath("../HealthComponent")
+can_take_hits_from = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_qm0kv")
+debug_color = Color(0.996078, 0, 0.215686, 0.419608)
+
+[node name="ProjectileLauncher2D" parent="." instance=ExtResource("7_fgryh")]
+target_position = Vector2(8, 0)
+projectile_scene_path = "res://projectiles/fireball_2d.tscn"
+physics_parent_path = NodePath("..")
+cooldown_seconds = 30.0
+can_damage = 1
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_p4h8j")
+
+[node name="AbilityLaunchers" type="Node" parent="."]
+
+[node name="SwordLauncher" parent="AbilityLaunchers" instance=ExtResource("9_j01q3")]

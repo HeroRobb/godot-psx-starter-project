@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://djrtixww2e2ul"]
+
+[ext_resource type="Script" path="res://tools/entity_components/experience_drop_component.gd" id="1_r5fdm"]
+[ext_resource type="PackedScene" uid="uid://01gg1ueq130l" path="res://levels/objects/pickup_experience/pickup_experience.tscn" id="2_dmn5c"]
+
+[node name="ExperienceDropComponent" type="Node"]
+script = ExtResource("1_r5fdm")
+_xp_pickup = ExtResource("2_dmn5c")

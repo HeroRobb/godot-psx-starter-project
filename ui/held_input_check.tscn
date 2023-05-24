@@ -39,5 +39,5 @@ layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_m0s5l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ir21x")
 max_value = 60.0
-step = 1.0
+step = 0.001
 show_percentage = false

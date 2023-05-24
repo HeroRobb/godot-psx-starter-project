@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tools/entity_components/3d/hurtbox_component_3d.gd" id="1_y4kle"]
+
+[node name="HurtboxComponent3D" type="Area3D"]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_y4kle")
+health_component_path = null
+can_take_hits_from = null

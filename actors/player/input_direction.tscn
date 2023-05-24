@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/player/input_axis.gd" type="Script" id=1]
+[ext_resource path="res://actors/player/input_direction.gd" type="Script" id=2]
+
+[node name="InputDirection" type="Node"]
+script = ExtResource( 2 )
+
+[node name="MoveJoy" type="Node" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Needs to be calculated seperately from keyboard to not have joypad events overwrite keyboard ones"
+}
+_up_action = "move_forward"
+_down_action = "move_back"
+_left_action = "move_left"
+_right_action = "move_right"
+
+[node name="MoveKey" type="Node" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Needs to be calculated seperately from joypad to not have joypad events overwrite keyboard ones"
+}
+_up_action = "move_forward_k"
+_down_action = "move_back_k"
+_left_action = "move_left_k"
+_right_action = "move_right_k"
+
+[node name="LookJoy" type="Node" parent="."]
+script = ExtResource( 1 )
+_up_action = "look_up"
+_down_action = "look_down"
+_left_action = "look_left"
+_right_action = "look_right"
