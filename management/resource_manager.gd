@@ -40,6 +40,7 @@ const _OK_LOADING_STATUSES = [ResourceLoader.THREAD_LOAD_IN_PROGRESS, ResourceLo
 
 var version_number = 0.1
 
+var time_since_launch: float = 0.0
 var loading_level: bool = false : set = set_loading_level
 
 var _data: GameData = preload("res://management/game_data.gd").new()
@@ -58,7 +59,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	time_since_launch += delta
+	
 	if not loading_level:
 		set_loading_level(false)
 		return

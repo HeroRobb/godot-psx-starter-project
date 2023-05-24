@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://qwfpht6n3itq"]
+
+[ext_resource type="Script" path="res://levels/map.gd" id="1_74t3h"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_74t3h")
+
+[node name="MapEvents" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)

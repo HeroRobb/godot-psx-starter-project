@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://dmbefiiqth22a"]
+
+[ext_resource type="Script" path="res://cards/card_data.gd" id="1_anjeg"]
+
+[resource]
+script = ExtResource("1_anjeg")
+card_name = "Impact Coils"
+card_type = 1
+card_rarity = 2
+image_region = Rect2i(161, 17, 14, 14)
+description = "I toned down the original weaponry the suits carried because they could cause rifts in timespace. It probably won't happen if we empower it back up just a tiny bit, though."
+player_max_speed_modifier = 0.0
+player_acceleration_modifier = 0.0
+player_friction_modifier = 0.0
+player_max_health_modifier = 0.0
+projectile_type = 0
+projectile_max_speed_modifier = 0.0
+projectile_acceleration_modifier = 0.0
+projectile_friction_modifier = 0.0
+projectile_damage_amount_modifier = 1
+projectile_max_hits_modifier = 0
+projectile_added_damage_types = Array[int]([])
+projectile_removed_damage_types = Array[int]([])

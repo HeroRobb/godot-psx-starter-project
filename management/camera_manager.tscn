@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cchk5cc6gsdpr"]
+[gd_scene load_steps=3 format=3 uid="uid://cchk5cc6gsdpr"]
 
 [ext_resource type="Script" path="res://management/camera_manager.gd" id="1_hxk6q"]
+[ext_resource type="PackedScene" uid="uid://rd6ckqavshaf" path="res://tools/screenshake.tscn" id="2_68u76"]
 
 [node name="CameraManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_hxk6q")
 
 [node name="TransCamera" type="Camera3D" parent="."]
+
+[node name="Screenshake" parent="." instance=ExtResource("2_68u76")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd4pp7h4xvvcj"]
+
+[ext_resource type="Script" path="res://tools/instance_spawner.gd" id="1_7w1j3"]
+[ext_resource type="PackedScene" uid="uid://bw3f85cpb3gaa" path="res://levels/green_portal_effect.tscn" id="2_xfmjq"]
+
+[node name="InstanceSpawner" type="Node3D"]
+script = ExtResource("1_7w1j3")
+spawn_effect = ExtResource("2_xfmjq")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dw3lcjcjcmjr8"]
+
+[ext_resource type="Script" path="res://upgrades/ability_upgrade.gd" id="1_ul1m5"]
+
+[resource]
+script = ExtResource("1_ul1m5")
+id = "sword_hits"
+name = "Pierce - Sword"
+description = "Increases the amount of enemies that can be hit by the sword by 1."
+max_quantity = 5

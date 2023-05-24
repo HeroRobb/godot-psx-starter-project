@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce74jh3fs655l"]
+
+[ext_resource type="Script" path="res://abilities/sword/sword_launcher.gd" id="1_gfii0"]
+[ext_resource type="PackedScene" uid="uid://c2qlr3nd7pwtw" path="res://abilities/sword/sword_ability.tscn" id="2_ar1gg"]
+[ext_resource type="Script" path="res://tools/damage_source.gd" id="3_wp6ev"]
+
+[sub_resource type="Resource" id="Resource_dk5hp"]
+script = ExtResource("3_wp6ev")
+damage = 4
+damage_types = Array[int]([1])
+
+[node name="SwordLauncher" type="Node"]
+script = ExtResource("1_gfii0")
+sword_ability = ExtResource("2_ar1gg")
+damage_source = SubResource("Resource_dk5hp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true

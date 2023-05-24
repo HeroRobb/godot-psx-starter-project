@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://rd6ckqavshaf"]
+
+[ext_resource type="Script" path="res://tools/screenshake.gd" id="1_etk1j"]
+
+[node name="Screenshake" type="Node"]
+script = ExtResource("1_etk1j")
+
+[node name="FrequencyTimer" type="Timer" parent="."]
+
+[node name="DurationTimer" type="Timer" parent="."]
+one_shot = true

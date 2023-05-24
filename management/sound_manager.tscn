@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://management/sound_manager.gd" id="1_mwa27"]
 
 [node name="SoundManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_mwa27")
 
 [node name="SFXPlayers" type="Node" parent="."]

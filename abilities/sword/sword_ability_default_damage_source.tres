@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DamageSource" load_steps=2 format=3 uid="uid://vfn0swsopdkt"]
+
+[ext_resource type="Script" path="res://tools/damage_source.gd" id="1_y3cou"]
+
+[resource]
+script = ExtResource("1_y3cou")
+damage = 1
+damage_types = Array[int]([1])

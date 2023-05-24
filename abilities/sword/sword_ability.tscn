@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2qlr3nd7pwtw"]
+
+[ext_resource type="Texture2D" uid="uid://dunvkkmjcl61a" path="res://abilities/sword/SwordOutline 1.png" id="1_u5djx"]
+[ext_resource type="Script" path="res://abilities/sword/sword_ability.gd" id="1_ysivb"]
+[ext_resource type="PackedScene" uid="uid://jmuqqfhupx52" path="res://tools/entity_components/2d/hitbox_component_2d.tscn" id="2_jhu2t"]
+[ext_resource type="Script" path="res://tools/damage_source.gd" id="3_520b7"]
+
+[sub_resource type="Animation" id="Animation_ff21w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxComponent2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_36i6m"]
+resource_name = "swing"
+length = 0.85
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 2, 1),
+"update": 0,
+"values": [-0.785398, -1.0472, 2.35619, -0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.45, 0.5, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 5.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.65, 0.65), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.85),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxComponent2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofi4x"]
+_data = {
+"RESET": SubResource("Animation_ff21w"),
+"swing": SubResource("Animation_36i6m")
+}
+
+[sub_resource type="Resource" id="Resource_m7bpf"]
+script = ExtResource("3_520b7")
+damage = 1
+damage_types = Array[int]([1])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy3pq"]
+size = Vector2(16, 25)
+
+[node name="SwordAbility" type="Node2D"]
+script = ExtResource("1_ysivb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.785398
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_u5djx")
+offset = Vector2(3, -3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "swing"
+libraries = {
+"": SubResource("AnimationLibrary_ofi4x")
+}
+
+[node name="HitboxComponent2D" parent="." instance=ExtResource("2_jhu2t")]
+can_damage = 1
+max_hits = 3
+damage_source = SubResource("Resource_m7bpf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent2D"]
+position = Vector2(8, 1.5)
+shape = SubResource("RectangleShape2D_xy3pq")
+disabled = true

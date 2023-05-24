@@ -56,6 +56,10 @@ func _ready() -> void:
 		SignalManager.pp_all_disabled.emit()
 
 
+func reload_level() -> void:
+	SignalManager.change_scene_requested.emit(level_id)
+
+
 func _connect_signals() -> void:
 	SignalManager.instance_requested.connect(_on_instance_requested)
 	var player = _player_container.get_player()

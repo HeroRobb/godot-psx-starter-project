@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://byccxqljoc0uy"]
+
+[ext_resource type="Script" path="res://projectiles/projectile_launcher_3d.gd" id="1_dt0gs"]
+
+[node name="ProjectileLauncher" type="RayCast3D"]
+enabled = false
+target_position = Vector3(0, 0, -1)
+script = ExtResource("1_dt0gs")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true

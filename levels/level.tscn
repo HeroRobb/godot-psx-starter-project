@@ -18,6 +18,7 @@ script = ExtResource("7")
 script = ExtResource("4")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerContainer"]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 current = true
 

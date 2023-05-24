@@ -26,6 +26,26 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
 
+func take_hit(damage_source: DamageSource) -> void:
+	_health_component.take_damage(damage_source)
+	hit_taken.emit()
+
+
+func check_for_damage() -> void:
+	var possible_damage_areas = get_overlapping_areas()
+	var damage_done := false
+	
+	for area in possible_damage_areas:
+		if not area is HitboxComponent:
+			continue
+		var hitbox: HitboxComponent = area
+		hitbox.give_hit()
+		take_hit(hitbox.damage_source)
+		
+		if damage_done:
+			break
+
+
 func set_enabled(new_enabled: bool) -> void:
 	enabled = new_enabled
 	
@@ -49,8 +69,6 @@ func _on_area_entered(area: Area3D) -> void:
 	if not area is HitboxComponent:
 		return
 	
-	if _health_component:
-		var hitbox: HitboxComponent = area
-		_health_component.take_damage(hitbox.damage_source)
-	
-	hit_taken.emit()
+	var hitbox: HitboxComponent = area
+	hitbox.give_hit()
+	take_hit(hitbox.damage_source)

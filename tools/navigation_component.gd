@@ -19,12 +19,13 @@ var _next_location: Vector3
 func _ready() -> void:
 	assert(movement_component_path, "Navigation component has no movement component set.")
 	_movement_component = get_node(movement_component_path)
+	set_physics_process(true)
 
 
 func _physics_process(delta: float) -> void:
 	if target_location:
 		_next_location = get_path_to_target_location()
-		_movement_component.move(_next_location, delta)
+		_movement_component.move_to(_next_location, delta)
 	
 	if target_node:
 		_update_target_node_location()

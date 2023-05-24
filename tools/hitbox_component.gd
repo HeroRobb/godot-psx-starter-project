@@ -11,15 +11,25 @@ enum HURTBOX_TYPES {
 }
 
 @export var can_damage: HURTBOX_TYPES = HURTBOX_TYPES.FRIENDLY
-@export var hits_available: int = 1
+@export var max_hits: int = 1
 @export var damage_source: DamageSource
 
 var hits_given: int = 0 : set = set_hits_given
 var enabled: bool = true : set = set_enabled
 
+var _infinite_hits: bool = false
+
 
 func _ready() -> void:
+	if max_hits == -1:
+		_infinite_hits = true
+	
 	_initialize_collision()
+
+
+func give_hit() -> void:
+	if not _infinite_hits:
+		set_hits_given(hits_given + 1)
 
 
 func set_enabled(new_enabled: bool) -> void:
@@ -27,12 +37,15 @@ func set_enabled(new_enabled: bool) -> void:
 	
 	monitorable = enabled
 	monitoring = false
+	
+	if not enabled:
+		collision_layer = 0
 
 
 func set_hits_given(new_hits_given: int) -> void:
 	hits_given = new_hits_given
 	
-	if hits_given <= 0:
+	if hits_given >= max_hits:
 		set_enabled(false)
 		hit_limit_reached.emit()
 
