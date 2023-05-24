@@ -1,4 +1,4 @@
-class_name MovementComponent
+class_name MovementComponent3D
 extends Node
 
 enum MOVEMENT_TYPES {

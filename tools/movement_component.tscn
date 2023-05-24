@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmhyd6j4nietg"]
-
-[ext_resource type="Script" path="res://tools/movement_component.gd" id="1_xbidc"]
-
-[node name="MovementComponent" type="Node"]
-script = ExtResource("1_xbidc")
-
-[node name="StoppedTimer" type="Timer" parent="."]
-one_shot = true

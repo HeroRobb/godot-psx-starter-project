@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmhyd6j4nietg"]
+
+[ext_resource type="Script" path="res://tools/entity_components/3d/movement_component_3d.gd" id="1_ee76j"]
+
+[node name="MovementComponent3D" type="Node"]
+script = ExtResource("1_ee76j")
+
+[node name="StoppedTimer" type="Timer" parent="."]
+one_shot = true

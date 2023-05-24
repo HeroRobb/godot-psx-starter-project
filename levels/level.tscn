@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://f7pfxvhux3gh"]
+[gd_scene load_steps=7 format=3 uid="uid://c4lvrpu83qr3y"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1"]
 [ext_resource type="Script" path="res://levels/player_container.gd" id="4"]
 [ext_resource type="Script" path="res://levels/area_container.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://cchk5cc6gsdpr" path="res://management/camera_manager.tscn" id="5_fnww5"]
+[ext_resource type="PackedScene" uid="uid://npfmcnm5aag" path="res://management/camera_manager_3d.tscn" id="5_fnww5"]
 [ext_resource type="Script" path="res://levels/npc_container.gd" id="6"]
 [ext_resource type="Script" path="res://management/game_state_saver.gd" id="7"]
 
@@ -42,7 +42,7 @@ script = ExtResource("6")
 
 [node name="EnemySpawnPortals" type="Node3D" parent="NPCContainer"]
 
-[node name="CameraManager" parent="." instance=ExtResource("5_fnww5")]
+[node name="CameraManager3D" parent="." instance=ExtResource("5_fnww5")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.793642, 0.28199, -0.539087, 0.073095, 0.835479, 0.544639, 0.603979, -0.471653, 0.642459, 0, 10, 0)

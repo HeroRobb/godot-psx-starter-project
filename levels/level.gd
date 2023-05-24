@@ -40,7 +40,7 @@ var _current_ambience_id: int
 @onready var _player_container: PlayerContainer = $PlayerContainer
 @onready var _geometry_container: Node3D = $GeometryContainer
 @onready var _area_container: AreaContainer = $AreaContainer
-@onready var _camera_manager: CameraManager = $CameraManager
+@onready var _camera_manager: CameraManager3D = $CameraManager
 
 
 func _ready() -> void:

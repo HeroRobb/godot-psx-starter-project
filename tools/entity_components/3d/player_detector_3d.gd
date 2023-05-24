@@ -1,4 +1,4 @@
-class_name PlayerDetector
+class_name PlayerDetector3D
 extends Area3D
 
 
