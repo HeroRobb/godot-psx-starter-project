@@ -3,7 +3,7 @@
 A base project for creating retro psx style games in the godot engine.
 
 ## Attribution
-Many of the shaders used are from [MenacingMecha's godot psx style demo](https://github.com/MenacingMecha/godot-psx-style-demo/tree/master/shaders), [AesthicalZ's Godot PSX](https://github.com/AestheticalZ/godot-psx), [Ahopness' GodotRetro](https://github.com/Ahopness/GodotRetro), and [GithubPrankster's GPSX](https://github.com/GithubPrankster/gpsx) so thank them if you use this because it would have never been possible without them. In addition, player_trigger.gd is heavily based on [GameDev Compass](https://github.com/Reun-Media/gamedev-compass).
+Many of the shaders used are from [MenacingMecha's godot psx style demo](https://github.com/MenacingMecha/godot-psx-style-demo/tree/master/shaders), [AesthicalZ's Godot PSX](https://github.com/AestheticalZ/godot-psx), [Ahopness' GodotRetro](https://github.com/Ahopness/GodotRetro), and [GithubPrankster's GPSX](https://github.com/GithubPrankster/gpsx) so thank them if you use this because it would have never been possible without them. In addition, player_trigger.gd is heavily based on [GameDev Compass](https://github.com/Reun-Media/gamedev-compass), the screenshake is based heavily on [ShaggyDev's](https://shaggydev.com/2022/02/23/screen-shake-godot/)..
 I also used/changed/stole/learned from tons of things from tons of different programmers and developers. I couldn't possibly list them all.
 You can attribute me for using this by keeping the default attribution in the intro if you want.
 
