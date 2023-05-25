@@ -1,70 +1,70 @@
 [gd_scene load_steps=20 format=3 uid="uid://b28ro383vl7dk"]
 
 [ext_resource type="Script" path="res://management/resource_manager.gd" id="1_fu71s"]
-[ext_resource type="Script" path="res://management/ResourceData/music_data.gd" id="2_vkt0b"]
-[ext_resource type="Script" path="res://management/ResourceData/ambience_data.gd" id="3_1oa81"]
-[ext_resource type="Script" path="res://management/ResourceData/level_data.gd" id="3_h3uyb"]
-[ext_resource type="Script" path="res://management/ResourceData/sfx_data.gd" id="4_3hfc0"]
+[ext_resource type="Script" path="res://management/data_structures/resource_data/music_data.gd" id="2_mwsh3"]
+[ext_resource type="Script" path="res://management/data_structures/resource_data/ambience_data.gd" id="3_idxjg"]
+[ext_resource type="Script" path="res://management/data_structures/resource_data/sfx_data.gd" id="4_tpecv"]
+[ext_resource type="Script" path="res://management/data_structures/resource_data/level_data.gd" id="5_q1hg8"]
 [ext_resource type="PackedScene" uid="uid://n8jvj3d5d0eh" path="res://management/save_game_manager.tscn" id="6_uuldi"]
 [ext_resource type="Script" path="res://management/save_game_manager.gd" id="7_iy50j"]
 
-[sub_resource type="Resource" id="Resource_gu04a"]
-script = ExtResource("2_vkt0b")
+[sub_resource type="Resource" id="Resource_k2ild"]
+script = ExtResource("2_mwsh3")
 music_id = 1
 data_path = "res://sounds/its_sax.ogg"
 
-[sub_resource type="Resource" id="Resource_pgk2d"]
-script = ExtResource("2_vkt0b")
+[sub_resource type="Resource" id="Resource_yrpht"]
+script = ExtResource("2_mwsh3")
 music_id = 2
 data_path = "res://sounds/its_sax8bit.ogg"
 
-[sub_resource type="Resource" id="Resource_cabyp"]
-script = ExtResource("2_vkt0b")
+[sub_resource type="Resource" id="Resource_73dru"]
+script = ExtResource("2_mwsh3")
 music_id = 3
 data_path = "res://sounds/carnelia.ogg"
 
-[sub_resource type="Resource" id="Resource_pdg6w"]
-script = ExtResource("2_vkt0b")
+[sub_resource type="Resource" id="Resource_rh4ie"]
+script = ExtResource("2_mwsh3")
 music_id = 4
 data_path = "res://sounds/shifting_loss.ogg"
 
-[sub_resource type="Resource" id="Resource_4kccv"]
-script = ExtResource("3_1oa81")
+[sub_resource type="Resource" id="Resource_6pjvn"]
+script = ExtResource("3_idxjg")
 ambience_id = 1
 data_path = "res://sounds/foghorn_four_times.ogg"
 
-[sub_resource type="Resource" id="Resource_n4adk"]
-script = ExtResource("3_1oa81")
+[sub_resource type="Resource" id="Resource_fro0a"]
+script = ExtResource("3_idxjg")
 ambience_id = 2
 data_path = "res://sounds/lost_ambienceLOOPING.ogg"
 
-[sub_resource type="Resource" id="Resource_6lyxm"]
-script = ExtResource("4_3hfc0")
+[sub_resource type="Resource" id="Resource_bommm"]
+script = ExtResource("4_tpecv")
 sfx_id = 0
 data_path = "res://sounds/blip2shortest.wav"
 
-[sub_resource type="Resource" id="Resource_lgmfc"]
-script = ExtResource("4_3hfc0")
+[sub_resource type="Resource" id="Resource_sakre"]
+script = ExtResource("4_tpecv")
 sfx_id = 1
 data_path = "res://sounds/njb_intro.ogg"
 
-[sub_resource type="Resource" id="Resource_xouiv"]
-script = ExtResource("3_h3uyb")
+[sub_resource type="Resource" id="Resource_dcsxd"]
+script = ExtResource("5_q1hg8")
 level_id = 0
 data_path = "res://levels/example/main_menu_example.tscn"
 
-[sub_resource type="Resource" id="Resource_fj2x7"]
-script = ExtResource("3_h3uyb")
+[sub_resource type="Resource" id="Resource_elkc8"]
+script = ExtResource("5_q1hg8")
 level_id = 1
 data_path = "res://levels/intro.tscn"
 
-[sub_resource type="Resource" id="Resource_514uy"]
-script = ExtResource("3_h3uyb")
+[sub_resource type="Resource" id="Resource_qn5ac"]
+script = ExtResource("5_q1hg8")
 level_id = 2
-data_path = "res://levels/dungeon_hardmore.tscn"
+data_path = "res://levels/example/level_example_1.tscn"
 
-[sub_resource type="Resource" id="Resource_mhid8"]
-script = ExtResource("3_h3uyb")
+[sub_resource type="Resource" id="Resource_m7abf"]
+script = ExtResource("5_q1hg8")
 level_id = 3
 data_path = "res://levels/example/level_example_2.tscn"
 
@@ -72,10 +72,10 @@ data_path = "res://levels/example/level_example_2.tscn"
 process_mode = 3
 script = ExtResource("1_fu71s")
 use_editor_resources = true
-music_data = Array[ExtResource("2_vkt0b")]([SubResource("Resource_gu04a"), SubResource("Resource_pgk2d"), SubResource("Resource_cabyp"), SubResource("Resource_pdg6w")])
-ambience_data = Array[ExtResource("3_1oa81")]([SubResource("Resource_4kccv"), SubResource("Resource_n4adk")])
-sfx_data = Array[ExtResource("4_3hfc0")]([SubResource("Resource_6lyxm"), SubResource("Resource_lgmfc")])
-level_data = Array[ExtResource("3_h3uyb")]([SubResource("Resource_xouiv"), SubResource("Resource_fj2x7"), SubResource("Resource_514uy"), SubResource("Resource_mhid8")])
+music_data = Array[ExtResource("2_mwsh3")]([SubResource("Resource_k2ild"), SubResource("Resource_yrpht"), SubResource("Resource_73dru"), SubResource("Resource_rh4ie")])
+ambience_data = Array[ExtResource("3_idxjg")]([SubResource("Resource_6pjvn"), SubResource("Resource_fro0a")])
+sfx_data = Array[ExtResource("4_tpecv")]([SubResource("Resource_bommm"), SubResource("Resource_sakre")])
+level_data = Array[ExtResource("5_q1hg8")]([SubResource("Resource_dcsxd"), SubResource("Resource_elkc8"), SubResource("Resource_qn5ac"), SubResource("Resource_m7abf")])
 
 [node name="SaveGameManager" parent="." instance=ExtResource("6_uuldi")]
 script = ExtResource("7_iy50j")

@@ -2,7 +2,7 @@
 # meta_default: true
 
 
-extends Level
+extends Level3D
 
 
 const NEXT_SCENE = Global.LEVELS.TEST

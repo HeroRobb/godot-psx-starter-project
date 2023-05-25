@@ -43,7 +43,7 @@ var version_number = 0.1
 var time_since_launch: float = 0.0
 var loading_level: bool = false : set = set_loading_level
 
-var _data: GameData = preload("res://management/game_data.gd").new()
+var _data: GameData = preload("res://management/data_structures/game_data.gd").new()
 var _save_game_manager: SaveGameManager
 var _actors: Dictionary
 var _level_paths: Dictionary

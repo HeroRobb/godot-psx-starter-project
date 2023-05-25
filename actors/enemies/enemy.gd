@@ -24,10 +24,10 @@ var defeated: bool = false
 var _player: Node3D
 
 @onready var _health_component: HealthComponent = $HealthComponent
-@onready var _hurtbox_component: HurtboxComponent = $HurtboxComponent
-@onready var _hitbox_component: HitboxComponent = $HitboxComponent
-@onready var _movement_component: MovementComponent = $MovementComponent
-@onready var _navigation_component: NavigationComponent = $NavigationComponent
+@onready var _hurtbox_component: HurtboxComponent3D = $HurtboxComponent
+@onready var _hitbox_component: HitboxComponent3D = $HitboxComponent
+@onready var _movement_component: MovementComponent3D = $MovementComponent
+@onready var _navigation_component: NavigationComponent3D = $NavigationComponent
 @onready var _mesh_component: MeshComponent = $MeshComponent
 @onready var _vision_area: PlayerDetector = $VisionArea
 #@onready var _angry_sprite := $AngrySprite

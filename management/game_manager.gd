@@ -61,7 +61,7 @@ func _ready():
 	
 	SignalManager.pp_default_shaders_changed.emit(default_shaders)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-#	Engine.max_fps = fps
+	Engine.max_fps = fps
 
 
 func hitstop(time_scale: float, duration: float) -> void:

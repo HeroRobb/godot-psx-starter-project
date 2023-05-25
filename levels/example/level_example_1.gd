@@ -1,4 +1,4 @@
-extends Level
+extends Level3D
 
 
 enum CAMERA_IDS {
@@ -48,26 +48,19 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	if not _cameras[active_camera_id] == _camera_spinning:
-		return
-	
 	_camera_pivot.rotate_y(delta)
 
 
 func change_to_camera(camera_id: CAMERA_IDS) -> void:
 	_transitioning_camera = true
-	
-	if _cameras[camera_id] == _camera_spinning:
-		SignalManager.screenshake_stop_requested.emit()
+	if _cameras[active_camera_id] == _camera_spinning:
+		set_process(false)
 	
 	active_camera_id = camera_id
 	var to_camera = _cameras[active_camera_id]
 	
 	SignalManager.camera_transition_requested.emit(to_camera, CAMERA_TRANSITION_DURATION_SECONDS)
 	await SignalManager.camera_transition_finished
-	
-	if not _cameras[camera_id] == _camera_spinning:
-		SignalManager.screenshake_requested.emit(2, 1, 0)
 	
 	_transitioning_camera = false
 	set_process(to_camera == _camera_spinning)

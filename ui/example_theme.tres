@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bgw1r7m1fxlg7"]
 
-[ext_resource type="FontFile" uid="uid://dl8tf0fow8l7o" path="res://ui/BIOSfontII.ttf" id="1_mvi7w"]
+[ext_resource type="FontFile" uid="uid://dl8tf0fow8l7o" path="res://ui/fonts/BIOSfontII.ttf" id="1_mvi7w"]
 
 [resource]
 default_font = ExtResource("1_mvi7w")

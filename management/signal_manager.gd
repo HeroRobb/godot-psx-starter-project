@@ -58,9 +58,5 @@ signal state_saver_freed(name: String, data: Dictionary)
 signal player_died
 signal player_health_changed(current_health: int, max_health: int)
 
-# Progression
-signal experience_gained(amount: int)
-signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
-
 # Display
 signal set_window_mode(new_window_mode: Global.WINDOW_MODES)
