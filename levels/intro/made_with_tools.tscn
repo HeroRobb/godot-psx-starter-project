@@ -1,0 +1,365 @@
+[gd_scene load_steps=9 format=3 uid="uid://7k3hxkhsw1rm"]
+
+[ext_resource type="Script" path="res://levels/intro/made_with_tools.gd" id="1_hunv6"]
+[ext_resource type="Texture2D" uid="uid://ccg7oxvj0iowx" path="res://icon.svg" id="2_poqc2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rb8nh"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gkyso"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s6pc2"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_22jrd"]
+resource_name = "godot_cmy_join"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/VBoxContainer/Control/GodotCyan:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(-400, -250), Vector2(-400, -250), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/Control/GodotMagenta:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(400, -250), Vector2(400, -250), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/Control/GodotYellow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, 250), Vector2(0, 250), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:color")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3, 3.2),
+"transitions": PackedFloat32Array(1, 1, 2, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/VBoxContainer/HRPSXCreditContainer/UsingLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/VBoxContainer/HRPSXCreditContainer/HRLabel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CenterContainer/VBoxContainer/HRPSXCreditContainer/PSXLabel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CenterContainer/VBoxContainer/GodotCreditContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ii73j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/VBoxContainer/Control/GodotCyan:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-400, -250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/Control/GodotMagenta:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(400, -250)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/Control/GodotYellow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 250)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/VBoxContainer/HRPSXCreditContainer/UsingLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/VBoxContainer/HRPSXCreditContainer/HRLabel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CenterContainer/VBoxContainer/HRPSXCreditContainer/PSXLabel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CenterContainer/VBoxContainer/GodotCreditContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gourj"]
+_data = {
+"RESET": SubResource("Animation_ii73j"),
+"godot_cmy_join": SubResource("Animation_22jrd")
+}
+
+[node name="MadeWithTools" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_hunv6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="GodotCreditContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(125, 19)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MadeWithLabel" type="Label" parent="CenterContainer/VBoxContainer/GodotCreditContainer"]
+layout_mode = 2
+text = "made with "
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="GodotLabel" type="Label" parent="CenterContainer/VBoxContainer/GodotCreditContainer"]
+layout_mode = 2
+text = "Godot"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HRPSXCreditContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(125, 19)
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="UsingLabel" type="Label" parent="CenterContainer/VBoxContainer/HRPSXCreditContainer"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+layout_mode = 2
+text = "using "
+horizontal_alignment = 1
+
+[node name="HRLabel" type="Label" parent="CenterContainer/VBoxContainer/HRPSXCreditContainer"]
+visible = false
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+text = "HR"
+horizontal_alignment = 1
+
+[node name="PSXLabel" type="Label" parent="CenterContainer/VBoxContainer/HRPSXCreditContainer"]
+visible = false
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+text = "PSX"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="GodotCyan" type="TextureRect" parent="CenterContainer/VBoxContainer/Control"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_rb8nh")
+layout_mode = 2
+offset_left = -400.0
+offset_top = -250.0
+offset_right = -275.0
+offset_bottom = -125.0
+size_flags_vertical = 4
+texture = ExtResource("2_poqc2")
+expand_mode = 5
+stretch_mode = 3
+
+[node name="GodotMagenta" type="TextureRect" parent="CenterContainer/VBoxContainer/Control"]
+modulate = Color(0, 1, 0, 1)
+material = SubResource("CanvasItemMaterial_gkyso")
+layout_mode = 2
+offset_left = 400.0
+offset_top = -250.0
+offset_right = 525.0
+offset_bottom = -125.0
+size_flags_vertical = 4
+texture = ExtResource("2_poqc2")
+expand_mode = 5
+stretch_mode = 3
+
+[node name="GodotYellow" type="TextureRect" parent="CenterContainer/VBoxContainer/Control"]
+modulate = Color(0, 0, 1, 1)
+material = SubResource("CanvasItemMaterial_s6pc2")
+layout_mode = 2
+offset_top = 250.0
+offset_right = 125.0
+offset_bottom = 375.0
+size_flags_vertical = 4
+texture = ExtResource("2_poqc2")
+expand_mode = 5
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gourj")
+}

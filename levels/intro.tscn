@@ -1,16 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ktsu6b4adyx"]
+[gd_scene load_steps=11 format=3 uid="uid://ktsu6b4adyx"]
 
-[ext_resource type="Texture2D" uid="uid://ccg7oxvj0iowx" path="res://icon.svg" id="1_vgve5"]
 [ext_resource type="Script" path="res://levels/intro.gd" id="1_wpfho"]
-[ext_resource type="Shader" path="res://shaders/gpsx/2d/gpsx_2d.gdshader" id="2_j3vd3"]
+[ext_resource type="PackedScene" uid="uid://7k3hxkhsw1rm" path="res://levels/intro/made_with_tools.tscn" id="2_5a8wc"]
 [ext_resource type="Texture2D" uid="uid://susf0ur67j3h" path="res://materials/textures/warning_background.png" id="2_y5dll"]
 [ext_resource type="PackedScene" uid="uid://bllcr31b4x2nu" path="res://ui/held_input_check.tscn" id="4_7q6yq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcc5h"]
-shader = ExtResource("2_j3vd3")
-shader_parameter/alpha_cutoff = 0.1
-shader_parameter/dithering = true
-shader_parameter/banding = true
 
 [sub_resource type="Animation" id="Animation_jfgsx"]
 length = 0.001
@@ -260,32 +253,9 @@ text = "A game by Hero Robb"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MadeWithTools" type="CenterContainer" parent="."]
+[node name="MadeWithTools" parent="." instance=ExtResource("2_5a8wc")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MadeWithTools"]
-layout_mode = 2
-
-[node name="ToolsCreditLabel" type="Label" parent="MadeWithTools/VBoxContainer"]
-layout_mode = 2
-text = "made with Godot
-using HR PSX"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MadeWithTools/VBoxContainer"]
-material = SubResource("ShaderMaterial_mcc5h")
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("1_vgve5")
-expand_mode = 5
-stretch_mode = 3
 
 [node name="ContentWarning" type="TextureRect" parent="."]
 visible = false

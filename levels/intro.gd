@@ -45,6 +45,7 @@ var _intro_skipped: bool = false
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _held_input_check: HeldInputCheck = $HeldInputCheck
 @onready var _developer_credit_label: Label = %DeveloperCreditLabel
+@onready var _made_with_tools: MadeWithToolsCredit = $MadeWithTools
 @onready var _content_warning_label: Label = %ContentWarningLabel
 @onready var _quote_label: Label = %QuoteLabel
 @onready var _quote_credit_label: Label = %QuoteCreditLabel
@@ -76,8 +77,10 @@ func _show_intro() -> void:
 		_skip_intro()
 		return
 	
-	_animation_player.play("made_with_tools")
-	await _animation_player.animation_finished
+#	_animation_player.play("made_with_tools")
+#	await _animation_player.animation_finished
+	_made_with_tools.play_animation()
+	await _made_with_tools.animation_finished
 	if _intro_skipped:
 		_skip_intro()
 		return
